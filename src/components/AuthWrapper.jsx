@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CustomSignIn from "./CustomSignIn";
 import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
+import CustomSignOut from './CustomSignOut';
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -11,7 +12,7 @@ class AuthWrapper extends Component {
   };
 
   render() {
-    console.log(this.props, "<-- this.props");
+    console.log(this.props, "<-- this.props in AuthWrapper");
     return (
       <div>
         <CustomSignIn
@@ -27,6 +28,8 @@ class AuthWrapper extends Component {
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
         />
+        <CustomSignOut authState={this.props.authState}
+          onStateChange={this.props.onStateChange} />
       </div>
     );
   }

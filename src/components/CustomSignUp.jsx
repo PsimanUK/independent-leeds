@@ -76,7 +76,7 @@ class CustomSignUp extends Component {
               type="text"
               placeholder="********"
             />
-            <button onClick={this.handleFormSubmission}>Login</button>
+            <button onClick={this.handleFormSubmission}>Register</button>
           </form>
         )}
       </section>

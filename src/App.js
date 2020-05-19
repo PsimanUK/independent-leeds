@@ -7,7 +7,7 @@ import './App.css';
 
 Amplify.configure(awsconfig);
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <header>
