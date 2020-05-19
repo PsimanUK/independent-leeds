@@ -16,8 +16,8 @@ class CustomSignUp extends Component {
   };
 
   signUp = () => {
-    const { username, password } = this.state;
-    Auth.signUp(username, password)
+    const { username, password, email } = this.state;
+    Auth.signUp(username, password, email)
       .then(() => {
         this.props.onStateChange("signedUp", {});
       })
