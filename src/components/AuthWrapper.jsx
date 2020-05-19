@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CustomSignIn from "./CustomSignIn";
 import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
+import CustomConfirmSignUp from "./CustomConfirmSignUp";
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -23,6 +24,7 @@ class AuthWrapper extends Component {
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
         />
+        <CustomConfirmSignUp />
         <InternalApp
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
