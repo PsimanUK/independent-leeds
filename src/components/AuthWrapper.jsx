@@ -24,7 +24,6 @@ class AuthWrapper extends Component {
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
         />
-        <CustomConfirmSignUp />
         <InternalApp
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
@@ -35,3 +34,6 @@ class AuthWrapper extends Component {
 }
 
 export default AuthWrapper;
+
+{/* <CustomConfirmSignUp authState={this.props.authState}
+          onStateChange={this.props.onStateChange} /> */}

@@ -4,7 +4,7 @@ import { Auth } from "aws-amplify";
 class CustomConfirmSignUp extends Component {
   state = { code: "", username: "", error: "" };
 
-  _validAuthStates = ["signIn", "signedOut", "signedUp"];
+  _validAuthStates = ["confirmSignUp"];
 
   ConfirmSignUp = () => {
     const { username, code } = this.state;
