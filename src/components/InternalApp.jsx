@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
+import BusinessList from './BusinessList';
 
 class InternalApp extends Component {
 
@@ -8,6 +9,7 @@ class InternalApp extends Component {
             return (
                 <main>
                     <NavBar />
+                    <BusinessList />
                 </main>
             )
         } else return null;
