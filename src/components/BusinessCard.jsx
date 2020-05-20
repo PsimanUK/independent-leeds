@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BusinessCard = ({ businessName }) => {
+const BusinessCard = ({ title }) => {
 
     return (
         <section>
             <ul>
-                <li>{businessName}</li>
+                <li>{title}</li>
             </ul>
         </section>
     );

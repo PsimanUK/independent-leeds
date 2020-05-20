@@ -14,7 +14,7 @@ class AuthWrapper extends Component {
   };
 
   render() {
-    console.log(this.props, "<-- this.props in AuthWrapper");
+
     return (
       <div>
         <Title />

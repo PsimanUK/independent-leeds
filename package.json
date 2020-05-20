@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "aws-amplify": "^3.0.11",
     "aws-amplify-react": "^4.1.10",
+    "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"

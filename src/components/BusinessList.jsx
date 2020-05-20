@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import BusinessCard from './BusinessCard';
+import * as api from '../utils/api';
 
 class BusinessList extends Component {
 
-    state = { businesses: [{ businessName: 'Wicked Business' }, { businessName: 'Fantastic Business' }] }
+    state = { businesses: [] }
 
     render() {
         const { businesses } = this.state;
@@ -15,6 +16,14 @@ class BusinessList extends Component {
             </section>
         );
     }
-}
+
+    componentDidMount = () => {
+        api.fetchBusinesses().then(({ Items }) => {
+            this.setState({ businesses: Items });
+        }).catch((err) => {
+            console.log(`Encountered error: ${err}`);
+        })
+    };
+};
 
 export default BusinessList;
