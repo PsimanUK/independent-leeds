@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar';
 
 class InternalApp extends Component {
-
-
 
     render() {
         if (this.props.authState === 'signedIn') {
             return (
-                <h1>Independent Leeds</h1>
+                <main>
+                    <NavBar />
+                </main>
             )
         } else return null;
     }

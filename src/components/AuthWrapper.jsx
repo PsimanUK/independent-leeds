@@ -3,6 +3,8 @@ import CustomSignIn from "./CustomSignIn";
 import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
 import CustomSignOut from './CustomSignOut';
+import Title from './Title';
+import { Router } from '@reach/router';
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -15,15 +17,20 @@ class AuthWrapper extends Component {
     console.log(this.props, "<-- this.props in AuthWrapper");
     return (
       <div>
-        <CustomSignIn
-          authState={this.props.authState}
-          updateUsername={this.updateUsername}
-          onStateChange={this.props.onStateChange}
-        />
-        <CustomSignUp
-          authState={this.props.authState}
-          onStateChange={this.props.onStateChange}
-        />
+        <Title />
+        <Router>
+          <CustomSignIn path="/"
+            authState={this.props.authState}
+            updateUsername={this.updateUsername}
+            onStateChange={this.props.onStateChange}
+          />
+          <CustomSignUp path="/register"
+            authState={this.props.authState}
+            onStateChange={this.props.onStateChange}
+          />
+        </Router>
+
+
         <InternalApp
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}

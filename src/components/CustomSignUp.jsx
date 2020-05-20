@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
+import { Link } from '@reach/router';
 
 class CustomSignUp extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp"];
@@ -77,6 +78,7 @@ class CustomSignUp extends Component {
               placeholder="********"
             />
             <button onClick={this.handleFormSubmission}>Register</button>
+            <Link to='/'>Log In</Link>
           </form>
         )}
       </section>

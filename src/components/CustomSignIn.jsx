@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
+import { Link } from '@reach/router';
 
 class CustomSignIn extends Component {
 
@@ -50,6 +51,7 @@ class CustomSignIn extends Component {
                         <label htmlFor="password" >Password</label>
                         <input id="password" key="password" name="password" onChange={this.handleInputChange} type="text" placeholder="********" />
                         <button onClick={this.handleFormSubmission} >Login</button>
+                        <Link to="/register" >Register</Link>
                     </form>)}
             </section>
         );
