@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const BusinessCard = ({ title }) => {
-
-    return (
-        <section>
-            <ul>
-                <li>{title}</li>
-            </ul>
-        </section>
-    );
+const BusinessCard = ({ businessName }) => {
+  return (
+    <section>
+      <ul>
+        <li>{businessName}</li>
+      </ul>
+    </section>
+  );
 };
 
 export default BusinessCard;
