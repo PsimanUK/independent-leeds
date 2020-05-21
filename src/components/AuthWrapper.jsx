@@ -7,24 +7,17 @@ import Title from "./Title";
 import { Router } from "@reach/router";
 
 class AuthWrapper extends Component {
-  state = { username: "", email: "" };
+  state = { username: "" };
 
-  updateEmail = (newEmail) => {
-    this.setState({ email: newEmail });
-  };
+  updateUsername = (newUsername) => {
+    this.setState({ username: newUsername })
+  }
 
   render() {
-    let email = "";
-    let username = "";
-    if (this.props.authState === "loading") {
-      email = "";
-      username = "";
-    } else {
-      email = this.props.authData.attributes.email;
-      username = this.props.authData.username;
-    }
+    console.log(this.state.username, "<---- authwrapper username")
     return (
-      <div>
+
+      < div >
         <Title />
         <Router>
           <CustomSignIn
@@ -43,14 +36,13 @@ class AuthWrapper extends Component {
         <InternalApp
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
-          email={email}
-          username={username}
+          username={this.state.username}
         />
         <CustomSignOut
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
         />
-      </div>
+      </div >
     );
   }
 }

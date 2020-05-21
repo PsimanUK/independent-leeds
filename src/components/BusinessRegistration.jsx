@@ -4,11 +4,13 @@ import * as api from "../utils/api";
 class BusinessRegistration extends Component {
   state = {
     name: "",
+    businessEmail: "",
     logo: "",
     postcode: "",
-    businessType: "",
+    businessType: "restaurant",
     about: "",
     tables: "",
+    hasRegistered: false
   };
 
   handleInput = (event) => {
@@ -18,18 +20,25 @@ class BusinessRegistration extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { email, username } = this.props;
-    const { name, logo, postcode, businessType, about, tables } = this.state;
+    const { username } = this.props;
+    const { businessName, businessEmail, logo, postcode, businessType, about, tables } = this.state;
+    console.log(this.state, '<-- state before registration submission')
     api.sendBusiness({
-      email,
       username,
-      name,
+      businessEmail,
+      businessName,
       logo,
       postcode,
       businessType,
       about,
       tables,
-    });
+    })
+      .then(() => {
+        this.setState({ hasRegistered: true })
+      })
+      .catch((err) => {
+        console.log(err, '<-- error from handleSubmit in BusinessRegistration')
+      });
   };
 
   render() {
@@ -37,18 +46,18 @@ class BusinessRegistration extends Component {
       <main>
         <p>Please enter your business details to register:</p>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Business name:</label>
-          <input type="text" id="name" onChange={this.handleInput} />
+          <label htmlFor="businessName">Business name:</label>
+          <input type="text" id="businessName" name="businessName" onChange={this.handleInput} />
+          <label htmlFor="businessEmail">Business email:</label>
+          <input type="text" id="businessEmail" name="businessEmail" onChange={this.handleInput} />
           <label htmlFor="logo">Logo URL:</label>
-          <input type="text" id="logo" onChange={this.handleInput} />
+          <input type="text" id="logo" name="logo" onChange={this.handleInput} />
           <label htmlFor="postcode">Postcode:</label>
-          <input type="text" id="postcode" onChange={this.handleInput} />
-          <label htmlFor="businessType">Business type:</label>
-          <input type="text" id="businessType" onChange={this.handleInput} />
+          <input type="text" id="postcode" name="postcode" onChange={this.handleInput} />
           <label htmlFor="about">About:</label>
-          <input type="text" id="about" onChange={this.handleInput} />
+          <input type="text" id="about" name="about" onChange={this.handleInput} />
           <label htmlFor="tables">Number of tables available to book:</label>
-          <input type="text" id="tables" onChange={this.handleInput} />
+          <input type="text" id="tables" name="tables" onChange={this.handleInput} />
           <button>Register</button>
         </form>
       </main>

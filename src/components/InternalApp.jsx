@@ -6,8 +6,7 @@ import { Router } from "@reach/router";
 
 class InternalApp extends Component {
   render() {
-    const { email, username } = this.props;
-    console.log(this.props);
+    const { username } = this.props;
     if (this.props.authState === "signedIn") {
       return (
         <main>
@@ -16,7 +15,6 @@ class InternalApp extends Component {
             <BusinessList path="/" />
             <BusinessRegistration
               path="/register-business"
-              email={email}
               username={username}
             />
           </Router>

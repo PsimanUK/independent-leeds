@@ -20,9 +20,10 @@ class CustomSignIn extends Component {
     Auth.signIn(username, password)
       .then(() => {
         this.props.onStateChange("signedIn", {});
+        this.props.updateUsername(username);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, '<-- error in signIn');
         if (err.code === "UserNotConfirmedException") {
           this.props.updateUsername(username);
           Auth.resendSignUp(username);

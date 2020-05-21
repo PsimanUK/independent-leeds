@@ -18,6 +18,6 @@ export const sendBusiness = (requestBody) => {
     )
     .then((response) => {
       console.log(response);
-      return response;
+      // return response;
     });
 };
