@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
-import BusinessList from "./BusinessList";
 import BusinessRegistration from "./BusinessRegistration";
 import { Router } from "@reach/router";
 import BusinessPage from "./BusinessPage";
+import AllBusinesses from "./AllBusinesses";
 
 class InternalApp extends Component {
   render() {
@@ -13,7 +13,7 @@ class InternalApp extends Component {
         <main>
           <NavBar />
           <Router>
-            <BusinessList path="/" />
+            <AllBusinesses path="/" />
             <BusinessRegistration
               path="/register-business"
               username={username}
