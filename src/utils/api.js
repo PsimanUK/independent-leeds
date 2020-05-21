@@ -28,4 +28,12 @@ export const fetchBusinessById = (id) => {
       console.log(response);
       return response.data.Item;
     })
-}; 
+};
+
+export const updateBusinessById = (id, requestBody) => {
+  return axios
+    .patch(`https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`, requestBody)
+    .then((response) => {
+      console.log(response);
+    })
+};
