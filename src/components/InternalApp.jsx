@@ -18,7 +18,7 @@ class InternalApp extends Component {
               path="/register-business"
               username={username}
             />
-            <BusinessPage path="/business/:id" />
+            <BusinessPage path="/business/:id" username={username} />
           </Router>
         </main>
       );
