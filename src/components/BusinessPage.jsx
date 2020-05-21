@@ -55,4 +55,6 @@ class BusinessPage extends Component {
     }
 }
 
+// field to change currently undefined - value not working
+
 export default BusinessPage;
