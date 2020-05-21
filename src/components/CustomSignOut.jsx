@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
+import { Link } from "@reach/router";
 
 class CustomSignOut extends Component {
 
@@ -12,7 +13,7 @@ class CustomSignOut extends Component {
         return (
             <div>
                 {this._validAuthStates.includes(this.props.authState) && (
-                    <button onClick={this.handleSignOutSubmission} >SignOut</button>
+                    <button onClick={this.handleSignOutSubmission} ><Link to="/">SignOut</Link></button>
                 )}
             </div>
         );

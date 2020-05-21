@@ -44,22 +44,26 @@ class BusinessRegistration extends Component {
   render() {
     return (
       <main>
-        <p>Please enter your business details to register:</p>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="businessName">Business name:</label>
-          <input type="text" id="businessName" name="businessName" onChange={this.handleInput} />
-          <label htmlFor="businessEmail">Business email:</label>
-          <input type="text" id="businessEmail" name="businessEmail" onChange={this.handleInput} />
-          <label htmlFor="logo">Logo URL:</label>
-          <input type="text" id="logo" name="logo" onChange={this.handleInput} />
-          <label htmlFor="postcode">Postcode:</label>
-          <input type="text" id="postcode" name="postcode" onChange={this.handleInput} />
-          <label htmlFor="about">About:</label>
-          <input type="text" id="about" name="about" onChange={this.handleInput} />
-          <label htmlFor="tables">Number of tables available to book:</label>
-          <input type="text" id="tables" name="tables" onChange={this.handleInput} />
-          <button>Register</button>
-        </form>
+        {this.state.hasRegistered === false ?
+          <>
+            <p>Please enter your business details to register:</p>
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="businessName">Business name:</label>
+              <input type="text" id="businessName" name="businessName" onChange={this.handleInput} />
+              <label htmlFor="businessEmail">Business email:</label>
+              <input type="text" id="businessEmail" name="businessEmail" onChange={this.handleInput} />
+              <label htmlFor="logo">Logo URL:</label>
+              <input type="text" id="logo" name="logo" onChange={this.handleInput} />
+              <label htmlFor="postcode">Postcode:</label>
+              <input type="text" id="postcode" name="postcode" onChange={this.handleInput} />
+              <label htmlFor="about">About:</label>
+              <input type="text" id="about" name="about" onChange={this.handleInput} />
+              <label htmlFor="tables">Number of tables available to book:</label>
+              <input type="text" id="tables" name="tables" onChange={this.handleInput} />
+              <button>Register</button>
+            </form>
+          </>
+          : <p>Your registration has been successful. Our admin team will email you once they verified your business.</p>}
       </main>
     );
   }
