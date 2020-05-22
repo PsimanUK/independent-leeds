@@ -10,6 +10,17 @@ export const fetchBusinesses = () => {
     });
 };
 
+export const fetchBusinessesToVerify = () => {
+  return axios
+    .get(
+      "https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent",
+      { params: { verified: "no" } }
+    )
+    .then(({ data: { body } }) => {
+      return body;
+    });
+};
+
 export const sendBusiness = (requestBody) => {
   return axios
     .post(

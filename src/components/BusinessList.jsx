@@ -13,7 +13,7 @@ class BusinessList extends Component {
     return (
       <section>
         {viableBusinesses.map((business) => {
-          return <BusinessCard key={business.businessName} {...business} />;
+          return <BusinessCard key={business.id} {...business} />;
         })}
       </section>
     );

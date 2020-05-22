@@ -86,7 +86,7 @@ class BusinessPage extends Component {
     this.setState({ [name]: this.textInput.value });
     const { id } = this.props;
     api
-      .updateBusinessById(id, { [name]: this.textInput.value })
+      .updateBusinessById(id, { key: name, value: this.textInput.value })
       .catch((err) => {
         console.log(err, "<--Error in BusinessPage submitUpdate");
       });
