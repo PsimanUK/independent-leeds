@@ -19,7 +19,6 @@ class VerifyBusinesses extends Component {
 
   render() {
     const { businesses } = this.state;
-    console.log(businesses);
     return (
       <main>
         {businesses.map((business) => {

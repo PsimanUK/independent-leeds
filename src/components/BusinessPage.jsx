@@ -42,7 +42,7 @@ class BusinessPage extends Component {
         <p>{businessEmail}</p>
         <p>{postCode}</p>
         <p>{tables}</p>
-        {comments.map((comment) => {
+        {comments !== undefined && comments.map((comment) => {
           return <CommentCard key={comment.comment_id} {...comment} />;
         })}
       </section>

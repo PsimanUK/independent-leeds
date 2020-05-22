@@ -10,6 +10,12 @@ class BusinessRegistration extends Component {
     businessType: "restaurant",
     about: "",
     tables: "",
+    phoneNumber: '',
+    streetAddress: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    updates: "",
     hasRegistered: false,
     verified: "no",
   };
@@ -31,6 +37,12 @@ class BusinessRegistration extends Component {
       about,
       tables,
       verified,
+      phoneNumber,
+      streetAddress,
+      facebook,
+      twitter,
+      instagram,
+      updates,
     } = this.state;
     api
       .sendBusiness({
@@ -43,6 +55,12 @@ class BusinessRegistration extends Component {
         about,
         tables,
         verified,
+        phoneNumber,
+        streetAddress,
+        facebook,
+        twitter,
+        instagram,
+        updates,
       })
       .then(() => {
         this.setState({ hasRegistered: true });
@@ -71,6 +89,15 @@ class BusinessRegistration extends Component {
                 type="text"
                 id="businessEmail"
                 name="businessEmail"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="phoneNumber">
+                Phone number:
+              </label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
                 onChange={this.handleInput}
               />
               <label htmlFor="logo">Logo URL:</label>
@@ -103,15 +130,61 @@ class BusinessRegistration extends Component {
                 name="tables"
                 onChange={this.handleInput}
               />
+              <label htmlFor="streetAddress">
+                Business Address:
+              </label>
+              <input
+                type="text"
+                id="streetAddress"
+                name="streetAddress"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="facebook">
+                Facebook Page:
+              </label>
+              <input
+                type="text"
+                id="facebook"
+                name="facebook"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="instagram">
+                Instagram Page:
+              </label>
+              <input
+                type="text"
+                id="instagram"
+                name="instagram"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="twitter">
+                Twitter Page:
+              </label>
+              <input
+                type="text"
+                id="twitter"
+                name="twitter"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="updates">
+                Latest updates:
+              </label>
+              <input
+                type="text"
+                id="updates"
+                name="updates"
+                onChange={this.handleInput}
+                placeholder="Let your customers know your situation during lockdown..."
+              />
               <button>Register</button>
             </form>
           </>
         ) : (
-          <p>
-            Your registration has been successful. Our admin team will email you
-            once they verified your business.
-          </p>
-        )}
+            <p>
+              Your registration has been successful. Our admin team will email you
+              once they verified your business.
+            </p>
+          )}
       </main>
     );
   }
