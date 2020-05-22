@@ -23,17 +23,23 @@ export const sendBusiness = (requestBody) => {
 
 export const fetchBusinessById = (id) => {
   return axios
-    .get(`https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`)
+    .get(
+      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`
+    )
     .then((response) => {
       console.log(response);
       return response.data.Item;
-    })
+    });
 };
 
 export const updateBusinessById = (id, requestBody) => {
+  console.log(requestBody);
   return axios
-    .patch(`https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`, requestBody)
+    .patch(
+      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`,
+      requestBody
+    )
     .then((response) => {
       console.log(response);
-    })
+    });
 };

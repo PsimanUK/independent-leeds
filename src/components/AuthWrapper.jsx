@@ -10,14 +10,12 @@ class AuthWrapper extends Component {
   state = { username: "" };
 
   updateUsername = (newUsername) => {
-    this.setState({ username: newUsername })
-  }
+    this.setState({ username: newUsername });
+  };
 
   render() {
-    console.log(this.state.username, "<---- authwrapper username")
     return (
-
-      < div >
+      <div>
         <Title />
         <Router>
           <CustomSignIn
@@ -42,7 +40,7 @@ class AuthWrapper extends Component {
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
         />
-      </div >
+      </div>
     );
   }
 }
