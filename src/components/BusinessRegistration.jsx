@@ -7,7 +7,7 @@ class BusinessRegistration extends Component {
     businessEmail: "",
     logo: "",
     postcode: "",
-    businessType: "restaurant",
+    businessType: "",
     about: "",
     tables: "",
     phoneNumber: '',
@@ -114,6 +114,34 @@ class BusinessRegistration extends Component {
                 name="postcode"
                 onChange={this.handleInput}
               />
+              <label htmlFor="businessType">Type of Business:</label>
+              <select
+                id="businessType"
+                name="businessType"
+                onChange={this.handleInput}>
+                <option value="restaurant">Restaurant</option>
+                <option value="pub">Pub</option>
+                <option value="cafe">Cafe</option>
+                <option value="takeaway">Takeaway</option>
+              </select>
+              <label htmlFor="cuisineType">Type of Cuisine:</label>
+              <select
+                id="cuisineType"
+                name="cuisineType"
+                onChange={this.handleInput}>
+                <option value="chinese">Chinese</option>
+                <option value="thai">Thai</option>
+                <option value="indian">Indian</option>
+                <option value="british">British</option>
+                <option value="italian">Italian</option>
+                <option value="spanish">Spanish</option>
+                <option value="american">American</option>
+                <option value="greek">Greek</option>
+                <option value="french">French</option>
+                <option value="japanese">Japanese</option>
+                <option value="mexican">Mexican</option>
+                <option value="other">Other</option>
+              </select>
               <label htmlFor="about">About:</label>
               <input
                 type="text"

@@ -22,6 +22,7 @@ export const fetchBusinessesToVerify = () => {
 };
 
 export const sendBusiness = (requestBody) => {
+  console.log(requestBody);
   return axios
     .patch(
       "https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent",
@@ -44,7 +45,6 @@ export const fetchBusinessById = (id) => {
 };
 
 export const updateBusinessById = (id, requestBody) => {
-  console.log(requestBody);
   return axios
     .patch(
       `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`,
