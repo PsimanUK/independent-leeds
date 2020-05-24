@@ -49,11 +49,31 @@ class AllBusinesses extends Component {
     this.setState({ activeSite: business });
   };
 
+  changeBoundaries = () => {
+    const newBoundaries = this.refs.map.leafletElement.getBounds();
+    this.setState({
+      mapBoundaries: {
+        west: newBoundaries.getWest(),
+        north: newBoundaries.getNorth(),
+        south: newBoundaries.getSouth(),
+        east: newBoundaries.getEast(),
+      },
+    });
+  };
+
   render() {
     const { businesses, activeSite, mapBoundaries } = this.state;
     return (
       <main>
-        <Map id="map" center={[53.796, -1.55]} zoom={13} minZoom={13} ref="map">
+        <Map
+          id="map"
+          center={[53.796, -1.55]}
+          zoom={13}
+          minZoom={13}
+          ref="map"
+          onzoomend={() => this.changeBoundaries()}
+          onmoveend={() => this.changeBoundaries()}
+        >
           {businesses.map((business) => {
             return (
               <div key={business.id}>
