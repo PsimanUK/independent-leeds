@@ -8,9 +8,15 @@ class AllBusinesses extends Component {
     businesses: [
       {
         businessName: "Jodi's place",
-        latitude: 53.8,
-        longitude: -1.54,
+        latitude: 53.797465,
+        longitude: -1.540356,
         id: "35",
+      },
+      {
+        businessName: "Simeon's place",
+        latitude: 53.78549,
+        longitude: -1.556449,
+        id: "36",
       },
     ],
     activeSite: {},
@@ -29,7 +35,14 @@ class AllBusinesses extends Component {
   //   };
 
   componentDidMount = () => {
-    this.setState({ mapBoundaries: this.refs.map.leafletElement.getBounds() });
+    this.setState({
+      mapBoundaries: {
+        west: this.refs.map.leafletElement.getBounds().getWest(),
+        north: this.refs.map.leafletElement.getBounds().getNorth(),
+        south: this.refs.map.leafletElement.getBounds().getSouth(),
+        east: this.refs.map.leafletElement.getBounds().getEast(),
+      },
+    });
   };
 
   setActiveSite = (business) => {
