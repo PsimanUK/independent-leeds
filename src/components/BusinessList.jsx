@@ -1,34 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import BusinessCard from "./BusinessCard";
-import * as api from "../utils/api";
 
-class BusinessList extends Component {
-  state = { businesses: [] };
-
-  render() {
-    const { businesses } = this.state;
-    const viableBusinesses = businesses.filter(
-      (business) => business.businessName
-    );
-    return (
-      <section>
-        {viableBusinesses.map((business) => {
-          return <BusinessCard key={business.id} {...business} />;
-        })}
-      </section>
-    );
-  }
-
-  componentDidMount = () => {
-    api
-      .fetchBusinesses()
-      .then(({ Items }) => {
-        this.setState({ businesses: Items });
-      })
-      .catch((err) => {
-        console.log(`Encountered error: ${err}`);
-      });
-  };
-}
+const BusinessList = ({ businesses, mapBoundaries }) => {
+  const viableBusinesses = businesses.filter(
+    (business) => business.businessName
+  );
+  console.log(mapBoundaries);
+  return (
+    <section>
+      {viableBusinesses.map((business) => {
+        console.log([business.latitude, business.longitude]);
+        return <BusinessCard key={business.id} {...business} />;
+      })}
+    </section>
+  );
+};
 
 export default BusinessList;
