@@ -40,7 +40,7 @@
 }
 
 .leaflet-container {
-  width: 90%;
+  width: 600px;
   height: 450px;
 }
 
@@ -76,15 +76,18 @@
 }
 
 .BusinessCard__item {
-  color: white;
+  color:  rgb(4, 4, 109);
 }
 
 .thumbnailPic {
-  height: 200px;
-  width: 320px;
+  max-height: 200px;
 }
 
 .largePic {
-  height: 400px;
-  width: 640px;
+  max-height: 400px;
+}
+
+.menu_image {
+  max-width: 300px;
+  box-shadow: 5px 5px rgb(247, 247, 201);
 }
