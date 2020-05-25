@@ -7,6 +7,14 @@ import AllBusinesses from "./AllBusinesses";
 import VerifyBusinesses from "./VerifyBusinesses";
 
 class InternalApp extends Component {
+  state = {
+    alreadyRegistered: false,
+  };
+
+  handleBusinessRegistration = () => {
+    this.setState({ alreadyRegistered: true });
+  };
+
   render() {
     const { username } = this.props;
     if (this.props.authState === "signedIn") {
@@ -15,10 +23,13 @@ class InternalApp extends Component {
           <NavBar loggedInUser={username} />
           <Router>
             <AllBusinesses path="/" />
-            <BusinessRegistration
-              path="/register-business"
-              username={username}
-            />
+            {this.state.alreadyRegistered === false && (
+              <BusinessRegistration
+                path="/register-business"
+                username={username}
+                handleBusinessRegistration={this.handleBusinessRegistration}
+              />
+            )}
             <BusinessPage path="/business/:id" username={username} />
             <VerifyBusinesses path="/verify" />
           </Router>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import { Link } from '@reach/router';
+import { Link } from "@reach/router";
 
 class CustomSignUp extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp"];
@@ -14,6 +14,7 @@ class CustomSignUp extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     this.signUp();
+    this.setState({ username: "", email: "", password: "" });
   };
 
   signUp = () => {
@@ -58,6 +59,7 @@ class CustomSignUp extends Component {
               onChange={this.handleInputChange}
               type="text"
               placeholder="username"
+              value={this.state.username}
             />
             <label htmlFor="email">Email</label>
             <input
@@ -67,6 +69,7 @@ class CustomSignUp extends Component {
               onChange={this.handleInputChange}
               type="text"
               placeholder="email"
+              value={this.state.email}
             />
             <label htmlFor="password">Password</label>
             <input
@@ -76,9 +79,16 @@ class CustomSignUp extends Component {
               onChange={this.handleInputChange}
               type="text"
               placeholder="********"
+              value={this.state.password}
             />
             <button onClick={this.handleFormSubmission}>Register</button>
-            <Link to='/'>Log In</Link>
+            <Link to="/">Log In</Link>
+            {this.props.authState === "signedUp" && (
+              <p>
+                Thank you for registering - please check your email for a
+                confirmation link.
+              </p>
+            )}
           </form>
         )}
       </section>

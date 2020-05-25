@@ -10,7 +10,7 @@ class BusinessRegistration extends Component {
     businessType: "",
     about: "",
     tables: "",
-    phoneNumber: '',
+    phoneNumber: "",
     streetAddress: "",
     facebook: "",
     twitter: "",
@@ -27,6 +27,7 @@ class BusinessRegistration extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { handleBusinessRegistration } = this.props;
     const { username } = this.props;
     const {
       businessName,
@@ -65,6 +66,9 @@ class BusinessRegistration extends Component {
       .then(() => {
         this.setState({ hasRegistered: true });
       })
+      .then(() => {
+        handleBusinessRegistration();
+      })
       .catch((err) => {
         console.log(err, "<-- error from handleSubmit in BusinessRegistration");
       });
@@ -91,9 +95,7 @@ class BusinessRegistration extends Component {
                 name="businessEmail"
                 onChange={this.handleInput}
               />
-              <label htmlFor="phoneNumber">
-                Phone number:
-              </label>
+              <label htmlFor="phoneNumber">Phone number:</label>
               <input
                 type="text"
                 id="phoneNumber"
@@ -118,7 +120,8 @@ class BusinessRegistration extends Component {
               <select
                 id="businessType"
                 name="businessType"
-                onChange={this.handleInput}>
+                onChange={this.handleInput}
+              >
                 <option value="restaurant">Restaurant</option>
                 <option value="pub">Pub</option>
                 <option value="cafe">Cafe</option>
@@ -128,7 +131,8 @@ class BusinessRegistration extends Component {
               <select
                 id="cuisineType"
                 name="cuisineType"
-                onChange={this.handleInput}>
+                onChange={this.handleInput}
+              >
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>
@@ -158,45 +162,35 @@ class BusinessRegistration extends Component {
                 name="tables"
                 onChange={this.handleInput}
               />
-              <label htmlFor="streetAddress">
-                Business Address:
-              </label>
+              <label htmlFor="streetAddress">Business Address:</label>
               <input
                 type="text"
                 id="streetAddress"
                 name="streetAddress"
                 onChange={this.handleInput}
               />
-              <label htmlFor="facebook">
-                Facebook Page:
-              </label>
+              <label htmlFor="facebook">Facebook Page:</label>
               <input
                 type="text"
                 id="facebook"
                 name="facebook"
                 onChange={this.handleInput}
               />
-              <label htmlFor="instagram">
-                Instagram Page:
-              </label>
+              <label htmlFor="instagram">Instagram Page:</label>
               <input
                 type="text"
                 id="instagram"
                 name="instagram"
                 onChange={this.handleInput}
               />
-              <label htmlFor="twitter">
-                Twitter Page:
-              </label>
+              <label htmlFor="twitter">Twitter Page:</label>
               <input
                 type="text"
                 id="twitter"
                 name="twitter"
                 onChange={this.handleInput}
               />
-              <label htmlFor="updates">
-                Latest updates:
-              </label>
+              <label htmlFor="updates">Latest updates:</label>
               <input
                 type="text"
                 id="updates"
@@ -208,11 +202,11 @@ class BusinessRegistration extends Component {
             </form>
           </>
         ) : (
-            <p>
-              Your registration has been successful. Our admin team will email you
-              once they verified your business.
-            </p>
-          )}
+          <p>
+            Your registration has been successful. Our admin team will email you
+            once they verified your business.
+          </p>
+        )}
       </main>
     );
   }

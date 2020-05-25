@@ -3,7 +3,6 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 
-
 class AllBusinesses extends Component {
   state = {
     businesses: [
@@ -99,6 +98,21 @@ class AllBusinesses extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
+        <select className="cuisine">
+          <option value="american">American</option>
+          <option value="british">British</option>
+          <option value="chinese">Chinese</option>
+          <option value="french">French</option>
+          <option value="greek">Greek</option>
+          <option value="indian">Indian</option>
+          <option value="italian">Italian</option>
+          <option value="japanese">Japanese</option>
+          <option value="mexican">Mexican</option>
+          <option value="other">Other</option>
+          <option value="spanish">Spanish</option>
+          <option value="thai">Thai</option>
+        </select>
+
         <BusinessList
           businesses={this.state.businesses}
           mapBoundaries={mapBoundaries}
