@@ -22,6 +22,8 @@
 }
 
 .NavBar {
+  display: flex;
+  flex-direction: row;
   font-size: larger;
   color: aliceblue;
   margin: auto;
@@ -44,8 +46,6 @@
 
 .Map {
   align-content: center;
-  height: 300px;
-  width: 400px;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -56,14 +56,14 @@
 
 .BusinessCard {
   font-size: larger;
-  color: rgb(255, 255, 255);
+  color: rgb(4, 4, 109);
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   align-self: auto;
-  background-color: rgb(4, 4, 109);
+  background-color: rgb(255, 255, 255);
   max-width: 400px;
-  border: solid rgb(246, 246, 96);
+  border: solid rgb(4, 4, 109);
   border-width: 3px;
   border-radius: 6px;
   text-shadow: 2px 2px rgb(134, 134, 55);
