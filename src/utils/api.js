@@ -44,10 +44,10 @@ export const fetchBusinessById = (id) => {
     });
 };
 
-export const updateBusinessById = (id, requestBody) => {
+export const updateBusiness = (username, requestBody) => {
   return axios
     .patch(
-      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`,
+      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${username}`,
       requestBody
     )
     .then((response) => {
