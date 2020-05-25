@@ -4,12 +4,10 @@ import { Link } from "@reach/router";
 const BusinessCard = ({ businessName, logoURL, id }) => {
   return (
     <section>
-      <ul>
-        <li>
-          <Link to={`/business/${id}`}>{businessName}</Link>
-        </li>
-        <li>{logoURL}</li>
-      </ul>
+      <p className="BusinessCard" >
+        <Link className="BusinessCard__item" to={`/business/${id}`}>{businessName}</Link>
+      </p>
+      <p className="BusinessCard__item" >{logoURL}</p>
     </section>
   );
 };

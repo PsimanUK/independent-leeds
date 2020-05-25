@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = () => {
     return (
-        <header>
+        <header className="App-title" >
             <h1>Independent Leeds</h1>
         </header>
     );

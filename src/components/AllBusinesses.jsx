@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 
+
 class AllBusinesses extends Component {
   state = {
     businesses: [
