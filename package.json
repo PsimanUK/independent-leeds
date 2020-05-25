@@ -10,8 +10,10 @@
     "aws-amplify": "^3.0.11",
     "aws-amplify-react": "^4.1.10",
     "axios": "^0.19.2",
+    "leaflet": "^1.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-leaflet": "^2.7.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {

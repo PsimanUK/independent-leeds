@@ -21,6 +21,7 @@
   box-shadow: 4px 4px rgb(233, 233, 157);
 }
 
+
 .NavBar {
   display: flex;
   flex-direction: row;
@@ -37,6 +38,18 @@
   border-radius: 6px;
   text-shadow: 2px 2px rgb(134, 134, 55);
   box-shadow: 4px 4px rgb(233, 233, 157);
+}
+
+.leaflet-container {
+  width: 90%;
+  height: 450px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+
 }
 
 .NavBar__item {
