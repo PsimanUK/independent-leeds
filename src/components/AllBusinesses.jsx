@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
+import { Link } from "@reach/router";
 
 class AllBusinesses extends Component {
   state = {
@@ -87,7 +88,11 @@ class AllBusinesses extends Component {
                   <Popup
                     position={[business.latitude + 0.003, business.longitude]}
                   >
-                    <h2>{business.businessName}</h2>
+                    <h2>
+                      <Link to={`/business/${business.id}`}>
+                        {business.businessName}
+                      </Link>
+                    </h2>
                   </Popup>
                 )}
               </div>
