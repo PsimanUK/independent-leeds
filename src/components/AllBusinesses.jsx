@@ -73,6 +73,7 @@ class AllBusinesses extends Component {
           ref="map"
           onzoomend={() => this.changeBoundaries()}
           onmoveend={() => this.changeBoundaries()}
+          className="Map"
         >
           {businesses.map((business) => {
             return (
