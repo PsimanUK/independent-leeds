@@ -21,7 +21,6 @@
   box-shadow: 4px 4px rgb(233, 233, 157);
 }
 
-
 .NavBar {
   display: flex;
   flex-direction: row;
@@ -43,13 +42,6 @@
 .leaflet-container {
   width: 90%;
   height: 450px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
 }
 
 .NavBar__item {
@@ -87,7 +79,12 @@
   color: white;
 }
 
+.thumbnailPic {
+  height: 200px;
+  width: 320px;
+}
 
-
-
-
+.largePic {
+  height: 400px;
+  width: 640px;
+}

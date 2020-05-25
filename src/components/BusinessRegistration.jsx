@@ -18,6 +18,11 @@ class BusinessRegistration extends Component {
     updates: "",
     hasRegistered: false,
     verified: "no",
+    vegetarian: "",
+    vegan: "",
+    halal: "",
+    glutenFree: "",
+    cuisine: "",
   };
 
   handleInput = (event) => {
@@ -44,6 +49,11 @@ class BusinessRegistration extends Component {
       twitter,
       instagram,
       updates,
+      vegetarian,
+      vegan,
+      halal,
+      glutenFree,
+      cuisine,
     } = this.state;
     api
       .sendBusiness({
@@ -62,6 +72,11 @@ class BusinessRegistration extends Component {
         twitter,
         instagram,
         updates,
+        vegetarian,
+        vegan,
+        halal,
+        glutenFree,
+        cuisine,
       })
       .then(() => {
         this.setState({ hasRegistered: true });
@@ -127,12 +142,8 @@ class BusinessRegistration extends Component {
                 <option value="cafe">Cafe</option>
                 <option value="takeaway">Takeaway</option>
               </select>
-              <label htmlFor="cuisineType">Type of Cuisine:</label>
-              <select
-                id="cuisineType"
-                name="cuisineType"
-                onChange={this.handleInput}
-              >
+              <label htmlFor="cuisine">Type of Cuisine:</label>
+              <select id="cuisine" name="cuisine" onChange={this.handleInput}>
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>
@@ -198,6 +209,42 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 placeholder="Let your customers know your situation during lockdown..."
               />
+              <section>
+                <p>Please select the dietary requirements you cater for:</p>
+                <label htmlFor="vegetarian">Vegetarian</label>
+                <input
+                  type="checkbox"
+                  id="vegetarian"
+                  name="vegetarian"
+                  value="yes"
+                  onChange={this.handleInput}
+                />
+                <label htmlFor="vegan">Vegan</label>
+                <input
+                  type="checkbox"
+                  id="vegan"
+                  name="vegan"
+                  value="yes"
+                  onChange={this.handleInput}
+                />
+                <label htmlFor="glutenFree">Gluten-free</label>
+                <input
+                  type="checkbox"
+                  id="glutenFree"
+                  name="glutenFree"
+                  value="yes"
+                  onChange={this.handleInput}
+                />
+                <label htmlFor="halal">Halal</label>
+                <input
+                  type="checkbox"
+                  id="halal"
+                  name="halal"
+                  value="yes"
+                  onChange={this.handleInput}
+                />
+              </section>
+
               <button>Register</button>
             </form>
           </>

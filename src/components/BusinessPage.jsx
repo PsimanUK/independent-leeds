@@ -28,7 +28,13 @@ class BusinessPage extends Component {
     return (
       <section>
         <h2>{businessName}</h2>
-        <img src={logoURL} alt={`Logo for ${businessName}`} />
+        <img
+          src={
+            "https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+          }
+          alt={`Logo for ${businessName}`}
+          className="largePic"
+        />
         <p>{about}</p>
         {loggedInUser === this.state.businessUsername && (
           <form name="about" onSubmit={this.submitUpdate}>
@@ -42,9 +48,10 @@ class BusinessPage extends Component {
         <p>{businessEmail}</p>
         <p>{postCode}</p>
         <p>{tables}</p>
-        {comments !== undefined && comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} {...comment} />;
-        })}
+        {comments !== undefined &&
+          comments.map((comment) => {
+            return <CommentCard key={comment.comment_id} {...comment} />;
+          })}
       </section>
     );
   }

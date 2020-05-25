@@ -112,7 +112,38 @@ class AllBusinesses extends Component {
           <option value="spanish">Spanish</option>
           <option value="thai">Thai</option>
         </select>
-
+        <label htmlFor="vegetarian">Vegetarian</label>
+        <input
+          type="checkbox"
+          id="vegetarian"
+          name="vegetarian"
+          value="yes"
+          //onChange={this.handleInput}
+        />
+        <label htmlFor="vegan">Vegan</label>
+        <input
+          type="checkbox"
+          id="vegan"
+          name="vegan"
+          value="yes"
+          //onChange={this.handleInput}
+        />
+        <label htmlFor="glutenFree">Gluten-free</label>
+        <input
+          type="checkbox"
+          id="glutenFree"
+          name="glutenFree"
+          value="yes"
+          //onChange={this.handleInput}
+        />
+        <label htmlFor="halal">Halal</label>
+        <input
+          type="checkbox"
+          id="halal"
+          name="halal"
+          value="yes"
+          //onChange={this.handleInput}
+        />
         <BusinessList
           businesses={this.state.businesses}
           mapBoundaries={mapBoundaries}
