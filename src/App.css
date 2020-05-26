@@ -91,3 +91,11 @@
   max-width: 300px;
   box-shadow: 5px 5px rgb(247, 247, 201);
 }
+
+/* .invalidPostcode, .invalidPhoneNumber {
+  box-shadow: 2px 2px 2px 2px red;
+}
+
+.validPostcode, .validPhoneNumber {
+  box-shadow: none;
+} */

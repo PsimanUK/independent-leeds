@@ -12,6 +12,7 @@ class InternalApp extends Component {
   };
 
   handleBusinessRegistration = () => {
+    console.log('Calling handleBusinessRegistration')
     this.setState({ alreadyRegistered: true });
   };
 

@@ -7,10 +7,12 @@ class BusinessRegistration extends Component {
     businessEmail: "",
     logo: "",
     postcode: "",
+    postcodeInvalid: true,
     businessType: "",
     about: "",
     tables: "",
     phoneNumber: "",
+    phoneNumberInvalid: true,
     streetAddress: "",
     facebook: "",
     twitter: "",
@@ -79,19 +81,22 @@ class BusinessRegistration extends Component {
         cuisine,
       })
       .then(() => {
+        console.log(this.state.hasRegistered, '<-- has registered after api request')
         this.setState({ hasRegistered: true });
       })
       .then(() => {
         handleBusinessRegistration();
       })
       .catch((err) => {
-        console.log(err, "<-- error from handleSubmit in BusinessRegistration");
+        this.setState({ error: err.code })
       });
   };
 
   render() {
+    console.log(this.state.hasRegistered, '<-- has registered in state')
     return (
       <main>
+        {this.state.error && <p>An error has occurred, please try again.</p>}
         {this.state.hasRegistered === false ? (
           <>
             <p>Please enter your business details to register:</p>
@@ -102,10 +107,11 @@ class BusinessRegistration extends Component {
                 id="businessName"
                 name="businessName"
                 onChange={this.handleInput}
+                required
               />
               <label htmlFor="businessEmail">Business email:</label>
               <input
-                type="text"
+                type="email"
                 id="businessEmail"
                 name="businessEmail"
                 onChange={this.handleInput}
@@ -116,26 +122,38 @@ class BusinessRegistration extends Component {
                 id="phoneNumber"
                 name="phoneNumber"
                 onChange={this.handleInput}
+                pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
+                required
               />
               <label htmlFor="logo">Logo URL:</label>
               <input
-                type="text"
+                type="url"
                 id="logo"
                 name="logo"
                 onChange={this.handleInput}
               />
-              <label htmlFor="postcode">Postcode:</label>
+              <label htmlFor="menu">Menu image URL:</label>
+              <input
+                type="url"
+                id="menu"
+                name="menu"
+                onChange={this.handleInput}
+              />
+              <label htmlFor="postcode">Postcode (no spaces):</label>
               <input
                 type="text"
                 id="postcode"
                 name="postcode"
                 onChange={this.handleInput}
+                pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
+                required
               />
               <label htmlFor="businessType">Type of Business:</label>
               <select
                 id="businessType"
                 name="businessType"
                 onChange={this.handleInput}
+                required
               >
                 <option value="restaurant">Restaurant</option>
                 <option value="pub">Pub</option>
@@ -143,7 +161,7 @@ class BusinessRegistration extends Component {
                 <option value="takeaway">Takeaway</option>
               </select>
               <label htmlFor="cuisine">Type of Cuisine:</label>
-              <select id="cuisine" name="cuisine" onChange={this.handleInput}>
+              <select id="cuisine" name="cuisine" onChange={this.handleInput} required>
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>
@@ -179,24 +197,25 @@ class BusinessRegistration extends Component {
                 id="streetAddress"
                 name="streetAddress"
                 onChange={this.handleInput}
+                required
               />
-              <label htmlFor="facebook">Facebook Page:</label>
+              <label htmlFor="facebook">Facebook URL:</label>
               <input
-                type="text"
+                type="url"
                 id="facebook"
                 name="facebook"
                 onChange={this.handleInput}
               />
-              <label htmlFor="instagram">Instagram Page:</label>
+              <label htmlFor="instagram">Instagram URL:</label>
               <input
-                type="text"
+                type="url"
                 id="instagram"
                 name="instagram"
                 onChange={this.handleInput}
               />
-              <label htmlFor="twitter">Twitter Page:</label>
+              <label htmlFor="twitter">Twitter URL:</label>
               <input
-                type="text"
+                type="url"
                 id="twitter"
                 name="twitter"
                 onChange={this.handleInput}
@@ -244,16 +263,15 @@ class BusinessRegistration extends Component {
                   onChange={this.handleInput}
                 />
               </section>
-
               <button>Register</button>
             </form>
           </>
         ) : (
-          <p>
-            Your registration has been successful. Our admin team will email you
-            once they verified your business.
-          </p>
-        )}
+            <p>
+              Your registration has been successful. Our admin team will email you
+              once they have verified your business.
+            </p>
+          )}
       </main>
     );
   }

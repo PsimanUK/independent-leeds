@@ -27,18 +27,6 @@ class BusinessPage extends Component {
     instagram: 'www.instagram.com',
     comments: [{ comment_id: '123', username: 'bob', created_at: 1590414025, body: "'I can't believe the amazing sushi I had here last night. My taste buds almost explode due to the joy of chowing down on the unagi nigiri." }],
   }
-  // {
-  //   businessName: "Simeon's place",
-  //   id: "36",
-  //   businessEmail: "simeon@place.com",
-  //   about: "Pretty good food for some of us!",
-  //   postCode: "LS7 4XL",
-  //   logoURL: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-  //   tables: "14",
-  //   businessUsername: "simeonplace",
-  //   comments: [],
-  // }
-  // };
 
   render() {
     const {
@@ -46,6 +34,7 @@ class BusinessPage extends Component {
       businessEmail,
       about,
       postCode,
+      phoneNumber,
       logoURL,
       tables,
       comments,
@@ -55,9 +44,6 @@ class BusinessPage extends Component {
       businessType
     } = this.state;
     const loggedInUser = this.props.username;
-    console.log(this.props, '<-- props')
-    console.log(loggedInUser, '<-- the logged in user')
-    console.log(this.state.username, '<-- the user in state')
     return (
       <section>
         <h2>{businessName}</h2>
@@ -95,7 +81,7 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("logoURL")} >EDIT</button>}
         <form id="logoURL" name="logoURL" onSubmit={this.submitUpdate} hidden>
           <input
-            type="text"
+            type="url"
             ref={(input) => (this.textInput = input)}
             placeholder="input your new logo URL..."
           />
@@ -126,7 +112,7 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("menu")} >EDIT</button>}
         <form id="menu" name="menu" onSubmit={this.submitUpdate} hidden>
           <input
-            type="text"
+            type="url"
             ref={(input) => (this.textInput = input)}
             placeholder="input your the URL for your new menu..."
           />
@@ -137,9 +123,21 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("businessEmail")} >EDIT</button>}
         <form id="businessEmail" name="businessEmail" onSubmit={this.submitUpdate} hidden>
           <input
-            type="text"
+            type="email"
             ref={(input) => (this.textInput = input)}
             placeholder="update your business email..."
+          />
+          <button>Update</button>
+        </form>
+        <p>Phone Number: {phoneNumber}</p>
+        {loggedInUser === this.state.username &&
+          <button onClick={() => this.handleEdit("phoneNumber")} >EDIT</button>}
+        <form id="phoneNumber" name="phoneNumber" onSubmit={this.submitUpdate} hidden>
+          <input
+            type="text"
+            ref={(input) => (this.textInput = input)}
+            pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
+            placeholder="update your business phone number..."
           />
           <button>Update</button>
         </form>
@@ -150,6 +148,7 @@ class BusinessPage extends Component {
           <input
             type="text"
             ref={(input) => (this.textInput = input)}
+            pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
             placeholder="update your post code..."
           />
           <button>Update</button>
@@ -213,7 +212,7 @@ class BusinessPage extends Component {
   //       }
   //     )
   //     .catch((err) => {
-  //       console.log(err, "<-- error in BusinessPage cDM");
+  //       this.setState({error: err.code});
   //     });
   // };
 
@@ -225,7 +224,7 @@ class BusinessPage extends Component {
     api
       .updateBusiness(loggedInUser, { key: name, value: this.textInput.value })
       .catch((err) => {
-        console.log(err, "<--Error in BusinessPage submitUpdate");
+        this.setState({ error: err.code });
       });
   };
 
