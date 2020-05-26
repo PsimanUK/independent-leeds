@@ -13,7 +13,7 @@ class VerifyBusinesses extends Component {
         this.setState({ businesses: Items });
       })
       .catch((err) => {
-        console.log(`Encountered error: ${err}`);
+        this.this.setState({ error: err.code });
       });
   };
 
@@ -21,6 +21,7 @@ class VerifyBusinesses extends Component {
     const { businesses } = this.state;
     return (
       <main>
+        {this.state.error && <p>An error has occured - please try again.</p>}
         {businesses.map((business) => {
           return <BusinessCard key={business.id} {...business} />;
         })}
