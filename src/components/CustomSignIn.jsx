@@ -27,13 +27,11 @@ class CustomSignIn extends Component {
         console.log(err, '<-- error in signIn');
         if (err.code === "UserNotConfirmedException") {
           // this.props.updateUsername(username);
-          this.setState({ error: "Email not yet verified" })
+          this.setState({ error: err.code })
           Auth.resendSignUp(username);
           this.props.onStateChange("confirmSignUp", {});
-        } else if (err.code === "NotAuthorizedException") {
-          this.setState({ error: "Forgot Password?" });
-        } else if (err.code === "UserNotFoundException") {
-          this.setState({ error: "User does not exist!" });
+        } else if (err.code === "NotAuthorizedException" || err.code === "UserNotFoundException") {
+          this.setState({ error: err.code });
         } else {
           this.setState({ error: "An error has occurred" });
         }
@@ -48,10 +46,10 @@ class CustomSignIn extends Component {
   render() {
     return (
       <section>
-        {this.state.error === "Email not yet verified" ?
+        {this.state.error === "UserNotConfirmedException" ?
           <p>Email not yet verified - please check your emails and click the link to verify.</p> :
-          this.state.error === "Forgot Password?" ? <p>Incorrect password</p> :
-            this.state.error === "User does not exist!" ? <p>Incorrect username</p> :
+          this.state.error === "NotAuthorizedException" ? <p>Incorrect password</p> :
+            this.state.error === "UserNotFoundException" ? <p>Incorrect username</p> :
               this.state.error === "An error has occurred" ? <p>An error has occurred - please try again</p> : null
         }
 

@@ -15,6 +15,7 @@ class CustomSignOut extends Component {
                 {this._validAuthStates.includes(this.props.authState) && (
                     <button onClick={this.handleSignOutSubmission} ><Link to="/">SignOut</Link></button>
                 )}
+                {this.state.error && <p>An error has occurred while trying to sign you out, please try again.</p>}
             </div>
         );
     }
@@ -25,25 +26,12 @@ class CustomSignOut extends Component {
     };
 
     signOut = () => {
-        console.log('Trying to sign out...')
         Auth.signOut()
-            .then(() => {
-                // this.props.onStateChange('signedOut', {});
-                return <p>User signed out!</p>
-            })
             .catch((err) => {
-                return <p>{`Error: ${err.message}`}</p>
+                this.setState({ error: err.code })
             });
     };
 
-    // componentDidUpdate = (prevProps, prevState) => {
-    //     console.log(this.state.username, '<-- the username in state')
-    //     // const { username } = this.prevProps.authData;
-    //     if (this.props.authState !== prevProps.authState && this.props.authData) {
-    //         console.log('props in CustomSignOut has changed')
-    //         this.setState({ username: this.props.authData.username || '', authState: this.props.authState });
-    //     }
-    // };
 }
 
 export default CustomSignOut;

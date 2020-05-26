@@ -25,14 +25,10 @@ class CustomSignUp extends Component {
       })
       .catch((err) => {
         console.log(err);
-        if (err.code === "PasswordResetRequiredException") {
+        if (err.code === "UsernameExistsException" || err.code === "InvalidPasswordException") {
           this.setState({
-            error: "Existing user found. Please reset your password",
+            error: err.code,
           });
-        } else if (err.code === "NotAuthorizedException") {
-          this.setState({ error: "Forgot Password?" });
-        } else if (err.code === "UserNotFoundException") {
-          this.setState({ error: "User does not exist!" });
         } else {
           this.setState({ error: err.code });
         }
@@ -47,6 +43,11 @@ class CustomSignUp extends Component {
   render() {
     return (
       <section>
+        {this.state.error === "UsernameExistsException" ?
+          <p>Username already exists - please try another</p> :
+          this.state.error === "InvalidPasswordException" ? <p>Passwords must contain 8 characters including a special character and upper and lower case lettersp.</p> :
+            this.state.error === "An error has occurred" ? <p>An error has occurred - please try again</p> : null
+        }
         {this._validAuthStates.includes(this.props.authState) && (
           <form>
             <label htmlFor="username">Username</label>
