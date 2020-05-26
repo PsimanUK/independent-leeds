@@ -25,9 +25,7 @@ class CustomSignUp extends Component {
       })
       .catch((err) => {
         console.log(err);
-        if (err.code === "UserNotConfirmedException") {
-          this.setState({ error: "Account not verified yet" });
-        } else if (err.code === "PasswordResetRequiredException") {
+        if (err.code === "PasswordResetRequiredException") {
           this.setState({
             error: "Existing user found. Please reset your password",
           });
@@ -67,7 +65,7 @@ class CustomSignUp extends Component {
               key="email"
               name="email"
               onChange={this.handleInputChange}
-              type="text"
+              type="email"
               placeholder="email"
               value={this.state.email}
             />
