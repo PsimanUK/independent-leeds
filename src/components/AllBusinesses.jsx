@@ -1,63 +1,36 @@
 import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-// import * as api from "../utils/api";
+import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 import { Link } from "@reach/router";
 
 class AllBusinesses extends Component {
   state = {
-    businesses: [
-      {
-        businessName: "Jodi's place",
-        latitude: 53.797465,
-        longitude: -1.540356,
-        id: "35",
-        businessEmail: "jodi@place.com",
-        about: "Wonderful food for all!",
-        postCode: "LS7 4DP",
-        logoURL: "https://images.unsplash.com/photo-1580821082847-c53037ecfe0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-        tables: "12",
-        businessUsername: "jodiplace",
-        comments: [],
-      },
-      {
-        businessName: "Simeon's place",
-        latitude: 53.78549,
-        longitude: -1.556449,
-        id: "36",
-        businessEmail: "simeon@place.com",
-        about: "Pretty good food for some of us!",
-        postCode: "LS7 4XL",
-        logoURL: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
-        tables: "14",
-        businessUsername: "simeonplace",
-        comments: [],
-      },
-    ],
+    businesses: [],
     activeSite: {},
     mapBoundaries: {},
   };
 
-  //   componentDidMount = () => {
-  //     api
-  //       .fetchBusinesses()
-  //       .then(({ Items }) => {
-  //         this.setState({ businesses: Items });
-  //       })
-  //       .catch((err) => {
-  //         console.log(`Encountered error: ${err}`);
-  //       });
-  //   };
-
   componentDidMount = () => {
-    this.setState({
-      mapBoundaries: {
-        west: this.refs.map.leafletElement.getBounds().getWest(),
-        north: this.refs.map.leafletElement.getBounds().getNorth(),
-        south: this.refs.map.leafletElement.getBounds().getSouth(),
-        east: this.refs.map.leafletElement.getBounds().getEast(),
-      },
-    });
+    api
+      .fetchBusinesses()
+      .then(({ Items }) => {
+        this.setState({
+          businesses: Items,
+          mapBoundaries: {
+            west: this.refs.map.leafletElement.getBounds().getWest(),
+            north: this.refs.map.leafletElement.getBounds().getNorth(),
+            south: this.refs.map.leafletElement.getBounds().getSouth(),
+            east: this.refs.map.leafletElement.getBounds().getEast(),
+          },
+        });
+      })
+      .then(() => {
+        this.setState()
+      })
+      .catch((err) => {
+        console.log(`Encountered error: ${err}`);
+      });
   };
 
   setActiveSite = (business) => {
@@ -137,7 +110,7 @@ class AllBusinesses extends Component {
           id="vegetarian"
           name="vegetarian"
           value="yes"
-        //onChange={this.handleInput}
+          onChange={this.handleInput}
         />
         <label htmlFor="vegan">Vegan</label>
         <input
@@ -145,7 +118,7 @@ class AllBusinesses extends Component {
           id="vegan"
           name="vegan"
           value="yes"
-        //onChange={this.handleInput}
+          onChange={this.handleInput}
         />
         <label htmlFor="glutenFree">Gluten-free</label>
         <input
@@ -153,7 +126,7 @@ class AllBusinesses extends Component {
           id="glutenFree"
           name="glutenFree"
           value="yes"
-        //onChange={this.handleInput}
+          onChange={this.handleInput}
         />
         <label htmlFor="halal">Halal</label>
         <input
@@ -161,7 +134,7 @@ class AllBusinesses extends Component {
           id="halal"
           name="halal"
           value="yes"
-        //onChange={this.handleInput}
+          onChange={this.handleInput}
         />
         <BusinessList
           businesses={this.state.businesses}

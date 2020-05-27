@@ -5,21 +5,19 @@ class BusinessRegistration extends Component {
   state = {
     name: "",
     businessEmail: "",
-    logo: "",
-    postcode: "",
+    logoUrl: "",
+    postCode: "",
     postcodeInvalid: true,
     businessType: "",
     about: "",
-    tables: "",
     phoneNumber: "",
     phoneNumberInvalid: true,
-    streetAddress: "",
+    address: "",
     facebook: "",
     twitter: "",
     instagram: "",
     updates: "",
     hasRegistered: false,
-    verified: "no",
     vegetarian: "",
     vegan: "",
     halal: "",
@@ -39,14 +37,12 @@ class BusinessRegistration extends Component {
     const {
       businessName,
       businessEmail,
-      logo,
-      postcode,
+      logoUrl,
+      postCode,
       businessType,
       about,
-      tables,
-      verified,
       phoneNumber,
-      streetAddress,
+      address,
       facebook,
       twitter,
       instagram,
@@ -58,18 +54,15 @@ class BusinessRegistration extends Component {
       cuisine,
     } = this.state;
     api
-      .sendBusiness({
-        username,
+      .sendBusiness(username, {
         businessEmail,
         businessName,
-        logo,
-        postcode,
+        logoUrl,
+        postCode,
         businessType,
         about,
-        tables,
-        verified,
         phoneNumber,
-        streetAddress,
+        address,
         facebook,
         twitter,
         instagram,
@@ -125,11 +118,11 @@ class BusinessRegistration extends Component {
                 pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
                 required
               />
-              <label htmlFor="logo">Logo URL:</label>
+              <label htmlFor="logoUrl">Logo URL:</label>
               <input
                 type="url"
-                id="logo"
-                name="logo"
+                id="logoUrl"
+                name="logoUrl"
                 onChange={this.handleInput}
               />
               <label htmlFor="menu">Menu image URL:</label>
@@ -139,11 +132,11 @@ class BusinessRegistration extends Component {
                 name="menu"
                 onChange={this.handleInput}
               />
-              <label htmlFor="postcode">Postcode (no spaces):</label>
+              <label htmlFor="postCode">Postcode (no spaces):</label>
               <input
                 type="text"
-                id="postcode"
-                name="postcode"
+                id="postCode"
+                name="postCode"
                 onChange={this.handleInput}
                 pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
                 required
@@ -182,20 +175,11 @@ class BusinessRegistration extends Component {
                 name="about"
                 onChange={this.handleInput}
               />
-              <label htmlFor="tables">
-                Number of tables available to book:
-              </label>
+              <label htmlFor="address">Business Address:</label>
               <input
                 type="text"
-                id="tables"
-                name="tables"
-                onChange={this.handleInput}
-              />
-              <label htmlFor="streetAddress">Business Address:</label>
-              <input
-                type="text"
-                id="streetAddress"
-                name="streetAddress"
+                id="address"
+                name="address"
                 onChange={this.handleInput}
                 required
               />
