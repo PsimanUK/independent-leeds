@@ -11,6 +11,14 @@ export const fetchBusinesses = () => {
     });
 };
 
+export const sendUser = (user) => {
+  return axios
+    .post("https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents", user)
+    .then((response) => {
+      console.log(response, '<-- response after send user')
+    })
+}
+
 export const fetchBusinessesToVerify = () => {
   return axios
     .get(

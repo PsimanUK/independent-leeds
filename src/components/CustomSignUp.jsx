@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { Link } from "@reach/router";
+import * as api from "../utils/api";
 
 class CustomSignUp extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp"];
@@ -22,6 +23,9 @@ class CustomSignUp extends Component {
     Auth.signUp(username, password, email)
       .then(() => {
         this.props.onStateChange("signedUp", {});
+      })
+      .then(() => {
+        api.sendUser({ username, emailAddress: email })
       })
       .catch((err) => {
         console.log(err);

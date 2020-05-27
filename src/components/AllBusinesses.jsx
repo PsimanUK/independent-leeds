@@ -51,6 +51,14 @@ class AllBusinesses extends Component {
 
   render() {
     const { businesses, activeSite, mapBoundaries } = this.state;
+    const viableBusinesses = businesses.filter(
+      (business) =>
+        business.businessName &&
+        business.longitude > mapBoundaries.west &&
+        business.longitude < mapBoundaries.east &&
+        business.latitude > mapBoundaries.south &&
+        business.latitude < mapBoundaries.north
+    );
     return (
       <main>
         <Map
@@ -63,7 +71,7 @@ class AllBusinesses extends Component {
           onmoveend={() => this.changeBoundaries()}
           className="Map"
         >
-          {businesses.map((business) => {
+          {viableBusinesses.map((business) => {
             return (
               <div key={business.id}>
                 <Marker
@@ -137,7 +145,7 @@ class AllBusinesses extends Component {
           onChange={this.handleInput}
         />
         <BusinessList
-          businesses={this.state.businesses}
+          businesses={viableBusinesses}
           mapBoundaries={mapBoundaries}
         />
       </main>

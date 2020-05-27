@@ -7,14 +7,6 @@ import AllBusinesses from "./AllBusinesses";
 import VerifyBusinesses from "./VerifyBusinesses";
 
 class InternalApp extends Component {
-  state = {
-    alreadyRegistered: false,
-  };
-
-  handleBusinessRegistration = () => {
-    console.log('Calling handleBusinessRegistration')
-    this.setState({ alreadyRegistered: true });
-  };
 
   render() {
     const { username } = this.props;
@@ -24,13 +16,10 @@ class InternalApp extends Component {
           <NavBar loggedInUser={username} />
           <Router>
             <AllBusinesses path="/" />
-            {this.state.alreadyRegistered === false && (
-              <BusinessRegistration
-                path="/register-business"
-                username={username}
-                handleBusinessRegistration={this.handleBusinessRegistration}
-              />
-            )}
+            <BusinessRegistration
+              path="/register-business"
+              username={username}
+            />
             <BusinessPage path="/business/:id" username={username} />
             <VerifyBusinesses path="/verify" />
           </Router>

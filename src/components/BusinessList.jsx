@@ -1,19 +1,11 @@
 import React from "react";
 import BusinessCard from "./BusinessCard";
 
-const BusinessList = ({ businesses, mapBoundaries }) => {
-  const viableBusinesses = businesses.filter(
-    (business) =>
-      business.businessName &&
-      business.longitude > mapBoundaries.west &&
-      business.longitude < mapBoundaries.east &&
-      business.latitude > mapBoundaries.south &&
-      business.latitude < mapBoundaries.north
-  );
+const BusinessList = ({ businesses }) => {
 
   return (
     <section>
-      {viableBusinesses.map((business) => {
+      {businesses.map((business) => {
         return <BusinessCard key={business.id} {...business} />;
       })}
     </section>

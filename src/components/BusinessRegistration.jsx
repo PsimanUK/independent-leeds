@@ -32,7 +32,6 @@ class BusinessRegistration extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { handleBusinessRegistration } = this.props;
     const { username } = this.props;
     const {
       businessName,
@@ -74,11 +73,8 @@ class BusinessRegistration extends Component {
         cuisine,
       })
       .then(() => {
-        console.log(this.state.hasRegistered, '<-- has registered after api request')
         this.setState({ hasRegistered: true });
-      })
-      .then(() => {
-        handleBusinessRegistration();
+        console.log(this.state.hasRegistered, '<-- has registered after api request')
       })
       .catch((err) => {
         this.setState({ error: err.code })
@@ -90,7 +86,7 @@ class BusinessRegistration extends Component {
     return (
       <main>
         {this.state.error && <p>An error has occurred, please try again.</p>}
-        {this.state.hasRegistered === false ? (
+        {this.state.hasRegistered === false &&
           <>
             <p>Please enter your business details to register:</p>
             <form onSubmit={this.handleSubmit}>
@@ -249,13 +245,13 @@ class BusinessRegistration extends Component {
               </section>
               <button>Register</button>
             </form>
-          </>
-        ) : (
-            <p>
-              Your registration has been successful. Our admin team will email you
-              once they have verified your business.
-            </p>
-          )}
+          </>}
+        {this.state.hasRegistered === true &&
+          <p>
+            Your registration has been successful. Our admin team will email you
+            once they have verified your business.
+          </p>
+        }
       </main>
     );
   }
