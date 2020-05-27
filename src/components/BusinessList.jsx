@@ -6,7 +6,7 @@ const BusinessList = ({ businesses }) => {
   return (
     <section>
       {businesses.map((business) => {
-        return <BusinessCard key={business.id} {...business} />;
+        return <BusinessCard key={business.username} {...business} />;
       })}
     </section>
   );

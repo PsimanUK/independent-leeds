@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-const BusinessCard = ({ businessName, logoURL, id }) => {
+const BusinessCard = ({ businessName, logoUrl, username }) => {
   return (
     <section className="BusinessCard">
       <p>
-        <Link className="BusinessCard__item" to={`/business/${id}`}>
+        <Link className="BusinessCard__item" to={`/${username}`}>
           {businessName}
         </Link>
       </p>

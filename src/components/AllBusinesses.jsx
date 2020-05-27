@@ -73,7 +73,7 @@ class AllBusinesses extends Component {
         >
           {viableBusinesses.map((business) => {
             return (
-              <div key={business.id}>
+              <div key={business.businessName}>
                 <Marker
                   position={[business.latitude, business.longitude]}
                   className="marker"
@@ -84,7 +84,7 @@ class AllBusinesses extends Component {
                     position={[business.latitude + 0.003, business.longitude]}
                   >
                     <h2>
-                      <Link to={`/business/${business.id}`}>
+                      <Link to={`/${business.username}`}>
                         {business.businessName}
                       </Link>
                     </h2>

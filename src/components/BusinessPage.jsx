@@ -4,28 +4,27 @@ import CommentCard from "./CommentCard";
 
 class BusinessPage extends Component {
   state = {
-    username: 'bob',
-    businessName: "Jodi's place",
-    id: "35",
-    businessEmail: "jodi@place.com",
-    about: "Wonderful food for all!",
-    postCode: "LS7 4DP",
-    logoURL: "https://images.unsplash.com/photo-1580821082847-c53037ecfe0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-    tables: "12",
-    address: '16 Headingly Lane, Hyde Park',
-    businessType: 'Cafe',
-    cuisine: 'Japanese',
-    vegan: 'yes',
-    vegetarian: 'yes',
-    halal: 'no',
-    glutenFree: 'yes',
-    phoneNumber: '01234 567899',
-    updates: 'Latest specials include mouth watering sashimi and unagi.',
-    menu: 'https://images.unsplash.com/photo-1515697320591-f3eb3566bc3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80',
-    facebook: 'www.facebook.com',
-    twitter: 'www.twitter.com',
-    instagram: 'www.instagram.com',
-    comments: [{ comment_id: '123', username: 'bob', created_at: 1590414025, body: "'I can't believe the amazing sushi I had here last night. My taste buds almost explode due to the joy of chowing down on the unagi nigiri." }],
+    username: '',
+    businessName: "",
+    businessEmail: "",
+    about: "",
+    postCode: "",
+    logoUrl: "",
+    tables: "",
+    address: '',
+    businessType: '',
+    cuisine: '',
+    vegan: '',
+    vegetarian: '',
+    halal: '',
+    glutenFree: '',
+    phoneNumber: '',
+    updates: '',
+    menu: '',
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    comments: [],
   }
 
   render() {
@@ -35,7 +34,7 @@ class BusinessPage extends Component {
       about,
       postCode,
       phoneNumber,
-      logoURL,
+      logoUrl,
       tables,
       comments,
       cuisine,
@@ -43,7 +42,7 @@ class BusinessPage extends Component {
       menu,
       businessType
     } = this.state;
-    const loggedInUser = this.props.username;
+    const { loggedInUser } = this.props;
     return (
       <section>
         <h2>{businessName}</h2>
@@ -73,13 +72,13 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <img
-          src={logoURL}
+          src={logoUrl}
           alt={`Logo for ${businessName}`}
           className="largePic"
         />
         {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("logoURL")} >EDIT</button>}
-        <form id="logoURL" name="logoURL" onSubmit={this.submitUpdate} hidden>
+          <button onClick={() => this.handleEdit("logoUrl")} >EDIT</button>}
+        <form id="logoUrl" name="logoUrl" onSubmit={this.submitUpdate} hidden>
           <input
             type="url"
             ref={(input) => (this.textInput = input)}
@@ -185,36 +184,46 @@ class BusinessPage extends Component {
     );
   }
 
-  // componentDidMount = () => {
-  //   api
-  //     .fetchBusinessById(this.props.id)
-  //     .then(
-  //       ({
-  //         businessName,
-  //         businessEmail,
-  //         about,
-  //         postCode,
-  //         logoURL,
-  //         tables,
-  //         username,
-  //         comments,
-  //       }) => {
-  //         this.setState({
-  //           businessName,
-  //           businessEmail,
-  //           about,
-  //           postCode,
-  //           logoURL,
-  //           tables,
-  //           businessUsername: username,
-  //           comments,
-  //         });
-  //       }
-  //     )
-  //     .catch((err) => {
-  //       this.setState({error: err.code});
-  //     });
-  // };
+  componentDidMount = () => {
+    api
+      .fetchBusinessByUsername(this.props.username)
+      .then(
+        ({
+          businessName,
+          businessEmail,
+          about,
+          postCode,
+          phoneNumber,
+          logoUrl,
+          tables,
+          comments,
+          cuisine,
+          updates,
+          menu,
+          businessType,
+          username,
+        }) => {
+          this.setState({
+            businessName,
+            businessEmail,
+            about,
+            postCode,
+            phoneNumber,
+            logoUrl,
+            tables,
+            comments,
+            cuisine,
+            updates,
+            menu,
+            businessType,
+            username
+          });
+        }
+      )
+      .catch((err) => {
+        this.setState({ error: err.code });
+      });
+  };
 
   submitUpdate = (event) => {
     event.preventDefault();

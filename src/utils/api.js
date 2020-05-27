@@ -42,10 +42,10 @@ export const sendBusiness = (username, requestBody) => {
     });
 };
 
-export const fetchBusinessById = (id) => {
+export const fetchBusinessByUsername = (username) => {
   return axios
     .get(
-      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${id}`
+      `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}`
     )
     .then((response) => {
       console.log(response);
