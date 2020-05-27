@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
+import { Link } from "@reach/router";
 
 class BusinessPage extends Component {
   state = {
@@ -55,6 +56,7 @@ class BusinessPage extends Component {
     const { loggedInUser } = this.props;
     return (
       <section>
+        {loggedInUser === "Admin" && <Link onClick={this.verifyBusiness} to="/verify">Verify</Link>}
         <h2>{businessName}</h2>
         {loggedInUser === this.state.username &&
           <button onClick={() => this.handleEdit("businessName")} >EDIT</button>}
@@ -291,6 +293,15 @@ class BusinessPage extends Component {
     const { value, name } = event.target;
     this.setState({ keyToUpdate: { [name]: value } });
   };
+
+  verifyBusiness = () => {
+    const { username } = this.state;
+    console.log(username, "<--- username in verify business")
+    api.updateBusiness(username, { key: "verified", value: "yes" })
+      .catch((err) => {
+        this.setState({ error: err.code });
+      });
+  }
 
 }
 

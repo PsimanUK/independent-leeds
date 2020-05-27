@@ -22,11 +22,9 @@ export const sendUser = (user) => {
 export const fetchBusinessesToVerify = () => {
   return axios
     .get(
-      "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents",
-      { params: { verified: "no" } }
-    )
-    .then(({ data: { body } }) => {
-      return body;
+      `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents?verified=no`)
+    .then(({ data }) => {
+      return data;
     });
 };
 
@@ -54,6 +52,7 @@ export const fetchBusinessByUsername = (username) => {
 };
 
 export const updateBusiness = (username, requestBody) => {
+  console.log(username, requestBody, "<--- username, requestBody in api patch request")
   return axios
     .patch(
       `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}`,

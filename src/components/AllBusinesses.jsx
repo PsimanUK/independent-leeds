@@ -54,6 +54,7 @@ class AllBusinesses extends Component {
     const viableBusinesses = businesses.filter(
       (business) =>
         business.businessName &&
+        business.verified === "yes" &&
         business.longitude > mapBoundaries.west &&
         business.longitude < mapBoundaries.east &&
         business.latitude > mapBoundaries.south &&

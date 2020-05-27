@@ -9,7 +9,6 @@ class VerifyBusinesses extends Component {
     api
       .fetchBusinessesToVerify()
       .then(({ Items }) => {
-        console.log(Items);
         this.setState({ businesses: Items });
       })
       .catch((err) => {
@@ -23,7 +22,9 @@ class VerifyBusinesses extends Component {
       <main>
         {this.state.error && <p>An error has occured - please try again.</p>}
         {businesses.map((business) => {
-          return <BusinessCard key={business.id} {...business} />;
+          return (
+            <BusinessCard key={business.username} {...business} />
+          )
         })}
       </main>
     );
