@@ -9,6 +9,7 @@ class BusinessRegistration extends Component {
     postCode: "",
     postcodeInvalid: true,
     businessType: "",
+    menu: "",
     about: "",
     phoneNumber: "",
     phoneNumberInvalid: true,
@@ -51,6 +52,7 @@ class BusinessRegistration extends Component {
       halal,
       glutenFree,
       cuisine,
+      menu,
     } = this.state;
     api
       .sendBusiness(username, {
@@ -71,6 +73,7 @@ class BusinessRegistration extends Component {
         halal,
         glutenFree,
         cuisine,
+        menu,
       })
       .then(() => {
         this.setState({ hasRegistered: true });

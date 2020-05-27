@@ -22,7 +22,7 @@ export const sendUser = (user) => {
 export const fetchBusinessesToVerify = () => {
   return axios
     .get(
-      "https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent",
+      "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents",
       { params: { verified: "no" } }
     )
     .then(({ data: { body } }) => {
@@ -56,7 +56,7 @@ export const fetchBusinessByUsername = (username) => {
 export const updateBusiness = (username, requestBody) => {
   return axios
     .patch(
-      `https://j5qz3dnbs3.execute-api.eu-west-2.amazonaws.com/v1/newindependent/${username}`,
+      `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}`,
       requestBody
     )
     .then((response) => {

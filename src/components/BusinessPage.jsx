@@ -11,6 +11,16 @@ class BusinessPage extends Component {
     postCode: "",
     logoUrl: "",
     tables: "",
+    keyToUpdate: {
+      businessName: "", businessEmail: "", about: "", postCode: "", logoUrl: "", address: "", businessType: "", cuisine: "", vegan: '', menu: '',
+      facebook: '',
+      twitter: '',
+      instagram: '',
+      vegetarian: '',
+      halal: '',
+      glutenFree: '',
+      phoneNumber: '',
+    },
     address: '',
     businessType: '',
     cuisine: '',
@@ -50,9 +60,11 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("businessName")} >EDIT</button>}
         <form id="businessName" name="businessName" onSubmit={this.submitUpdate} hidden>
           <input
+            name="businessName"
             type="text"
-            ref={(input) => (this.textInput = input)}
             placeholder="update your business name..."
+            value={this.state.keyToUpdate.businessName}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -80,9 +92,11 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("logoUrl")} >EDIT</button>}
         <form id="logoUrl" name="logoUrl" onSubmit={this.submitUpdate} hidden>
           <input
+            name="logoUrl"
             type="url"
-            ref={(input) => (this.textInput = input)}
             placeholder="input your new logo URL..."
+            value={this.state.keyToUpdate.logoUrl}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -91,8 +105,10 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("about")} >EDIT</button>}
         <form id="about" name="about" onSubmit={this.submitUpdate} hidden>
           <textarea
-            ref={(input) => (this.textInput = input)}
+            name="about"
             placeholder="update your business information..."
+            value={this.state.keyToUpdate.about}
+            onChange={this.handleInput}
           ></textarea>
           <button>Update</button>
         </form>
@@ -101,8 +117,10 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("updates")} >EDIT</button>}
         <form id="updates" name="updates" onSubmit={this.submitUpdate} hidden>
           <textarea
-            ref={(input) => (this.textInput = input)}
+            name="updates"
             placeholder="update the latest news for your business..."
+            value={this.state.keyToUpdate.updates}
+            onChange={this.handleInput}
           ></textarea>
           <button>Update</button>
         </form>
@@ -111,9 +129,11 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("menu")} >EDIT</button>}
         <form id="menu" name="menu" onSubmit={this.submitUpdate} hidden>
           <input
+            name="menu"
             type="url"
-            ref={(input) => (this.textInput = input)}
             placeholder="input your the URL for your new menu..."
+            value={this.state.keyToUpdate.menu}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -122,9 +142,11 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("businessEmail")} >EDIT</button>}
         <form id="businessEmail" name="businessEmail" onSubmit={this.submitUpdate} hidden>
           <input
+            name="businessEmail"
             type="email"
-            ref={(input) => (this.textInput = input)}
             placeholder="update your business email..."
+            value={this.state.keyToUpdate.businessEmail}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -134,9 +156,11 @@ class BusinessPage extends Component {
         <form id="phoneNumber" name="phoneNumber" onSubmit={this.submitUpdate} hidden>
           <input
             type="text"
-            ref={(input) => (this.textInput = input)}
+            name="phoneNumber"
             pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
             placeholder="update your business phone number..."
+            value={this.state.keyToUpdate.phoneNumber}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -145,10 +169,12 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("postCode")} >EDIT</button>}
         <form id="postCode" name="postCode" onSubmit={this.submitUpdate} hidden>
           <input
+            name="postCode"
             type="text"
-            ref={(input) => (this.textInput = input)}
             pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
             placeholder="update your post code..."
+            value={this.state.keyToUpdate.postCode}
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -157,9 +183,11 @@ class BusinessPage extends Component {
           <button onClick={() => this.handleEdit("tables")} >EDIT</button>}
         <form id="tables" name="tables" onSubmit={this.submitUpdate} hidden>
           <input
+            name="tables"
             type="text"
-            ref={(input) => (this.textInput = input)}
+            value={this.state.keyToUpdate.tables}
             placeholder="update the number or tables currently available..."
+            onChange={this.handleInput}
           />
           <button>Update</button>
         </form>
@@ -167,11 +195,20 @@ class BusinessPage extends Component {
         {loggedInUser === this.state.username &&
           <button onClick={() => this.handleEdit("cuisine")} >EDIT</button>}
         <form id="cuisine" name="cuisine" onSubmit={this.submitUpdate} hidden>
-          <input
-            type="text"
-            ref={(input) => (this.textInput = input)}
-            placeholder="update your cuisine..."
-          />
+          <select id="cuisine" name="cuisine">
+            <option value="Chinese">Chinese</option>
+            <option value="Thai">Thai</option>
+            <option value="Indian">Indian</option>
+            <option value="British">British</option>
+            <option value="Italian">Italian</option>
+            <option value="Spanish">Spanish</option>
+            <option value="American">American</option>
+            <option value="Greek">Greek</option>
+            <option value="French">French</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Other">Other</option>
+          </select>
           <button>Update</button>
         </form>
         {comments !== undefined && <><p>Comments:</p>
@@ -227,11 +264,16 @@ class BusinessPage extends Component {
 
   submitUpdate = (event) => {
     event.preventDefault();
-    const { loggedInUser } = this.props;
     const { name } = event.target;
-    this.setState({ [name]: this.textInput.value });
+    const { loggedInUser } = this.props;
+    let value = event.target.children[0].value;
+    let newValue = this.state.keyToUpdate[name];
+    this.setState({ [name]: value });
     api
-      .updateBusiness(loggedInUser, { key: name, value: this.textInput.value })
+      .updateBusiness(loggedInUser, { key: name, value: newValue })
+      .then(() => {
+        this.setState({ keyToUpdate: { [name]: "" } })
+      })
       .catch((err) => {
         this.setState({ error: err.code });
       });
@@ -243,6 +285,11 @@ class BusinessPage extends Component {
     } else {
       document.getElementById(id).setAttribute('hidden', true);
     }
+  };
+
+  handleInput = (event) => {
+    const { value, name } = event.target;
+    this.setState({ keyToUpdate: { [name]: value } });
   };
 
 }
