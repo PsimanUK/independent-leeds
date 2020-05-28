@@ -30,14 +30,15 @@ class AllBusinesses extends Component {
   handleFilter = (event) => {
     event.preventDefault();
     const { params } = this.state;
-    api.fetchBusinesses(params)
+    api
+      .fetchBusinesses(params)
       .then(({ Items }) => {
-        this.setState({ businesses: Items })
+        this.setState({ businesses: Items });
       })
       .catch((err) => {
         console.log(`Encountered error: ${err}`);
       });
-  }
+  };
 
   componentDidMount = () => {
     api
@@ -130,55 +131,79 @@ class AllBusinesses extends Component {
         </Map>
         <form onSubmit={this.handleFilter}>
           <select name="select" className="cuisine" onChange={this.handleInput}>
-            <option value="">
-              --SELECT--
-          </option>
-            <option value="american" name="american">American</option>
-            <option value="british" name="british">British</option>
-            <option value="chinese" name="chinese">Chinese</option>
-            <option value="french" name="french">French</option>
-            <option value="greek" name="greek">Greek</option>
-            <option value="indian" name="indian">Indian</option>
-            <option value="italian" name="italian">Italian</option>
-            <option value="japanese" name="japanese">Japanese</option>
-            <option value="mexican" name="mexican">Mexican</option>
-            <option value="other" name="other">Other</option>
-            <option value="spanish" name="spanish">Spanish</option>
-            <option value="thai" name="thai">Thai</option>
+            <option value="">Cuisine</option>
+            <option value="american" name="american">
+              American
+            </option>
+            <option value="british" name="british">
+              British
+            </option>
+            <option value="chinese" name="chinese">
+              Chinese
+            </option>
+            <option value="french" name="french">
+              French
+            </option>
+            <option value="greek" name="greek">
+              Greek
+            </option>
+            <option value="indian" name="indian">
+              Indian
+            </option>
+            <option value="italian" name="italian">
+              Italian
+            </option>
+            <option value="japanese" name="japanese">
+              Japanese
+            </option>
+            <option value="mexican" name="mexican">
+              Mexican
+            </option>
+            <option value="other" name="other">
+              Other
+            </option>
+            <option value="spanish" name="spanish">
+              Spanish
+            </option>
+            <option value="thai" name="thai">
+              Thai
+            </option>
           </select>
-          <label htmlFor="vegetarian">Vegetarian</label>
-          <input
-            type="checkbox"
-            id="vegetarian"
-            name="vegetarian"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="vegan">Vegan</label>
-          <input
-            type="checkbox"
-            id="vegan"
-            name="vegan"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="glutenFree">Gluten-free</label>
-          <input
-            type="checkbox"
-            id="glutenFree"
-            name="glutenFree"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="halal">Halal</label>
-          <input
-            type="checkbox"
-            id="halal"
-            name="halal"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <button>Filter</button>
+          <section className="checkboxes">
+            <label htmlFor="vegetarian">Vegetarian</label>
+            <input
+              type="checkbox"
+              id="vegetarian"
+              name="vegetarian"
+              value="yes"
+              onChange={this.handleInput}
+            />
+            <label htmlFor="vegan">Vegan</label>
+            <input
+              type="checkbox"
+              id="vegan"
+              name="vegan"
+              value="yes"
+              onChange={this.handleInput}
+            />
+            <label htmlFor="glutenFree">Gluten-free</label>
+            <input
+              type="checkbox"
+              id="glutenFree"
+              name="glutenFree"
+              value="yes"
+              onChange={this.handleInput}
+            />
+            <label htmlFor="halal">Halal</label>
+            <input
+              type="checkbox"
+              id="halal"
+              name="halal"
+              value="yes"
+              onChange={this.handleInput}
+            />
+          </section>
+          <button className="submitButton">Filter</button>
         </form>
 
         <BusinessList

@@ -128,13 +128,20 @@ p {
   max-height: 400px;
 }
 
-.BusinessCard {
-  border: 1.2px solid #2d080a;
-  background-color: #fcf9ed;
-  max-width: 400px;
-  border-radius: 6px;
+.businessList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.BusinessCard__title {
+.businessCard {
+  border: 1.2px solid #2d080a;
+  background-color: #fcf9ed;
+  width: 400px;
+  border-radius: 6px;
+  margin-block-end: 1em;
+}
+
+.businessCard__title {
   color: #7b190a;
 }
