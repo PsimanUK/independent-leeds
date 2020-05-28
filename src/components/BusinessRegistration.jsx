@@ -19,10 +19,10 @@ class BusinessRegistration extends Component {
     instagram: "",
     updates: "",
     hasRegistered: false,
-    vegetarian: "",
-    vegan: "",
-    halal: "",
-    glutenFree: "",
+    vegetarian: "no",
+    vegan: "no",
+    halal: "no",
+    glutenFree: "no",
     cuisine: "",
   };
 
@@ -147,6 +147,7 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 required
               >
+                <option disabled selected value >--SELECT--</option>
                 <option value="restaurant">Restaurant</option>
                 <option value="pub">Pub</option>
                 <option value="cafe">Cafe</option>
@@ -154,6 +155,7 @@ class BusinessRegistration extends Component {
               </select>
               <label htmlFor="cuisine">Type of Cuisine:</label>
               <select id="cuisine" name="cuisine" onChange={this.handleInput} required>
+                <option disabled selected value >--SELECT--</option>
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>

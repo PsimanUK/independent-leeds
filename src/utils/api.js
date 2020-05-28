@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const fetchBusinesses = () => {
+export const fetchBusinesses = ({ halal, vegan, vegetarian, glutenFree, cuisine }) => {
   return axios
     .get(
-      "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents"
+      "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents", { params: { halal, vegan, vegetarian, glutenFree, cuisine } }
     )
     .then(({ data }) => {
       console.log(data, '<-- data in fetchBusinesses')

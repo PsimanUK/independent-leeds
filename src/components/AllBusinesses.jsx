@@ -9,7 +9,22 @@ class AllBusinesses extends Component {
     businesses: [],
     activeSite: {},
     mapBoundaries: {},
+    filter: {},
   };
+
+  handleInput = (event) => {
+    const newFilter = event.target.name;
+    this.setState((currentState) => {
+      return { ...currentState.filter, [newFilter]: "yes" };
+    })
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.filter !== this.state.filter) {
+      api
+        .fetchBusinesses(this.state.filter)
+    }
+  }
 
   componentDidMount = () => {
     api
@@ -99,7 +114,8 @@ class AllBusinesses extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
-        <select className="cuisine">
+        <select className="cuisine" onChange={this.handleInput}>
+          <option disabled selected value >--SELECT--</option>
           <option value="american">American</option>
           <option value="british">British</option>
           <option value="chinese">Chinese</option>
@@ -113,38 +129,42 @@ class AllBusinesses extends Component {
           <option value="spanish">Spanish</option>
           <option value="thai">Thai</option>
         </select>
-        <label htmlFor="vegetarian">Vegetarian</label>
-        <input
-          type="checkbox"
-          id="vegetarian"
-          name="vegetarian"
-          value="yes"
-          onChange={this.handleInput}
-        />
-        <label htmlFor="vegan">Vegan</label>
-        <input
-          type="checkbox"
-          id="vegan"
-          name="vegan"
-          value="yes"
-          onChange={this.handleInput}
-        />
-        <label htmlFor="glutenFree">Gluten-free</label>
-        <input
-          type="checkbox"
-          id="glutenFree"
-          name="glutenFree"
-          value="yes"
-          onChange={this.handleInput}
-        />
-        <label htmlFor="halal">Halal</label>
-        <input
-          type="checkbox"
-          id="halal"
-          name="halal"
-          value="yes"
-          onChange={this.handleInput}
-        />
+        <form>
+          <label htmlFor="vegetarian">Vegetarian</label>
+          <input
+            type="checkbox"
+            id="vegetarian"
+            name="vegetarian"
+            value="yes"
+            onChange={this.handleInput}
+          />
+          <label htmlFor="vegan">Vegan</label>
+          <input
+            type="checkbox"
+            id="vegan"
+            name="vegan"
+            value="yes"
+            onChange={this.handleInput}
+          />
+          <label htmlFor="glutenFree">Gluten-free</label>
+          <input
+            type="checkbox"
+            id="glutenFree"
+            name="glutenFree"
+            value="yes"
+            onChange={this.handleInput}
+          />
+          <label htmlFor="halal">Halal</label>
+          <input
+            type="checkbox"
+            id="halal"
+            name="halal"
+            value="yes"
+            onChange={this.handleInput}
+          />
+          <button onClick={this.handleFilter}>Filter</button>
+        </form>
+
         <BusinessList
           businesses={viableBusinesses}
           mapBoundaries={mapBoundaries}
