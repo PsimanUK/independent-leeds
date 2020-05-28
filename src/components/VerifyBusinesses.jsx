@@ -16,14 +16,31 @@ class VerifyBusinesses extends Component {
       });
   };
 
+  verifyBusiness = (businessUsername) => {
+    api.updateBusiness(businessUsername, { key: "verified", value: "yes" })
+      .then(() => {
+        api.fetchBusinessesToVerify()
+          .then(({ Items }) => {
+            this.setState({ businesses: Items });
+          })
+          .catch((err) => {
+            this.setState({ error: err.code });
+          });
+      })
+  }
+
   render() {
     const { businesses } = this.state;
     return (
       <main>
         {this.state.error && <p>An error has occured - please try again.</p>}
         {businesses.map((business) => {
+          const { username } = business;
           return (
-            <BusinessCard key={business.username} {...business} />
+            <>
+              <BusinessCard key={username} {...business} />
+              <button onClick={() => this.verifyBusiness(username)}>Verify {business.businessName}</button>
+            </>
           )
         })}
       </main>

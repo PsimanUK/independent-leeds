@@ -15,15 +15,22 @@ class AllBusinesses extends Component {
   handleInput = (event) => {
     const newFilter = event.target.name;
     this.setState((currentState) => {
+      console.log({ params: { ...currentState.params, [newFilter]: "yes" } }, "<--- params in state");
       return { params: { ...currentState.params, [newFilter]: "yes" } };
     });
   };
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.params !== this.state.params) {
-      api.fetchBusinesses(this.state.params);
-    }
-  };
+  handleFilter = () => {
+    const { params } = this.state;
+    console.log(params, this.state.params, "<--- params, this.state.params");
+    api.fetchBusinesses(params)
+      .then(({ Items }) => {
+        this.setState({ businesses: Items })
+      })
+      .catch((err) => {
+        console.log(`Encountered error: ${err}`);
+      });
+  }
 
   componentDidMount = () => {
     api
@@ -74,13 +81,14 @@ class AllBusinesses extends Component {
         business.latitude > mapBoundaries.south &&
         business.latitude < mapBoundaries.north
     );
+    console.log(viableBusinesses, "<-- viableBusinesses");
     return (
       <main>
         <Map
           id="map"
           center={[53.796, -1.55]}
-          zoom={13}
-          minZoom={13}
+          zoom={12}
+          minZoom={12}
           ref="map"
           onzoomend={() => this.changeBoundaries()}
           onmoveend={() => this.changeBoundaries()}
@@ -113,24 +121,24 @@ class AllBusinesses extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
-        <select className="cuisine" onChange={this.handleInput}>
-          <option disabled selected value>
-            --SELECT--
-          </option>
-          <option value="american">American</option>
-          <option value="british">British</option>
-          <option value="chinese">Chinese</option>
-          <option value="french">French</option>
-          <option value="greek">Greek</option>
-          <option value="indian">Indian</option>
-          <option value="italian">Italian</option>
-          <option value="japanese">Japanese</option>
-          <option value="mexican">Mexican</option>
-          <option value="other">Other</option>
-          <option value="spanish">Spanish</option>
-          <option value="thai">Thai</option>
-        </select>
         <form>
+          <select className="cuisine" onChange={this.handleInput}>
+            <option value="">
+              --SELECT--
+          </option>
+            <option value="american">American</option>
+            <option value="british">British</option>
+            <option value="chinese">Chinese</option>
+            <option value="french">French</option>
+            <option value="greek">Greek</option>
+            <option value="indian">Indian</option>
+            <option value="italian">Italian</option>
+            <option value="japanese">Japanese</option>
+            <option value="mexican">Mexican</option>
+            <option value="other">Other</option>
+            <option value="spanish">Spanish</option>
+            <option value="thai">Thai</option>
+          </select>
           <label htmlFor="vegetarian">Vegetarian</label>
           <input
             type="checkbox"

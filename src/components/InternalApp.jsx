@@ -21,7 +21,7 @@ class InternalApp extends Component {
               username={username}
             />
             <BusinessPage path="/:username" loggedInUser={username} />
-            <VerifyBusinesses path="/verify" />
+            <VerifyBusinesses path="/verify" username={username} />
           </Router>
         </main>
       );

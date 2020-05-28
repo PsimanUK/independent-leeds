@@ -1,13 +1,14 @@
 import axios from "axios";
 
 export const fetchBusinesses = (params) => {
+  console.log(params, "<--- params in api call (before)")
   return axios
     .get(
       "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents",
       { params: params }
     )
     .then(({ data }) => {
-      console.log(data, "<-- data in fetchBusinesses");
+      console.log(data, "<-- data after api call");
       return data;
     });
 };
