@@ -13,16 +13,23 @@ class AllBusinesses extends Component {
   };
 
   handleInput = (event) => {
-    const newFilter = event.target.name;
+    let newFilter = "";
+    let value = "";
+    if (event.target.name === "select") {
+      newFilter = "cuisine";
+      value = event.target.value;
+    } else {
+      newFilter = event.target.name;
+      value = "yes";
+    }
     this.setState((currentState) => {
-      console.log({ params: { ...currentState.params, [newFilter]: "yes" } }, "<--- params in state");
-      return { params: { ...currentState.params, [newFilter]: "yes" } };
+      return { params: { ...currentState.params, [newFilter]: value } };
     });
   };
 
-  handleFilter = () => {
+  handleFilter = (event) => {
+    event.preventDefault();
     const { params } = this.state;
-    console.log(params, this.state.params, "<--- params, this.state.params");
     api.fetchBusinesses(params)
       .then(({ Items }) => {
         this.setState({ businesses: Items })
@@ -87,8 +94,8 @@ class AllBusinesses extends Component {
         <Map
           id="map"
           center={[53.796, -1.55]}
-          zoom={12}
-          minZoom={12}
+          zoom={11}
+          minZoom={11}
           ref="map"
           onzoomend={() => this.changeBoundaries()}
           onmoveend={() => this.changeBoundaries()}
@@ -121,23 +128,23 @@ class AllBusinesses extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
-        <form>
-          <select className="cuisine" onChange={this.handleInput}>
+        <form onSubmit={this.handleFilter}>
+          <select name="select" className="cuisine" onChange={this.handleInput}>
             <option value="">
               --SELECT--
           </option>
-            <option value="american">American</option>
-            <option value="british">British</option>
-            <option value="chinese">Chinese</option>
-            <option value="french">French</option>
-            <option value="greek">Greek</option>
-            <option value="indian">Indian</option>
-            <option value="italian">Italian</option>
-            <option value="japanese">Japanese</option>
-            <option value="mexican">Mexican</option>
-            <option value="other">Other</option>
-            <option value="spanish">Spanish</option>
-            <option value="thai">Thai</option>
+            <option value="american" name="american">American</option>
+            <option value="british" name="british">British</option>
+            <option value="chinese" name="chinese">Chinese</option>
+            <option value="french" name="french">French</option>
+            <option value="greek" name="greek">Greek</option>
+            <option value="indian" name="indian">Indian</option>
+            <option value="italian" name="italian">Italian</option>
+            <option value="japanese" name="japanese">Japanese</option>
+            <option value="mexican" name="mexican">Mexican</option>
+            <option value="other" name="other">Other</option>
+            <option value="spanish" name="spanish">Spanish</option>
+            <option value="thai" name="thai">Thai</option>
           </select>
           <label htmlFor="vegetarian">Vegetarian</label>
           <input
@@ -171,7 +178,7 @@ class AllBusinesses extends Component {
             value="yes"
             onChange={this.handleInput}
           />
-          <button onClick={this.handleFilter}>Filter</button>
+          <button>Filter</button>
         </form>
 
         <BusinessList
