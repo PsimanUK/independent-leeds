@@ -23,11 +23,13 @@ class AuthWrapper extends Component {
             authState={this.props.authState}
             updateUsername={this.updateUsername}
             onStateChange={this.props.onStateChange}
+            className="landingPage"
           />
           <CustomSignUp
             path="/register"
             authState={this.props.authState}
             onStateChange={this.props.onStateChange}
+            className="landingPage"
           />
         </Router>
 

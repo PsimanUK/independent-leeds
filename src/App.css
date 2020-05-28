@@ -1,42 +1,51 @@
 .App {
-  font-family: gayathri;
+  font-family: "Varela Round", sans-serif;
   text-align: center;
 }
 
-.App-title {
-  font-size: 30px;
-  color: rgb(255, 255, 255);
-  align-content: center, center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(4, 4, 109);
-  max-width: 600px;
-  max-height: 120px;
-  border: solid rgb(246, 246, 96);
-  border-width: 3px;
-  border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
+html {
+  height: 100%;
+  background-image: url("./images/background-opaque.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.NavBar {
+div {
   display: flex;
-  flex-direction: row;
-  font-size: larger;
-  color: aliceblue;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(4, 4, 109);
-  max-width: 500px;
-  border: solid rgb(246, 246, 96);
-  border-width: 3px;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textInput {
+  width: 15em;
+  border: 1px solid black;
   border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.submitButton {
+  width: 7em;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  margin-bottom: 1em;
+}
+
+p {
+  font-style: italic;
+  padding-left: 5em;
+  padding-right: 5em;
 }
 
 .leaflet-container {
@@ -44,19 +53,18 @@
   height: 450px;
 }
 
-.NavBar__item {
-  padding: 10px;
-  color: aliceblue;
+.Map {
+  border: 1px solid #a52a2a;
+  border-width: 1px;
+  border-radius: 6px;
 }
 
-.Map {
-  align-content: center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: solid rgb(95, 0, 0);
-  border-width: 3px;
-  border-radius: 6px;
+.thumbnailPic {
+  max-height: 200px;
+}
+
+.largePic {
+  max-height: 400px;
 }
 
 .BusinessCard {
@@ -76,26 +84,5 @@
 }
 
 .BusinessCard__item {
-  color:  rgb(4, 4, 109);
+  color: rgb(4, 4, 109);
 }
-
-.thumbnailPic {
-  max-height: 200px;
-}
-
-.largePic {
-  max-height: 400px;
-}
-
-.menu_image {
-  max-width: 300px;
-  box-shadow: 5px 5px rgb(247, 247, 201);
-}
-
-/* .invalidPostcode, .invalidPhoneNumber {
-  box-shadow: 2px 2px 2px 2px red;
-}
-
-.validPostcode, .validPhoneNumber {
-  box-shadow: none;
-} */
