@@ -9,22 +9,21 @@ class AllBusinesses extends Component {
     businesses: [],
     activeSite: {},
     mapBoundaries: {},
-    filter: {},
+    params: {},
   };
 
   handleInput = (event) => {
     const newFilter = event.target.name;
     this.setState((currentState) => {
-      return { ...currentState.filter, [newFilter]: "yes" };
-    })
-  }
+      return { params: { ...currentState.params, [newFilter]: "yes" } };
+    });
+  };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.filter !== this.state.filter) {
-      api
-        .fetchBusinesses(this.state.filter)
+    if (prevState.params !== this.state.params) {
+      api.fetchBusinesses(this.state.params);
     }
-  }
+  };
 
   componentDidMount = () => {
     api
@@ -41,7 +40,7 @@ class AllBusinesses extends Component {
         });
       })
       .then(() => {
-        this.setState()
+        this.setState();
       })
       .catch((err) => {
         console.log(`Encountered error: ${err}`);
@@ -115,7 +114,9 @@ class AllBusinesses extends Component {
           />
         </Map>
         <select className="cuisine" onChange={this.handleInput}>
-          <option disabled selected value >--SELECT--</option>
+          <option disabled selected value>
+            --SELECT--
+          </option>
           <option value="american">American</option>
           <option value="british">British</option>
           <option value="chinese">Chinese</option>
