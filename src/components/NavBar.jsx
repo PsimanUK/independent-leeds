@@ -22,13 +22,13 @@ class NavBar extends Component {
           Home
         </Link>
         <Link className="NavBar__item" to="/register-business">
-          Register Business
+          Register business
         </Link>
         {loggedInUser === "Admin" && (
           <Link to="/verify">Verify businesses</Link>
         )}
-        <Link to="/" onClick={this.handleSignOut}>
-          SignOut
+        <Link to="/" className="NavBar__item" onClick={this.handleSignOut}>
+          Sign out
         </Link>
       </nav>
     );

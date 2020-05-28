@@ -99,7 +99,10 @@ class CustomSignUp extends Component {
               Register
             </button>
             <p>
-              Already registered? Please <Link to="/">log In</Link>
+              Already registered? Please{" "}
+              <Link to="/" className="redirect">
+                log in
+              </Link>
             </p>
             {this.props.authState === "signedUp" && (
               <p>

@@ -88,7 +88,10 @@ class CustomSignIn extends Component {
               Login
             </button>
             <p>
-              Not yet registered? Sign up <Link to="/register">here</Link>
+              Not yet registered? Sign up{" "}
+              <Link to="/register" className="redirect">
+                here
+              </Link>
             </p>
           </form>
         )}

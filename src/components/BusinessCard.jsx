@@ -5,7 +5,7 @@ const BusinessCard = ({ businessName, logoUrl, username }) => {
   return (
     <section className="BusinessCard">
       <p>
-        <Link className="BusinessCard__item" to={`/${username}`}>
+        <Link className="BusinessCard__title" to={`/${username}`}>
           {businessName}
         </Link>
       </p>

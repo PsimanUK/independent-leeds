@@ -21,33 +21,92 @@ div {
   color: #7b190a;
 }
 
+.NavBar {
+  margin-block-start: 0.5em;
+}
+
+.NavBar__item {
+  padding-right: 1em;
+  padding-left: 1em;
+  color: #2d080a;
+  text-decoration: none;
+}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.textInput {
+.textInput,
+textarea {
   width: 15em;
-  border: 1px solid black;
+  border: 1.2px solid #2d080a;
+  color: #2d080a;
   border-radius: 6px;
   font-family: "Varela Round", sans-serif;
   text-align: center;
   margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.business {
+  width: 23em;
+}
+
+textarea {
+  width: 28em;
+}
+
+::placeholder {
+  color: #2d080a;
+  opacity: 1;
+}
+
+select {
+  width: 10em;
+  border: 1.2px solid #2d080a;
+  color: #2d080a;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.checkboxes {
+  border: 1.2px solid #2d080a;
+  border-radius: 6px;
+  background-color: #fcf9ed;
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+label {
+  color: #2d080a;
+  padding-left: 1em;
+  font-size: 0.8em;
 }
 
 .submitButton {
   width: 7em;
-  border: 1px solid black;
+  border: 1px solid #2d080a;
   border-radius: 6px;
   font-family: "Varela Round", sans-serif;
+  color: #2d080a;
+  background-color: #9bbb42;
   margin-bottom: 1em;
+}
+
+.redirect {
+  color: #a50104;
 }
 
 p {
   font-style: italic;
   padding-left: 5em;
   padding-right: 5em;
+  color: #2d080a;
 }
 
 .leaflet-container {
@@ -70,21 +129,12 @@ p {
 }
 
 .BusinessCard {
-  font-size: larger;
-  color: rgb(4, 4, 109);
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(255, 255, 255);
+  border: 1.2px solid #2d080a;
+  background-color: #fcf9ed;
   max-width: 400px;
-  border: solid rgb(4, 4, 109);
-  border-width: 3px;
   border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
 }
 
-.BusinessCard__item {
-  color: rgb(4, 4, 109);
+.BusinessCard__title {
+  color: #7b190a;
 }

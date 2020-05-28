@@ -16,10 +16,10 @@ class AuthWrapper extends Component {
   render() {
     return (
       <div>
-        <Title />
         {this.props.authState === "signedIn" && (
           <NavBar loggedInUser={this.state.username} />
         )}
+        <Title />
         <Router>
           <CustomSignIn
             path="/"

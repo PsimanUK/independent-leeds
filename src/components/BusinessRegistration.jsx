@@ -103,7 +103,7 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 required
                 placeholder="Business name..."
-                className="textInput"
+                className="textInput business"
               />
               <input
                 type="email"
@@ -111,7 +111,7 @@ class BusinessRegistration extends Component {
                 name="businessEmail"
                 onChange={this.handleInput}
                 placeholder="Business email..."
-                className="textInput"
+                className="textInput business"
               />
               <input
                 type="text"
@@ -121,7 +121,7 @@ class BusinessRegistration extends Component {
                 pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
                 required
                 placeholder="Phone number..."
-                className="textInput"
+                className="textInput business"
               />
               <input
                 type="url"
@@ -129,7 +129,7 @@ class BusinessRegistration extends Component {
                 name="logoUrl"
                 onChange={this.handleInput}
                 placeholder="Logo URL..."
-                className="textInput"
+                className="textInput business"
               />
               <input
                 type="url"
@@ -137,7 +137,7 @@ class BusinessRegistration extends Component {
                 name="menu"
                 onChange={this.handleInput}
                 placeholder="Menu image URL..."
-                className="textInput"
+                className="textInput business"
               />
               <input
                 type="text"
@@ -147,29 +147,60 @@ class BusinessRegistration extends Component {
                 pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
                 required
                 placeholder="Postcode (no spaces)..."
-                className="textInput"
+                className="textInput business"
               />
-              <label htmlFor="businessType">Type of Business:</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                onChange={this.handleInput}
+                required
+                placeholder="Street address..."
+                className="textInput business"
+              />
+              <input
+                type="url"
+                id="facebook"
+                name="facebook"
+                onChange={this.handleInput}
+                placeholder="Facebook URL..."
+                className="textInput business"
+              />
+              <input
+                type="url"
+                id="instagram"
+                name="instagram"
+                onChange={this.handleInput}
+                placeholder="Instagram URL..."
+                className="textInput business"
+              />
+              <input
+                type="url"
+                id="twitter"
+                name="twitter"
+                onChange={this.handleInput}
+                placeholder="Twitter URL..."
+                className="textInput business"
+              />
               <select
                 id="businessType"
                 name="businessType"
                 onChange={this.handleInput}
                 required
               >
-                <option value="">--SELECT--</option>
+                <option value="">Business type</option>
                 <option value="restaurant">Restaurant</option>
                 <option value="pub">Pub</option>
                 <option value="cafe">Cafe</option>
                 <option value="takeaway">Takeaway</option>
               </select>
-              <label htmlFor="cuisine">Type of Cuisine:</label>
               <select
                 id="cuisine"
                 name="cuisine"
                 onChange={this.handleInput}
                 required
               >
-                <option value="">--SELECT--</option>
+                <option value="">Cuisine</option>
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>
@@ -189,47 +220,13 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 placeholder="Tell us about your business..."
               ></textarea>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                onChange={this.handleInput}
-                required
-                placeholder="Street address..."
-                className="textInput"
-              />
-              <input
-                type="url"
-                id="facebook"
-                name="facebook"
-                onChange={this.handleInput}
-                placeholder="Facebook URL..."
-                className="textInput"
-              />
-              <input
-                type="url"
-                id="instagram"
-                name="instagram"
-                onChange={this.handleInput}
-                placeholder="Instagram URL..."
-                className="textInput"
-              />
-              <input
-                type="url"
-                id="twitter"
-                name="twitter"
-                onChange={this.handleInput}
-                placeholder="Twitter URL..."
-                className="textInput"
-              />
               <textarea
                 id="updates"
                 name="updates"
                 onChange={this.handleInput}
                 placeholder="What's the latest news...?"
               ></textarea>
-              <section>
-                <p>Which diets do you cater for?</p>
+              <section className="checkboxes">
                 <label htmlFor="vegetarian">Vegetarian</label>
                 <input
                   type="checkbox"
