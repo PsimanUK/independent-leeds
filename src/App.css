@@ -98,6 +98,11 @@ label {
   margin-bottom: 1em;
 }
 
+.verify {
+  width: 12em;
+  margin-bottom: 2.5em;
+}
+
 .redirect {
   color: #a50104;
 }

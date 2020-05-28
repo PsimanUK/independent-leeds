@@ -25,7 +25,9 @@ class NavBar extends Component {
           Register business
         </Link>
         {loggedInUser === "Admin" && (
-          <Link to="/verify">Verify businesses</Link>
+          <Link to="/verify" className="NavBar__item">
+            Verify businesses
+          </Link>
         )}
         <Link to="/" className="NavBar__item" onClick={this.handleSignOut}>
           Sign out
