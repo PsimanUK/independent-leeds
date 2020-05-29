@@ -40,6 +40,25 @@ class AllBusinesses extends Component {
       });
   };
 
+  handleUnFilter = (event) => {
+    event.preventDefault();
+    api
+      .fetchBusinesses({})
+      .then(({ Items }) => {
+        this.setState({ businesses: Items, params: {} });
+      })
+      .then(() => {
+        this.refs["vegetarian"].checked = false;
+        this.refs["vegan"].checked = false;
+        this.refs["halal"].checked = false;
+        this.refs["glutenFree"].checked = false;
+        this.refs["cuisine"].value = "";
+      })
+      .catch((err) => {
+        this.setState({ error: err.code });
+      });
+  };
+
   componentDidMount = () => {
     api
       .fetchBusinesses()
@@ -130,8 +149,13 @@ class AllBusinesses extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
-        <form onSubmit={this.handleFilter}>
-          <select name="select" className="cuisine" onChange={this.handleInput}>
+        <form>
+          <select
+            name="select"
+            className="cuisine"
+            onChange={this.handleInput}
+            ref={"cuisine"}
+          >
             <option value="">Cuisine</option>
             <option value="american" name="american">
               American
@@ -178,6 +202,7 @@ class AllBusinesses extends Component {
               name="vegetarian"
               value="yes"
               onChange={this.handleInput}
+              ref={"vegetarian"}
             />
             <label htmlFor="vegan">Vegan</label>
             <input
@@ -186,6 +211,7 @@ class AllBusinesses extends Component {
               name="vegan"
               value="yes"
               onChange={this.handleInput}
+              ref={"vegan"}
             />
             <label htmlFor="glutenFree">Gluten-free</label>
             <input
@@ -194,6 +220,7 @@ class AllBusinesses extends Component {
               name="glutenFree"
               value="yes"
               onChange={this.handleInput}
+              ref={"glutenFree"}
             />
             <label htmlFor="halal">Halal</label>
             <input
@@ -202,9 +229,15 @@ class AllBusinesses extends Component {
               name="halal"
               value="yes"
               onChange={this.handleInput}
+              ref={"halal"}
             />
           </section>
-          <button className="submitButton">Filter</button>
+          <button className="submitButton" onClick={this.handleFilter}>
+            Filter
+          </button>
+          <button className="submitButton" onClick={this.handleUnFilter}>
+            Show all
+          </button>
         </form>
 
         <BusinessList
