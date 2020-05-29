@@ -36,7 +36,7 @@ class AllBusinesses extends Component {
         this.setState({ businesses: Items });
       })
       .catch((err) => {
-        console.log(`Encountered error: ${err}`);
+        this.setState({ error: err.code });
       });
   };
 
@@ -58,7 +58,7 @@ class AllBusinesses extends Component {
         this.setState();
       })
       .catch((err) => {
-        console.log(`Encountered error: ${err}`);
+        this.setState({ error: err.code });
       });
   };
 
@@ -92,6 +92,7 @@ class AllBusinesses extends Component {
     console.log(viableBusinesses, "<-- viableBusinesses");
     return (
       <main>
+        {this.state.error && <p>An error has occurred - please try again</p>}
         <Map
           id="map"
           center={[53.796, -1.55]}
