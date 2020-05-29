@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 // import { Link } from "@reach/router";
-import { Button, FormControl, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core/';
+import {
+  Button,
+  FormControl,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from "@material-ui/core/";
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles((theme) => ({
@@ -81,7 +92,7 @@ class CustomSignIn extends Component {
             to verify.
           </p>
         ) : this.state.error === "NotAuthorizedException" ? (
-          <p>Incorrect password</p>
+          <p>Incorrect password / temporary password has expired</p>
         ) : this.state.error === "UserNotFoundException" ? (
           <p>Incorrect username</p>
         ) : this.state.error === "An error has occurred" ? (
@@ -119,20 +130,19 @@ class CustomSignIn extends Component {
                 color="primary"
               >
                 Login
-            </Button>
+              </Button>
               <Grid item>
                 <p>
                   Not yet registered? Sign up{" "}
                   <Link to="/register" className="redirect">
                     here
-              </Link>
+                  </Link>
                 </p>
               </Grid>
             </form>
           </div>
         )}
-        <Box mt={8}>
-        </Box>
+        <Box mt={8}></Box>
       </Container>
     );
   }
