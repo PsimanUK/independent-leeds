@@ -11,6 +11,10 @@ html {
   background-attachment: fixed;
 }
 
+.loginCard {
+  width: 50%;
+}
+
 div {
   display: flex;
   flex-direction: column;

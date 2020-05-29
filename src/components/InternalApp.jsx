@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import BusinessRegistration from "./BusinessRegistration";
+//import BusinessRegistration from "./BusinessRegistration";
+import BusinessRegCard from "./BusinessRegCard";
 import { Router } from "@reach/router";
 import BusinessPage from "./BusinessPage";
 import AllBusinesses from "./AllBusinesses";
@@ -13,10 +14,11 @@ class InternalApp extends Component {
         <main>
           <Router>
             <AllBusinesses path="/" />
-            <BusinessRegistration
+            {/*<BusinessRegistration
               path="/register-business"
               username={username}
-            />
+            />*/}
+            <BusinessRegCard path="/register-business" />
             <BusinessPage path="/:username" loggedInUser={username} />
             <VerifyBusinesses path="/verify" username={username} />
           </Router>

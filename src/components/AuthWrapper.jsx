@@ -5,6 +5,7 @@ import CustomSignUp from "./CustomSignUp";
 import Title from "./Title";
 import NavBar from "./NavBar";
 import { Router } from "@reach/router";
+// import LoginCard from "./LoginCard";
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -21,6 +22,7 @@ class AuthWrapper extends Component {
         )}
         <Title />
         <Router>
+          {/* <LoginCard path="/" className="loginCard" /> */}
           <CustomSignIn
             path="/"
             authState={this.props.authState}
