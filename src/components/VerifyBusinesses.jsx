@@ -17,17 +17,19 @@ class VerifyBusinesses extends Component {
   };
 
   verifyBusiness = (businessUsername) => {
-    api.updateBusiness(businessUsername, { key: "verified", value: "yes" })
+    api
+      .updateBusiness(businessUsername, { key: "verified", value: "yes" })
       .then(() => {
-        api.fetchBusinessesToVerify()
+        api
+          .fetchBusinessesToVerify()
           .then(({ Items }) => {
             this.setState({ businesses: Items });
           })
           .catch((err) => {
             this.setState({ error: err.code });
           });
-      })
-  }
+      });
+  };
 
   render() {
     const { businesses } = this.state;
@@ -37,11 +39,16 @@ class VerifyBusinesses extends Component {
         {businesses.map((business) => {
           const { username } = business;
           return (
-            <>
+            <section className="businessList">
               <BusinessCard key={username} {...business} />
-              <button onClick={() => this.verifyBusiness(username)}>Verify {business.businessName}</button>
-            </>
-          )
+              <button
+                onClick={() => this.verifyBusiness(username)}
+                className="submitButton verify"
+              >
+                Verify {business.businessName}
+              </button>
+            </section>
+          );
         })}
       </main>
     );

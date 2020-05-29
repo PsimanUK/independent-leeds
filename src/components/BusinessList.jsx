@@ -2,9 +2,8 @@ import React from "react";
 import BusinessCard from "./BusinessCard";
 
 const BusinessList = ({ businesses }) => {
-
   return (
-    <section>
+    <section className="businessList">
       {businesses.map((business) => {
         return <BusinessCard key={business.username} {...business} />;
       })}
