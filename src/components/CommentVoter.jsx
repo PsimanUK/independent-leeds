@@ -9,8 +9,16 @@ class CommentVoter extends Component {
     return (
       <div>
         <p>Votes: {this.props.votes + this.state.voteChange}</p>
-        <button onClick={() => this.handlesVoteChange(1)}>Increase vote</button>
-        <button onClick={() => this.handlesVoteChange(-1)}>
+        <button
+          onClick={() => this.handlesVoteChange(1)}
+          disabled={this.state.voteChange === 1}
+        >
+          Increase vote
+        </button>
+        <button
+          onClick={() => this.handlesVoteChange(-1)}
+          disabled={this.state.voteChange === -1}
+        >
           Decrease vote
         </button>
       </div>

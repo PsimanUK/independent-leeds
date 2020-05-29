@@ -9,7 +9,10 @@ class SupportBusiness extends Component {
     return (
       <div>
         <p>Votes: {this.props.votes + this.state.voteChange}</p>
-        <button onClick={() => this.handlesVoteChange(1)}>
+        <button
+          onClick={() => this.handlesVoteChange(1)}
+          disabled={this.state.voteChange === 1}
+        >
           Support Business
         </button>
       </div>
