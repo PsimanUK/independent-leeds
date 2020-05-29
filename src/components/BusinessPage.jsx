@@ -50,6 +50,8 @@ class BusinessPage extends Component {
     votes: 0,
     comments: [],
     isLoading: true,
+    isShown: false,
+    changeNameOfButton: false,
   };
 
   render() {
@@ -261,20 +263,28 @@ class BusinessPage extends Component {
           username={this.props.username}
           addComment={this.addComment}
         />
+        {this.state.changeNameOfButton === false ? (
+          <div>
+            <button onClick={this.handlesReadComments}>Show comments</button>
+          </div>
+        ) : (
+          <button onClick={this.handlesReadComments}>Hide comments</button>
+        )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
-            <p>Comments:</p>
             {comments.map((comment) => {
               // console.log(comment.commentId);
               return (
                 <>
-                  <CommentCard
-                    key={comment.commentId}
-                    comment={comment}
-                    username={this.props.username}
-                    deleteComment={this.handlesDelete}
-                  />
+                  {this.state.isShown ? (
+                    <CommentCard
+                      key={comment.commentId}
+                      comment={comment}
+                      username={this.props.username}
+                      deleteComment={this.handlesDelete}
+                    />
+                  ) : null}
                 </>
               );
             })}
@@ -376,9 +386,22 @@ class BusinessPage extends Component {
 
   handlesDelete = (commentId) => {
     const { username } = this.state;
-    api.deleteCommentByCommentId(commentId, username).then(() => {
-      this.fetchComments();
-    });
+    let userPrompt = prompt(
+      "Are you sure you want to delete this comment? Type yes if you do"
+    );
+    if (userPrompt === "yes") {
+      api.deleteCommentByCommentId(commentId, username).then(() => {
+        this.fetchComments();
+      });
+    } else {
+      return alert("Deleted comment aborted!");
+    }
+  };
+
+  handlesReadComments = () => {
+    const doesShow = this.state.isShown;
+    const changeName = this.state.changeNameOfButton;
+    this.setState({ isShown: !doesShow, changeNameOfButton: !changeName });
   };
 }
 
