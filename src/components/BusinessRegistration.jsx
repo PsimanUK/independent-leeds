@@ -28,6 +28,7 @@ class BusinessRegistration extends Component {
   };
 
   handleInput = (event) => {
+    console.log('Updating state via handle input...')
     const { value, name } = event.target;
     if (event.target.checked === true) {
       value = "yes";
@@ -97,7 +98,7 @@ class BusinessRegistration extends Component {
       <main>
         {this.state.error && <p>An error has occurred, please try again.</p>}
         {this.state.hasRegistered === false && (
-          <BusinessRegCard handleInput={this.handleinput} handleSubmit={this.handleSubmit} />
+          <BusinessRegCard handleInput={this.handleInput} handleSubmit={this.handleSubmit} hello="hello" />
         )}
         {this.state.hasRegistered === true && (
           <p>

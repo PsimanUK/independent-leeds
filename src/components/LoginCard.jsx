@@ -1,7 +1,7 @@
 import React from 'react';
-import { Avatar, Button, FormControl, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core/';
+import { Button, FormControl, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core/';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 
 // function Copyright() {
 //     return (
@@ -17,12 +17,15 @@ import { makeStyles } from '@material-ui/core/styles';
 // }
 
 const useStyles = makeStyles((theme) => ({
+    body: {
+        backgroundColor: 'rgba(250,250,250,0.8)',
+        borderBlockColor: 'black'
+    },
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        background: './images/background.jpg'
     },
     avatar: {
         margin: theme.spacing(1),
@@ -41,26 +44,24 @@ export default function SignIn() {
     const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs" >
-            <CssBaseline />
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar} variant="rounded">
+        <Container component="main" maxWidth="xs" className={classes.body} >
+            <div className={classes.paper} >
+                {/* <Avatar className={classes.avatar} variant="rounded">
                     <img src="../images/background.jpg" alt="login logo" />
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                    {/* <LockOutlinedIcon /> 
+                </Avatar> */}
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
-                        margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id="username"
+                        label="Username"
+                        name="username"
+                        autoComplete="username"
                         autoFocus
                     />
                     <TextField
@@ -103,6 +104,6 @@ export default function SignIn() {
             </div>
             <Box mt={8}>
             </Box>
-        </Container>
+        </Container >
     );
 }
