@@ -29,9 +29,9 @@ class NavBar extends Component {
             Verify businesses
           </Link>
         )}
-        <Link to="/" className="NavBar__item" onClick={this.handleSignOut}>
-          Sign out
-        </Link>
+        <button onClick={this.handleSignOut}>
+          <Link to="/">Sign out</Link>
+        </button>
       </nav>
     );
   }
