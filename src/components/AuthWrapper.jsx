@@ -5,6 +5,7 @@ import CustomSignUp from "./CustomSignUp";
 import CustomSignOut from "./CustomSignOut";
 import Title from "./Title";
 import { Router } from "@reach/router";
+import LoadingIndicator from "./LoadingIndicator";
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -14,6 +15,7 @@ class AuthWrapper extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingIndicator />;
     return (
       <div>
         <Title />

@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 import { Link } from "@reach/router";
+import LoadingIndicator from "./LoadingIndicator";
 
 class AllBusinesses extends Component {
   state = {
@@ -10,12 +11,16 @@ class AllBusinesses extends Component {
     activeSite: {},
     mapBoundaries: {},
     params: {},
+    isLoading: false,
   };
 
   handleInput = (event) => {
     const newFilter = event.target.name;
     this.setState((currentState) => {
-      console.log({ params: { ...currentState.params, [newFilter]: "yes" } }, "<--- params in state");
+      console.log(
+        { params: { ...currentState.params, [newFilter]: "yes" } },
+        "<--- params in state"
+      );
       return { params: { ...currentState.params, [newFilter]: "yes" } };
     });
   };
@@ -23,21 +28,24 @@ class AllBusinesses extends Component {
   handleFilter = () => {
     const { params } = this.state;
     console.log(params, this.state.params, "<--- params, this.state.params");
-    api.fetchBusinesses(params)
+    api
+      .fetchBusinesses(params)
       .then(({ Items }) => {
-        this.setState({ businesses: Items })
+        this.setState({ businesses: Items, isLoading: false });
       })
       .catch((err) => {
         console.log(`Encountered error: ${err}`);
       });
-  }
+  };
 
   componentDidMount = () => {
+    console.log("mounting");
     api
       .fetchBusinesses()
       .then(({ Items }) => {
         this.setState({
           businesses: Items,
+          isLoading: false,
           mapBoundaries: {
             west: this.refs.map.leafletElement.getBounds().getWest(),
             north: this.refs.map.leafletElement.getBounds().getNorth(),
@@ -67,10 +75,12 @@ class AllBusinesses extends Component {
         south: newBoundaries.getSouth(),
         east: newBoundaries.getEast(),
       },
+      isLoading: false,
     });
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingIndicator />;
     const { businesses, activeSite, mapBoundaries } = this.state;
     const viableBusinesses = businesses.filter(
       (business) =>
@@ -123,9 +133,7 @@ class AllBusinesses extends Component {
         </Map>
         <form>
           <select className="cuisine" onChange={this.handleInput}>
-            <option value="">
-              --SELECT--
-          </option>
+            <option value="">--SELECT--</option>
             <option value="american">American</option>
             <option value="british">British</option>
             <option value="chinese">Chinese</option>

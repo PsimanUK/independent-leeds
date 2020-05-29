@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import LoadingIndicator from "./LoadingIndicator";
 
 class BusinessRegistration extends Component {
   state = {
@@ -24,6 +25,7 @@ class BusinessRegistration extends Component {
     halal: "no",
     glutenFree: "no",
     cuisine: "",
+    isLoading: false,
   };
 
   handleInput = (event) => {
@@ -77,19 +79,23 @@ class BusinessRegistration extends Component {
       })
       .then(() => {
         this.setState({ hasRegistered: true });
-        console.log(this.state.hasRegistered, '<-- has registered after api request')
+        console.log(
+          this.state.hasRegistered,
+          "<-- has registered after api request"
+        );
       })
       .catch((err) => {
-        this.setState({ error: err.code })
+        this.setState({ error: err.code });
       });
   };
 
   render() {
-    console.log(this.state.hasRegistered, '<-- has registered in state')
+    if (this.state.isLoading) return <LoadingIndicator />;
+    console.log(this.state.hasRegistered, "<-- has registered in state");
     return (
       <main>
         {this.state.error && <p>An error has occurred, please try again.</p>}
-        {this.state.hasRegistered === false &&
+        {this.state.hasRegistered === false && (
           <>
             <p>Please enter your business details to register:</p>
             <form onSubmit={this.handleSubmit}>
@@ -147,15 +153,20 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 required
               >
-                <option value="" >--SELECT--</option>
+                <option value="">--SELECT--</option>
                 <option value="restaurant">Restaurant</option>
                 <option value="pub">Pub</option>
                 <option value="cafe">Cafe</option>
                 <option value="takeaway">Takeaway</option>
               </select>
               <label htmlFor="cuisine">Type of Cuisine:</label>
-              <select id="cuisine" name="cuisine" onChange={this.handleInput} required>
-                <option value="" >--SELECT--</option>
+              <select
+                id="cuisine"
+                name="cuisine"
+                onChange={this.handleInput}
+                required
+              >
+                <option value="">--SELECT--</option>
                 <option value="chinese">Chinese</option>
                 <option value="thai">Thai</option>
                 <option value="indian">Indian</option>
@@ -250,13 +261,14 @@ class BusinessRegistration extends Component {
               </section>
               <button>Register</button>
             </form>
-          </>}
-        {this.state.hasRegistered === true &&
+          </>
+        )}
+        {this.state.hasRegistered === true && (
           <p>
             Your registration has been successful. Our admin team will email you
             once they have verified your business.
           </p>
-        }
+        )}
       </main>
     );
   }
