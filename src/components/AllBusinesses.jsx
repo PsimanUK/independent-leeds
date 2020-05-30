@@ -159,9 +159,9 @@ class AllBusinesses extends Component {
         <form>
           <select
             name="select"
-            className="cuisine"
             onChange={this.handleInput}
             ref={"cuisine"}
+            className="cuisine"
           >
             <option value="">Cuisine</option>
             <option value="american" name="american">
@@ -202,49 +202,59 @@ class AllBusinesses extends Component {
             </option>
           </select>
           <section className="checkboxes">
-            <label htmlFor="vegetarian">Vegetarian</label>
-            <input
-              type="checkbox"
-              id="vegetarian"
-              name="vegetarian"
-              value="yes"
-              onChange={this.handleInput}
-              ref={"vegetarian"}
-            />
-            <label htmlFor="vegan">Vegan</label>
-            <input
-              type="checkbox"
-              id="vegan"
-              name="vegan"
-              value="yes"
-              onChange={this.handleInput}
-              ref={"vegan"}
-            />
-            <label htmlFor="glutenFree">Gluten-free</label>
-            <input
-              type="checkbox"
-              id="glutenFree"
-              name="glutenFree"
-              value="yes"
-              onChange={this.handleInput}
-              ref={"glutenFree"}
-            />
-            <label htmlFor="halal">Halal</label>
-            <input
-              type="checkbox"
-              id="halal"
-              name="halal"
-              value="yes"
-              onChange={this.handleInput}
-              ref={"halal"}
-            />
+            <div className="checkbox">
+              <label htmlFor="vegetarian">Vegetarian</label>
+              <input
+                type="checkbox"
+                id="vegetarian"
+                name="vegetarian"
+                value="yes"
+                onChange={this.handleInput}
+                ref={"vegetarian"}
+              />
+            </div>
+            <div className="checkbox">
+              <label htmlFor="vegan">Vegan</label>
+              <input
+                type="checkbox"
+                id="vegan"
+                name="vegan"
+                value="yes"
+                onChange={this.handleInput}
+                ref={"vegan"}
+              />
+            </div>
+            <div className="checkbox">
+              <label htmlFor="glutenFree">Gluten-free</label>
+              <input
+                type="checkbox"
+                id="glutenFree"
+                name="glutenFree"
+                value="yes"
+                onChange={this.handleInput}
+                ref={"glutenFree"}
+              />
+            </div>
+            <div className="checkbox">
+              <label htmlFor="halal">Halal</label>
+              <input
+                type="checkbox"
+                id="halal"
+                name="halal"
+                value="yes"
+                onChange={this.handleInput}
+                ref={"halal"}
+              />
+            </div>
           </section>
-          <button className="submitButton" onClick={this.handleFilter}>
-            Filter
-          </button>
-          <button className="submitButton" onClick={this.handleUnFilter}>
-            Show all
-          </button>
+          <div className="submitButtons">
+            <button className="submitButton" onClick={this.handleFilter}>
+              Filter
+            </button>
+            <button className="submitButton" onClick={this.handleUnFilter}>
+              Show all
+            </button>
+          </div>
         </form>
 
         <BusinessList
