@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 const BusinessCard = ({ businessName, logoUrl, username }) => {
   return (
     <section className="businessCard">
-      <div className="logoContainer">
+      <div className="thumbnail">
         <img
           src={logoUrl}
           alt={`logo for ${businessName}`}
