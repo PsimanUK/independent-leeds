@@ -121,47 +121,46 @@ class BusinessRegistration extends Component {
                   return <MenuItem key={business.value} value={business.value}>{business.label}</MenuItem>
                 })}
               </TextField>
-              <TextField id="outlined-basic" label="Cuisine" select variant="filled" name="cuisine" onChange={√}>
-              {cuisines.map(business => {
-                return <MenuItem key={business.value} value={business.value}>{business.label}</MenuItem>
-              })}
-            </TextField>
-            <TextField
-              id="filled-multiline-flexible"
-              label="Tell us about your business"
-              multiline
-              rows={4}
-              onChange={this.handleInput}
-              variant="filled"
-            />
-            <TextField
-              id="filled-multiline-flexible"
-              label="Tell us your latest updates"
-              multiline
-              rows={4}
-              onChange={this.handleInput}
-              variant="filled"
-            />
-            <FormGroup>
-              <FormLabel>Which diets can you cater for?</FormLabel>
-              <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"vegan"} />} label={"Vegan"} />
-              <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"vegetarian"} />} label={"Vegetarian"} />
-              <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"halal"} />} label={"Halal"} />
-              <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"glutenFree"} />} label={"Gluten free"} />
-            </FormGroup>
-            <Button variant="contained" >Submit</Button>
-          </FormControl>
-        </div >
-    )
-  }
-        {
-  this.state.hasRegistered === true && (
-    <p>
-      Your registration has been successful. Our admin team will email you
-      once they have verified your business.
-    </p>
-  )
-}
+              <TextField id="outlined-basic" label="Cuisine" select variant="filled" name="cuisine" onChange={"√"}>
+                {cuisines.map(business => {
+                  return <MenuItem key={business.value} value={business.value}>{business.label}</MenuItem>
+                })}
+              </TextField>
+              <TextField
+                id="filled-multiline-flexible"
+                label="Tell us about your business"
+                multiline
+                rows={4}
+                onChange={this.handleInput}
+                variant="filled"
+              />
+              <TextField
+                id="filled-multiline-flexible"
+                label="Tell us your latest updates"
+                multiline
+                rows={4}
+                onChange={this.handleInput}
+                variant="filled"
+              />
+              <FormGroup>
+                <FormLabel>Which diets can you cater for?</FormLabel>
+                <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"vegan"} />} label={"Vegan"} />
+                <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"vegetarian"} />} label={"Vegetarian"} />
+                <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"halal"} />} label={"Halal"} />
+                <FormControlLabel control={<Checkbox onChange={this.handleInput} name={"glutenFree"} />} label={"Gluten free"} />
+              </FormGroup>
+              <Button variant="contained" >Submit</Button>
+            </FormControl>
+          </div >
+        )
+        }
+        {this.state.hasRegistered === true && (
+          <p>
+            Your registration has been successful. Our admin team will email you
+            once they have verified your business.
+          </p>
+        )
+        }
       </main >
     );
   }

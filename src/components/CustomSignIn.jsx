@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-// import { Link } from "@reach/router";
+import { Link } from "@reach/router";
 import {
   Button,
   FormControl,
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Box,
   Typography,
@@ -139,6 +138,7 @@ class CustomSignIn extends Component {
                   <Link to="/register" className="redirect">
                     here
                   </Link>
+                  .
                 </p>
               </Grid>
             </form>
