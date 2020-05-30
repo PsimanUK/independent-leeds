@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { Link } from "@reach/router";
 import * as api from "../utils/api";
+import { Button, TextField, Container } from '@material-ui/core';
 
 class CustomSignUp extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp"];
@@ -49,7 +50,7 @@ class CustomSignUp extends Component {
 
   render() {
     return (
-      <section className="message">
+      <Container>
         {this.state.error === "UsernameExistsException" ? (
           <p>Username already exists - please try another</p>
         ) : this.state.error === "InvalidPasswordException" ? (
@@ -61,58 +62,66 @@ class CustomSignUp extends Component {
           <p>An error has occurred - please try again</p>
         ) : null}
         {this._validAuthStates.includes(this.props.authState) && (
-          <form>
-            <input
-              id="username"
-              key="username"
-              name="username"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="Username..."
-              value={this.state.username}
-              className="textInput"
-            />
-            <input
-              id="email"
-              key="email"
-              name="email"
-              onChange={this.handleInputChange}
-              type="email"
-              placeholder="Email..."
-              value={this.state.email}
-              className="textInput"
-            />
-            <input
-              id="password"
-              key="password"
-              name="password"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="Password..."
-              value={this.state.password}
-              className="textInput"
-            />
-            <button
-              onClick={this.handleFormSubmission}
-              className="submitButton"
-            >
-              Register
-            </button>
-            <p>
-              Already registered? Please{" "}
-              <Link to="/" className="redirect">
-                log in
-              </Link>
-            </p>
-            {this.props.authState === "signedUp" && (
+          <div className="sign-up__card" >
+            <form>
+              <TextField
+                variant="outlined"
+                id="username"
+                key="username"
+                name="username"
+                label="Username"
+                onChange={this.handleInputChange}
+                type="text"
+                value={this.state.username}
+                className="textInput"
+              />
+              <TextField
+                variant="outlined"
+                id="email"
+                key="email"
+                name="email"
+                label="Email"
+                onChange={this.handleInputChange}
+                type="email"
+                value={this.state.email}
+                className="textInput"
+              />
+              <TextField
+                variant="outlined"
+                id="password"
+                key="password"
+                name="password"
+                label="Password"
+                onChange={this.handleInputChange}
+                type="password"
+                value={this.state.password}
+                className="textInput"
+              />
+              <Button
+                onClick={this.handleFormSubmission}
+                className="submitButton"
+                variant="contained"
+                color="primary"
+              >
+                Register
+            </Button>
               <p>
-                Thank you for registering - please check your email for a
-                confirmation link.
-              </p>
-            )}
-          </form>
+                Already registered? Please{" "}
+                <Link to="/" className="redirect">
+                  log in
+              </Link>
+              .
+            </p>
+              {this.props.authState === "signedUp" && (
+                <p>
+                  Thank you for registering - please check your email for a
+                  confirmation link.
+                </p>
+              )}
+            </form>
+          </div>
         )}
-      </section>
+      </Container>
     );
   }
 }
