@@ -101,7 +101,6 @@ class CustomSignUp extends Component {
                 onClick={this.handleFormSubmission}
                 className="submitButton"
                 variant="contained"
-                color="primary"
               >
                 Register
             </Button>

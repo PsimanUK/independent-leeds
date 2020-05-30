@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import LoadingIndicator from "./LoadingIndicator";
-import { Container, TextField, FormControl, MenuItem, Checkbox, FormGroup, FormLabel, FormControlLabel, Button } from '@material-ui/core';
+import { Container, TextField, MenuItem, Checkbox, FormGroup, FormLabel, FormControlLabel, Button } from '@material-ui/core';
 
 
 class BusinessRegistration extends Component {
