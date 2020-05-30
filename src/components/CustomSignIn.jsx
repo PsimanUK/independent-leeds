@@ -12,31 +12,6 @@ import {
   Typography,
   Container,
 } from "@material-ui/core/";
-// import { makeStyles } from '@material-ui/core/styles';
-
-// const useStyles = makeStyles((theme) => ({
-//   body: {
-//     backgroundColor: 'rgba(250,250,250,0.8)',
-//     borderBlockColor: 'black'
-//   },
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main,
-//   },
-//   form: {
-//     width: '100%',
-//     marginTop: theme.spacing(1),
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2),
-//   },
-// }));
 
 class CustomSignIn extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp", "confirmSignUp"];
@@ -82,7 +57,6 @@ class CustomSignIn extends Component {
   };
 
   render() {
-    // const classes = useStyles();
     return (
       <Container>
         {this.state.error === "UserNotConfirmedException" ? (
