@@ -268,8 +268,8 @@ class BusinessPage extends Component {
             <button onClick={this.handlesReadComments}>Show comments</button>
           </div>
         ) : (
-          <button onClick={this.handlesReadComments}>Hide comments</button>
-        )}
+            <button onClick={this.handlesReadComments}>Hide comments</button>
+          )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
