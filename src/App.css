@@ -153,21 +153,6 @@ p {
   box-shadow: 1px 1px 2px #2d080a;
 }
 
-.thumbanil {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.thumbnailPic {
-  max-height: 150px;
-  max-width: 200px;
-  overflow: hidden;
-  border-radius: 6px;
-  margin: 2px;
-  object-fit: cover;
-}
-
 .largePic {
   max-height: 400px;
 }
@@ -180,14 +165,32 @@ p {
 
 .businessCard {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   background-color: #fffff0;
-  width: 400px;
+  width: 350px;
   border-radius: 6px;
-  margin: 1.5em;
+  margin: 2.5em;
   box-shadow: 1px 1px 2px #2d080a;
 }
 
 .businessCard__title {
   color: #7b190a;
+  font-size: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnailPic {
+  max-height: 150px;
+  max-width: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 2px;
+  object-fit: cover;
 }

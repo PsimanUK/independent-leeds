@@ -11,11 +11,11 @@ const BusinessCard = ({ businessName, logoUrl, username }) => {
           className="thumbnailPic"
         />
       </div>
-      <p>
+      <h2>
         <Link className="businessCard__title" to={`/${username}`}>
           {businessName}
         </Link>
-      </p>
+      </h2>
     </section>
   );
 };
