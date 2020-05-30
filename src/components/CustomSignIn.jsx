@@ -1,6 +1,43 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import { Link } from "@reach/router";
+// import { Link } from "@reach/router";
+import {
+  Button,
+  FormControl,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from "@material-ui/core/";
+// import { makeStyles } from '@material-ui/core/styles';
+
+// const useStyles = makeStyles((theme) => ({
+//   body: {
+//     backgroundColor: 'rgba(250,250,250,0.8)',
+//     borderBlockColor: 'black'
+//   },
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//   },
+//   avatar: {
+//     margin: theme.spacing(1),
+//     backgroundColor: theme.palette.secondary.main,
+//   },
+//   form: {
+//     width: '100%',
+//     marginTop: theme.spacing(1),
+//   },
+//   submit: {
+//     margin: theme.spacing(3, 0, 2),
+//   },
+// }));
 
 class CustomSignIn extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp", "confirmSignUp"];
@@ -46,15 +83,18 @@ class CustomSignIn extends Component {
   };
 
   render() {
+    // const classes = useStyles();
     return (
-      <section>
+      <Container>
         {this.state.error === "UserNotConfirmedException" ? (
           <p>
             Email not yet verified - please check your emails and click the link
             to verify.
           </p>
         ) : this.state.error === "NotAuthorizedException" ? (
-          <p>Incorrect password</p>
+
+          <p>Incorrect password / temporary password has expired</p>
+
         ) : this.state.error === "UserNotFoundException" ? (
           <p>Incorrect username</p>
         ) : this.state.error === "An error has occurred" ? (
@@ -62,34 +102,50 @@ class CustomSignIn extends Component {
         ) : null}
 
         {this._validAuthStates.includes(this.props.authState) && (
-          <form>
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              key="username"
-              name="username"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="username"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              key="password"
-              name="password"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="********"
-            />
-            <button onClick={this.handleFormSubmission}>Login</button>
-            <p>
-              Your password must contain minimum 8 characters, including a
-              special character, a number, and upper and lower case letters.
-            </p>
-            <Link to="/register">Register</Link>
-          </form>
+          <div className="login__card">
+            <form>
+              <TextField
+                variant="outlined"
+                id="username"
+                key="username"
+                name="username"
+                label="Username"
+                onChange={this.handleInputChange}
+                type="text"
+                className="textInput"
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                id="password"
+                key="password"
+                name="password"
+                label="Password"
+                onChange={this.handleInputChange}
+                type="password"
+                className="textInput"
+              />
+              <Button
+                onClick={this.handleFormSubmission}
+                className="submitButton"
+                variant="contained"
+                color="primary"
+              >
+                Login
+              </Button>
+              <Grid item>
+                <p>
+                  Not yet registered? Sign up{" "}
+                  <Link to="/register" className="redirect">
+                    here
+                  </Link>
+                </p>
+              </Grid>
+            </form>
+          </div>
         )}
-      </section>
+        <Box mt={8}></Box>
+      </Container>
     );
   }
 }

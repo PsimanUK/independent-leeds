@@ -1,25 +1,24 @@
 import React, { Component } from "react";
-import NavBar from "./NavBar";
-import BusinessRegistration from "./BusinessRegistration";
+//import BusinessRegistration from "./BusinessRegistration";
+import BusinessRegCard from "./BusinessRegCard";
 import { Router } from "@reach/router";
 import BusinessPage from "./BusinessPage";
 import AllBusinesses from "./AllBusinesses";
 import VerifyBusinesses from "./VerifyBusinesses";
 
 class InternalApp extends Component {
-
   render() {
     const { username } = this.props;
     if (this.props.authState === "signedIn") {
       return (
         <main>
-          <NavBar loggedInUser={username} />
-          <Router>
+          <Router primary={false}>
             <AllBusinesses path="/" />
-            <BusinessRegistration
+            {/*<BusinessRegistration
               path="/register-business"
               username={username}
-            />
+            />*/}
+            <BusinessRegCard path="/register-business" />
             <BusinessPage path="/:username" loggedInUser={username} />
             <VerifyBusinesses path="/verify" username={username} />
           </Router>

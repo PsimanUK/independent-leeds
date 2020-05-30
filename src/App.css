@@ -1,42 +1,135 @@
 .App {
-  font-family: gayathri;
+  font-family: "Varela Round", sans-serif;
   text-align: center;
 }
 
-.App-title {
-  font-size: 30px;
-  color: rgb(255, 255, 255);
-  align-content: center, center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(4, 4, 109);
-  max-width: 600px;
-  max-height: 120px;
-  border: solid rgb(246, 246, 96);
-  border-width: 3px;
-  border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
+html {
+  height: 100%;
+  background-image: url("./images/background-opaque.jpg");
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+}
+
+.loginCard {
+  width: 50%;
+}
+
+.login__card {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 320px;
+  background-color: rgba(219, 219, 219, 0.808);
+}
+
+.submitButton {
+  margin-top: 30px
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5em;
+  color: #7b190a;
 }
 
 .NavBar {
+  margin-block-start: 0.5em;
+}
+
+.NavBar__item {
+  padding-right: 1em;
+  padding-left: 1em;
+  color: #2d080a;
+  text-decoration: none;
+}
+
+form {
   display: flex;
-  flex-direction: row;
-  font-size: larger;
-  color: aliceblue;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(4, 4, 109);
-  max-width: 500px;
-  border: solid rgb(246, 246, 96);
-  border-width: 3px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textInput,
+textarea {
+  width: 15em;
+  border: 1.2px solid #2d080a;
+  color: #2d080a;
   border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.business {
+  width: 23em;
+}
+
+textarea {
+  width: 28em;
+}
+
+::placeholder {
+  color: #2d080a;
+  opacity: 1;
+}
+
+select {
+  width: 10em;
+  border: 1.2px solid #2d080a;
+  color: #2d080a;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.checkboxes {
+  border: 1.2px solid #2d080a;
+  border-radius: 6px;
+  background-color: #fcf9ed;
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+label {
+  color: #2d080a;
+  padding-left: 1em;
+  font-size: 0.8em;
+}
+
+.submitButton {
+  width: 7em;
+  border: 1px solid #2d080a;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  color: #2d080a;
+  background-color: #9bbb42;
+  margin-bottom: 1em;
+}
+
+.verify {
+  width: 12em;
+  margin-bottom: 2.5em;
+}
+
+.redirect {
+  color: #a50104;
+}
+
+p {
+  font-style: italic;
+  padding-left: 5em;
+  padding-right: 5em;
+  color: #2d080a;
 }
 
 .leaflet-container {
@@ -44,39 +137,11 @@
   height: 450px;
 }
 
-.NavBar__item {
-  padding: 10px;
-  color: aliceblue;
-}
-
 .Map {
-  align-content: center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: solid rgb(95, 0, 0);
-  border-width: 3px;
+  border: 2px solid #7b190a;
+  border-width: 1px;
   border-radius: 6px;
-}
-
-.BusinessCard {
-  font-size: larger;
-  color: rgb(4, 4, 109);
   margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  align-self: auto;
-  background-color: rgb(255, 255, 255);
-  max-width: 400px;
-  border: solid rgb(4, 4, 109);
-  border-width: 3px;
-  border-radius: 6px;
-  text-shadow: 2px 2px rgb(134, 134, 55);
-  box-shadow: 4px 4px rgb(233, 233, 157);
-}
-
-.BusinessCard__item {
-  color:  rgb(4, 4, 109);
 }
 
 .thumbnailPic {
@@ -87,15 +152,20 @@
   max-height: 400px;
 }
 
-.menu_image {
-  max-width: 300px;
-  box-shadow: 5px 5px rgb(247, 247, 201);
+.businessList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* .invalidPostcode, .invalidPhoneNumber {
-  box-shadow: 2px 2px 2px 2px red;
+.businessCard {
+  border: 1.2px solid #2d080a;
+  background-color: #fcf9ed;
+  width: 400px;
+  border-radius: 6px;
+  margin-block-end: 1em;
 }
 
-.validPostcode, .validPhoneNumber {
-  box-shadow: none;
-} */
+.businessCard__title {
+  color: #7b190a;
+}

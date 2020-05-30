@@ -25,11 +25,14 @@ class CustomSignUp extends Component {
         this.props.onStateChange("signedUp", {});
       })
       .then(() => {
-        api.sendUser({ username, emailAddress: email })
+        api.sendUser({ username, emailAddress: email });
       })
       .catch((err) => {
         console.log(err);
-        if (err.code === "UsernameExistsException" || err.code === "InvalidPasswordException") {
+        if (
+          err.code === "UsernameExistsException" ||
+          err.code === "InvalidPasswordException"
+        ) {
           this.setState({
             error: err.code,
           });
@@ -46,46 +49,61 @@ class CustomSignUp extends Component {
 
   render() {
     return (
-      <section>
-        {this.state.error === "UsernameExistsException" ?
-          <p>Username already exists - please try another</p> :
-          this.state.error === "InvalidPasswordException" ? <p>Passwords must contain 8 characters including a special character and upper and lower case lettersp.</p> :
-            this.state.error === "An error has occurred" ? <p>An error has occurred - please try again</p> : null
-        }
+      <section className="message">
+        {this.state.error === "UsernameExistsException" ? (
+          <p>Username already exists - please try another</p>
+        ) : this.state.error === "InvalidPasswordException" ? (
+          <p className="message">
+            Passwords must contain 8 characters including special characters,
+            numbers and upper and lower case letters
+          </p>
+        ) : this.state.error === "An error has occurred" ? (
+          <p>An error has occurred - please try again</p>
+        ) : null}
         {this._validAuthStates.includes(this.props.authState) && (
           <form>
-            <label htmlFor="username">Username</label>
             <input
               id="username"
               key="username"
               name="username"
               onChange={this.handleInputChange}
               type="text"
-              placeholder="username"
+              placeholder="Username..."
               value={this.state.username}
+              className="textInput"
             />
-            <label htmlFor="email">Email</label>
             <input
               id="email"
               key="email"
               name="email"
               onChange={this.handleInputChange}
               type="email"
-              placeholder="email"
+              placeholder="Email..."
               value={this.state.email}
+              className="textInput"
             />
-            <label htmlFor="password">Password</label>
             <input
               id="password"
               key="password"
               name="password"
               onChange={this.handleInputChange}
               type="text"
-              placeholder="********"
+              placeholder="Password..."
               value={this.state.password}
+              className="textInput"
             />
-            <button onClick={this.handleFormSubmission}>Register</button>
-            <Link to="/">Log In</Link>
+            <button
+              onClick={this.handleFormSubmission}
+              className="submitButton"
+            >
+              Register
+            </button>
+            <p>
+              Already registered? Please{" "}
+              <Link to="/" className="redirect">
+                log in
+              </Link>
+            </p>
             {this.props.authState === "signedUp" && (
               <p>
                 Thank you for registering - please check your email for a

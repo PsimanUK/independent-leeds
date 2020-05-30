@@ -15,17 +15,22 @@ class AllBusinesses extends Component {
   };
 
   handleInput = (event) => {
-    const newFilter = event.target.name;
+    let newFilter = "";
+    let value = "";
+    if (event.target.name === "select") {
+      newFilter = "cuisine";
+      value = event.target.value;
+    } else {
+      newFilter = event.target.name;
+      value = "yes";
+    }
     this.setState((currentState) => {
-      console.log(
-        { params: { ...currentState.params, [newFilter]: "yes" } },
-        "<--- params in state"
-      );
-      return { params: { ...currentState.params, [newFilter]: "yes" } };
+      return { params: { ...currentState.params, [newFilter]: value } };
     });
   };
 
-  handleFilter = () => {
+  handleFilter = (event) => {
+    event.preventDefault();
     const { params } = this.state;
     console.log(params, this.state.params, "<--- params, this.state.params");
     api
@@ -34,7 +39,26 @@ class AllBusinesses extends Component {
         this.setState({ businesses: Items, isLoading: false });
       })
       .catch((err) => {
-        console.log(`Encountered error: ${err}`);
+        this.setState({ error: err.code });
+      });
+  };
+
+  handleUnFilter = (event) => {
+    event.preventDefault();
+    api
+      .fetchBusinesses({})
+      .then(({ Items }) => {
+        this.setState({ businesses: Items, params: {} });
+      })
+      .then(() => {
+        this.refs["vegetarian"].checked = false;
+        this.refs["vegan"].checked = false;
+        this.refs["halal"].checked = false;
+        this.refs["glutenFree"].checked = false;
+        this.refs["cuisine"].value = "";
+      })
+      .catch((err) => {
+        this.setState({ error: err.code });
       });
   };
 
@@ -58,7 +82,7 @@ class AllBusinesses extends Component {
         this.setState();
       })
       .catch((err) => {
-        console.log(`Encountered error: ${err}`);
+        this.setState({ error: err.code });
       });
   };
 
@@ -94,11 +118,12 @@ class AllBusinesses extends Component {
     console.log(viableBusinesses, "<-- viableBusinesses");
     return (
       <main>
+        {this.state.error && <p>An error has occurred - please try again</p>}
         <Map
           id="map"
           center={[53.796, -1.55]}
-          zoom={12}
-          minZoom={12}
+          zoom={11}
+          minZoom={11}
           ref="map"
           onzoomend={() => this.changeBoundaries()}
           onmoveend={() => this.changeBoundaries()}
@@ -132,54 +157,94 @@ class AllBusinesses extends Component {
           />
         </Map>
         <form>
-          <select className="cuisine" onChange={this.handleInput}>
-            <option value="">--SELECT--</option>
-            <option value="american">American</option>
-            <option value="british">British</option>
-            <option value="chinese">Chinese</option>
-            <option value="french">French</option>
-            <option value="greek">Greek</option>
-            <option value="indian">Indian</option>
-            <option value="italian">Italian</option>
-            <option value="japanese">Japanese</option>
-            <option value="mexican">Mexican</option>
-            <option value="other">Other</option>
-            <option value="spanish">Spanish</option>
-            <option value="thai">Thai</option>
+          <select
+            name="select"
+            className="cuisine"
+            onChange={this.handleInput}
+            ref={"cuisine"}
+          >
+            <option value="">Cuisine</option>
+            <option value="american" name="american">
+              American
+            </option>
+            <option value="british" name="british">
+              British
+            </option>
+            <option value="chinese" name="chinese">
+              Chinese
+            </option>
+            <option value="french" name="french">
+              French
+            </option>
+            <option value="greek" name="greek">
+              Greek
+            </option>
+            <option value="indian" name="indian">
+              Indian
+            </option>
+            <option value="italian" name="italian">
+              Italian
+            </option>
+            <option value="japanese" name="japanese">
+              Japanese
+            </option>
+            <option value="mexican" name="mexican">
+              Mexican
+            </option>
+            <option value="other" name="other">
+              Other
+            </option>
+            <option value="spanish" name="spanish">
+              Spanish
+            </option>
+            <option value="thai" name="thai">
+              Thai
+            </option>
           </select>
-          <label htmlFor="vegetarian">Vegetarian</label>
-          <input
-            type="checkbox"
-            id="vegetarian"
-            name="vegetarian"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="vegan">Vegan</label>
-          <input
-            type="checkbox"
-            id="vegan"
-            name="vegan"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="glutenFree">Gluten-free</label>
-          <input
-            type="checkbox"
-            id="glutenFree"
-            name="glutenFree"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <label htmlFor="halal">Halal</label>
-          <input
-            type="checkbox"
-            id="halal"
-            name="halal"
-            value="yes"
-            onChange={this.handleInput}
-          />
-          <button onClick={this.handleFilter}>Filter</button>
+          <section className="checkboxes">
+            <label htmlFor="vegetarian">Vegetarian</label>
+            <input
+              type="checkbox"
+              id="vegetarian"
+              name="vegetarian"
+              value="yes"
+              onChange={this.handleInput}
+              ref={"vegetarian"}
+            />
+            <label htmlFor="vegan">Vegan</label>
+            <input
+              type="checkbox"
+              id="vegan"
+              name="vegan"
+              value="yes"
+              onChange={this.handleInput}
+              ref={"vegan"}
+            />
+            <label htmlFor="glutenFree">Gluten-free</label>
+            <input
+              type="checkbox"
+              id="glutenFree"
+              name="glutenFree"
+              value="yes"
+              onChange={this.handleInput}
+              ref={"glutenFree"}
+            />
+            <label htmlFor="halal">Halal</label>
+            <input
+              type="checkbox"
+              id="halal"
+              name="halal"
+              value="yes"
+              onChange={this.handleInput}
+              ref={"halal"}
+            />
+          </section>
+          <button className="submitButton" onClick={this.handleFilter}>
+            Filter
+          </button>
+          <button className="submitButton" onClick={this.handleUnFilter}>
+            Show all
+          </button>
         </form>
 
         <BusinessList
