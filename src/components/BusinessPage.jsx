@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
+import LoadingIndicator from "./LoadingIndicator";
+import PostComment from "./PostComment";
+import axios from "axios";
+import SupportBusiness from "./SupportBusiness";
 
 class BusinessPage extends Component {
   state = {
-    username: '',
+    username: "",
     businessName: "",
     businessEmail: "",
     about: "",
@@ -12,32 +16,46 @@ class BusinessPage extends Component {
     logoUrl: "",
     tables: "",
     keyToUpdate: {
-      businessName: "", businessEmail: "", about: "", postCode: "", logoUrl: "", address: "", businessType: "", cuisine: "", vegan: '', menu: '',
-      facebook: '',
-      twitter: '',
-      instagram: '',
-      vegetarian: '',
-      halal: '',
-      glutenFree: '',
-      phoneNumber: '',
+      businessName: "",
+      businessEmail: "",
+      about: "",
+      postCode: "",
+      logoUrl: "",
+      address: "",
+      businessType: "",
+      cuisine: "",
+      vegan: "",
+      menu: "",
+      facebook: "",
+      twitter: "",
+      instagram: "",
+      vegetarian: "",
+      halal: "",
+      glutenFree: "",
+      phoneNumber: "",
     },
-    address: '',
-    businessType: '',
-    cuisine: '',
-    vegan: '',
-    vegetarian: '',
-    halal: '',
-    glutenFree: '',
-    phoneNumber: '',
-    updates: '',
-    menu: '',
-    facebook: '',
-    twitter: '',
-    instagram: '',
+    address: "",
+    businessType: "",
+    cuisine: "",
+    vegan: "",
+    vegetarian: "",
+    halal: "",
+    glutenFree: "",
+    phoneNumber: "",
+    updates: "",
+    menu: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    votes: 0,
     comments: [],
-  }
+    isLoading: true,
+    isShown: false,
+    changeNameOfButton: false,
+  };
 
   render() {
+    if (this.state.isLoading) return <LoadingIndicator />;
     const {
       businessName,
       businessEmail,
@@ -50,15 +68,22 @@ class BusinessPage extends Component {
       cuisine,
       updates,
       menu,
-      businessType
+      businessType,
+      votes,
     } = this.state;
     const { loggedInUser } = this.props;
     return (
       <section>
         <h2>{businessName}</h2>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("businessName")} >EDIT</button>}
-        <form id="businessName" name="businessName" onSubmit={this.submitUpdate} hidden>
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("businessName")}>EDIT</button>
+        )}
+        <form
+          id="businessName"
+          name="businessName"
+          onSubmit={this.submitUpdate}
+          hidden
+        >
           <input
             name="businessName"
             type="text"
@@ -69,13 +94,16 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>{businessType}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("businessType")} >EDIT</button>}
-        <form id="businessType" name="businessType" onSubmit={this.submitUpdate} hidden>
-          <select
-            id="businessType"
-            name="businessType"
-          >
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("businessType")}>EDIT</button>
+        )}
+        <form
+          id="businessType"
+          name="businessType"
+          onSubmit={this.submitUpdate}
+          hidden
+        >
+          <select id="businessType" name="businessType">
             <option value="restaurant">Restaurant</option>
             <option value="pub">Pub</option>
             <option value="cafe">Cafe</option>
@@ -88,8 +116,9 @@ class BusinessPage extends Component {
           alt={`Logo for ${businessName}`}
           className="largePic"
         />
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("logoUrl")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("logoUrl")}>EDIT</button>
+        )}
         <form id="logoUrl" name="logoUrl" onSubmit={this.submitUpdate} hidden>
           <input
             name="logoUrl"
@@ -101,8 +130,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>{about}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("about")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("about")}>EDIT</button>
+        )}
         <form id="about" name="about" onSubmit={this.submitUpdate} hidden>
           <textarea
             name="about"
@@ -113,8 +143,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Latest News: {updates}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("updates")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("updates")}>EDIT</button>
+        )}
         <form id="updates" name="updates" onSubmit={this.submitUpdate} hidden>
           <textarea
             name="updates"
@@ -125,8 +156,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <img src={menu} alt="cafe menu" className="menu_image" />
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("menu")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("menu")}>EDIT</button>
+        )}
         <form id="menu" name="menu" onSubmit={this.submitUpdate} hidden>
           <input
             name="menu"
@@ -138,9 +170,15 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Email: {businessEmail}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("businessEmail")} >EDIT</button>}
-        <form id="businessEmail" name="businessEmail" onSubmit={this.submitUpdate} hidden>
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("businessEmail")}>EDIT</button>
+        )}
+        <form
+          id="businessEmail"
+          name="businessEmail"
+          onSubmit={this.submitUpdate}
+          hidden
+        >
           <input
             name="businessEmail"
             type="email"
@@ -151,9 +189,15 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Phone Number: {phoneNumber}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("phoneNumber")} >EDIT</button>}
-        <form id="phoneNumber" name="phoneNumber" onSubmit={this.submitUpdate} hidden>
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("phoneNumber")}>EDIT</button>
+        )}
+        <form
+          id="phoneNumber"
+          name="phoneNumber"
+          onSubmit={this.submitUpdate}
+          hidden
+        >
           <input
             type="text"
             name="phoneNumber"
@@ -165,8 +209,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Post Code: {postCode}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("postCode")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("postCode")}>EDIT</button>
+        )}
         <form id="postCode" name="postCode" onSubmit={this.submitUpdate} hidden>
           <input
             name="postCode"
@@ -179,8 +224,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Tables Currently Available: {tables}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("tables")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("tables")}>EDIT</button>
+        )}
         <form id="tables" name="tables" onSubmit={this.submitUpdate} hidden>
           <input
             name="tables"
@@ -192,8 +238,9 @@ class BusinessPage extends Component {
           <button>Update</button>
         </form>
         <p>Cuisine: {cuisine}</p>
-        {loggedInUser === this.state.username &&
-          <button onClick={() => this.handleEdit("cuisine")} >EDIT</button>}
+        {loggedInUser === this.state.username && (
+          <button onClick={() => this.handleEdit("cuisine")}>EDIT</button>
+        )}
         <form id="cuisine" name="cuisine" onSubmit={this.submitUpdate} hidden>
           <select id="cuisine" name="cuisine">
             <option value="Chinese">Chinese</option>
@@ -211,13 +258,38 @@ class BusinessPage extends Component {
           </select>
           <button>Update</button>
         </form>
+        <SupportBusiness votes={votes} username={this.state.username} />
+        <PostComment
+          username={this.props.username}
+          addComment={this.addComment}
+        />
+        {this.state.changeNameOfButton === false ? (
+          <div>
+            <button onClick={this.handlesReadComments}>Show comments</button>
+          </div>
+        ) : (
+          <button onClick={this.handlesReadComments}>Hide comments</button>
+        )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
-        {comments !== undefined && <><p>Comments:</p>
-          {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
-          })}
-        </>
-        }
+        {comments !== undefined && (
+          <>
+            {comments.map((comment) => {
+              // console.log(comment.commentId);
+              return (
+                <>
+                  {this.state.isShown ? (
+                    <CommentCard
+                      key={comment.commentId}
+                      comment={comment}
+                      username={this.props.username}
+                      deleteComment={this.handlesDelete}
+                    />
+                  ) : null}
+                </>
+              );
+            })}
+          </>
+        )}
       </section>
     );
   }
@@ -240,6 +312,7 @@ class BusinessPage extends Component {
           menu,
           businessType,
           username,
+          votes,
         }) => {
           this.setState({
             businessName,
@@ -254,12 +327,26 @@ class BusinessPage extends Component {
             updates,
             menu,
             businessType,
-            username
+            username,
+            votes,
+            isLoading: false,
           });
         }
       )
       .catch((err) => {
         this.setState({ error: err.code });
+      });
+    this.fetchComments();
+  };
+
+  fetchComments = () => {
+    return axios
+      .get(
+        `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${this.props.username}/comments`
+      )
+      .then((response) => {
+        console.log(response.data, "---> this is the response");
+        this.setState({ comments: response.data });
       });
   };
 
@@ -273,7 +360,7 @@ class BusinessPage extends Component {
     api
       .updateBusiness(loggedInUser, { key: name, value: newValue })
       .then(() => {
-        this.setState({ keyToUpdate: { [name]: "" } })
+        this.setState({ keyToUpdate: { [name]: "" } });
       })
       .catch((err) => {
         this.setState({ error: err.code });
@@ -281,10 +368,10 @@ class BusinessPage extends Component {
   };
 
   handleEdit = (id) => {
-    if (document.getElementById(id).hasAttribute('hidden')) {
-      document.getElementById(id).removeAttribute('hidden');
+    if (document.getElementById(id).hasAttribute("hidden")) {
+      document.getElementById(id).removeAttribute("hidden");
     } else {
-      document.getElementById(id).setAttribute('hidden', true);
+      document.getElementById(id).setAttribute("hidden", true);
     }
   };
 
@@ -293,6 +380,29 @@ class BusinessPage extends Component {
     this.setState({ keyToUpdate: { [name]: value } });
   };
 
+  addComment = () => {
+    this.fetchComments();
+  };
+
+  handlesDelete = (commentId) => {
+    const { username } = this.state;
+    let userPrompt = prompt(
+      "Are you sure you want to delete this comment? Type yes if you do"
+    );
+    if (userPrompt === "yes") {
+      api.deleteCommentByCommentId(commentId, username).then(() => {
+        this.fetchComments();
+      });
+    } else {
+      return alert("Deleted comment aborted!");
+    }
+  };
+
+  handlesReadComments = () => {
+    const doesShow = this.state.isShown;
+    const changeName = this.state.changeNameOfButton;
+    this.setState({ isShown: !doesShow, changeNameOfButton: !changeName });
+  };
 }
 
 export default BusinessPage;

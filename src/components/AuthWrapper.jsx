@@ -5,7 +5,8 @@ import CustomSignUp from "./CustomSignUp";
 import Title from "./Title";
 import NavBar from "./NavBar";
 import { Router } from "@reach/router";
-// import LoginCard from "./LoginCard";
+import LoadingIndicator from "./LoadingIndicator";
+
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -15,6 +16,7 @@ class AuthWrapper extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingIndicator />;
     return (
       <div>
         {this.props.authState === "signedIn" && (

@@ -92,7 +92,9 @@ class CustomSignIn extends Component {
             to verify.
           </p>
         ) : this.state.error === "NotAuthorizedException" ? (
+
           <p>Incorrect password / temporary password has expired</p>
+
         ) : this.state.error === "UserNotFoundException" ? (
           <p>Incorrect username</p>
         ) : this.state.error === "An error has occurred" ? (

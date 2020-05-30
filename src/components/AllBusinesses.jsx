@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 import { Link } from "@reach/router";
+import LoadingIndicator from "./LoadingIndicator";
 
 class AllBusinesses extends Component {
   state = {
@@ -10,6 +11,7 @@ class AllBusinesses extends Component {
     activeSite: {},
     mapBoundaries: {},
     params: {},
+    isLoading: false,
   };
 
   handleInput = (event) => {
@@ -30,10 +32,11 @@ class AllBusinesses extends Component {
   handleFilter = (event) => {
     event.preventDefault();
     const { params } = this.state;
+    console.log(params, this.state.params, "<--- params, this.state.params");
     api
       .fetchBusinesses(params)
       .then(({ Items }) => {
-        this.setState({ businesses: Items });
+        this.setState({ businesses: Items, isLoading: false });
       })
       .catch((err) => {
         this.setState({ error: err.code });
@@ -60,11 +63,13 @@ class AllBusinesses extends Component {
   };
 
   componentDidMount = () => {
+    console.log("mounting");
     api
       .fetchBusinesses()
       .then(({ Items }) => {
         this.setState({
           businesses: Items,
+          isLoading: false,
           mapBoundaries: {
             west: this.refs.map.leafletElement.getBounds().getWest(),
             north: this.refs.map.leafletElement.getBounds().getNorth(),
@@ -94,10 +99,12 @@ class AllBusinesses extends Component {
         south: newBoundaries.getSouth(),
         east: newBoundaries.getEast(),
       },
+      isLoading: false,
     });
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingIndicator />;
     const { businesses, activeSite, mapBoundaries } = this.state;
     const viableBusinesses = businesses.filter(
       (business) =>

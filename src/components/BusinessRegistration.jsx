@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import BusinessRegCard from "./BusinessRegCard";
+import LoadingIndicator from "./LoadingIndicator";
+
 
 class BusinessRegistration extends Component {
   state = {
@@ -25,6 +26,7 @@ class BusinessRegistration extends Component {
     halal: "no",
     glutenFree: "no",
     cuisine: "",
+    isLoading: false,
   };
 
   handleInput = (event) => {
@@ -94,6 +96,9 @@ class BusinessRegistration extends Component {
   };
 
   render() {
+
+    if (this.state.isLoading) return <LoadingIndicator />;
+    console.log(this.state.hasRegistered, "<-- has registered in state");
     return (
       <main>
         {this.state.error && <p>An error has occurred, please try again.</p>}
