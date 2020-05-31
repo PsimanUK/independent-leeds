@@ -83,7 +83,8 @@ class BusinessPage extends Component {
     const { loggedInUser } = this.props;
     return (
       <section className="singleBusiness">
-        <h1>Business Name: {businessName}</h1>
+        <h1 className="businessCard__title">{businessName}</h1>
+        <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
         )}
@@ -98,6 +99,7 @@ class BusinessPage extends Component {
         >
           <TextField
             label="Business Name"
+            id="businessName"
             name="businessName"
             type="text"
             placeholder="update your business name..."
@@ -112,6 +114,10 @@ class BusinessPage extends Component {
             alt={`Logo for ${businessName}`}
             className="largePic"
           />
+          <br></br>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
+          )}
           <form
             className="businessPageElement"
             id="logoUrl"
@@ -130,19 +136,16 @@ class BusinessPage extends Component {
             />
             <Button type="Submit">Update</Button>
           </form>
-
         </>
+        <h2 className="businessCard__title">Type: </h2>
+        <h2>{businessType}</h2>
         <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("logoUrl")}>EDIT URL</Button>
-        )}
-        <h3>Type: {businessType}</h3>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
         )}
         <form
-          id="businessType"
           name="businessType"
+          id="businessType"
           onSubmit={this.submitUpdate}
           className="businessPageElement"
           hidden
@@ -164,13 +167,15 @@ class BusinessPage extends Component {
             Update
           </Button>
         </form>
-
-        <h3>Cuisine: {cuisine}</h3>
+        <h2 className="businessCard__title">Cuisine: </h2>
+        <h2>{cuisine}</h2>
+        <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
         )}
         <form
           name="cuisine"
+          id="cuisine"
           onSubmit={this.submitUpdate}
           className="businessPageElement"
           hidden
@@ -200,9 +205,8 @@ class BusinessPage extends Component {
             Update
           </Button>
         </form>
-
-
-        <h3> About {businessName}</h3>
+        <h2 className="businessCard__title">About:</h2>
+        <br></br>
         <p className="businessPageDescription">{about}</p>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("about")}>EDIT</Button>
@@ -226,8 +230,9 @@ class BusinessPage extends Component {
           ></TextField>
           <Button type="Submit">Update</Button>
         </form>
-        <h3>Latest News</h3>
+        <h2 className="businessCard__title">Latest News:</h2>
         <p className="businessPageDescription">{updates}</p>
+        <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("updates")}>EDIT</Button>
         )}
@@ -251,8 +256,11 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h3>Tables Currently Available</h3>
-        <p>{tables}</p>
+        <h2 className="businessCard__title">Tables Currently Available:</h2>
+        <strong>
+          <p className="tablesAvailable">{tables}</p>
+        </strong>
+        <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("tables")}>EDIT</Button>
         )}
@@ -274,8 +282,9 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h3 className>Menu</h3>
+        <h2 className="businessCard__title">Menu</h2>
         <img src={menu} alt="cafe menu" className="menu_image" />
+        <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
         )}
@@ -299,41 +308,21 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <SupportBusiness votes={votes} username={this.state.username} />
-        <h3>Contact Information:</h3>
+        <h2 className="businessCard__title">Contact Information:</h2>
         <section className="contactInformation">
-          <section className="businessEmail__card">
-            <h4>
-              Email:
-              <br />
-              {businessEmail}
-            </h4>
+          <section className="contactInfo__card">
+            <a className="businessCard__title">Phone Number:</a>
+            <br></br>
+            <u>
+              <a href="">{phoneNumber}</a>
+            </u>
 
-            <form
-              className="businessPageElement"
-              id="businessEmail"
-              name="businessEmail"
-              onSubmit={this.submitUpdate}
-              hidden
-            >
-              <TextField
-                label="Business Email"
-                name="businessEmail"
-                id="outlined-basic"
-                type="email"
-                placeholder="update your business email..."
-                value={this.state.keyToUpdate.businessEmail}
-                onChange={this.handleInput}
-              />
-              <Button type="Submit">Update</Button>
-            </form>
+            <br></br>
             {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("businessEmail")}>
+              <Button onClick={() => this.handleEdit("phoneNumber")}>
                 EDIT
               </Button>
             )}
-          </section>
-          <h3 className="contactInfoBlock">
-            Phone Number: <p>{phoneNumber}</p>
             <form
               className="businessPageElement"
               id="phoneNumber"
@@ -353,50 +342,85 @@ class BusinessPage extends Component {
               />
               <Button type="Submit">Update</Button>
             </form>
-          </h3>
-
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("phoneNumber")}>EDIT</Button>
-          )}
-
-          <h3 className="contactInfoBlock">
-            Post Code: <p>{postCode}</p>
-            <form
-              className="businessPageElement"
-              id="postCode"
-              name="postCode"
-              onSubmit={this.submitUpdate}
-              hidden
-            >
-              <TextField
-                label="Post Code"
-                name="postCode"
-                id="outlined-basic"
-                type="text"
-                pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
-                placeholder="update your post code..."
-                value={this.state.keyToUpdate.postCode}
-                onChange={this.handleInput}
-              />
-              <Button type="Submit">Update</Button>
-            </form>
-          </h3>
+          </section>
+          <a className="businessCard__title">Post Code:</a>
+          <br></br>
+          <u>
+            <a href="">{postCode}</a>
+          </u>
+          <br></br>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("postCode")}>EDIT</Button>
           )}
+          <form
+            className="businessPageElement"
+            id="postCode"
+            name="postCode"
+            onSubmit={this.submitUpdate}
+            hidden
+          >
+            <TextField
+              label="Post Code"
+              name="postCode"
+              id="outlined-basic"
+              type="text"
+              pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
+              placeholder="update your post code..."
+              value={this.state.keyToUpdate.postCode}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+        </section>
+        <section className="contactInfo__card">
+          <a className="businessCard__title">Email: </a>
+          <br />
+          <u>
+            {" "}
+            <a href="">{businessEmail}</a>
+          </u>
+          <br></br>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("businessEmail")}>
+              EDIT
+            </Button>
+          )}
+          <form
+            className="businessPageElement"
+            id="businessEmail"
+            name="businessEmail"
+            onSubmit={this.submitUpdate}
+            hidden
+          >
+            <TextField
+              label="Business Email"
+              name="businessEmail"
+              id="outlined-basic"
+              type="email"
+              placeholder="update your business email..."
+              value={this.state.keyToUpdate.businessEmail}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
         </section>
         <br></br>
         <PostComment
           username={this.props.username}
           addComment={this.addComment}
         />
+        <br></br>
         {this.state.changeNameOfButton === false ? (
           <div>
-            <Button onClick={this.handlesReadComments}>Show comments</Button>
+            <Button onClick={this.handlesReadComments} variant="contained">
+              Show comments
+            </Button>
           </div>
         ) : (
-            <Button onClick={this.handlesReadComments}>Hide comments</Button>
-          )}
+          <Button onClick={this.handlesReadComments} variant="contained">
+            Hide comments
+          </Button>
+        )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
@@ -494,13 +518,11 @@ class BusinessPage extends Component {
       });
   };
 
-  handleEdit = (elementId) => {
-    console.log(elementId, '<-- event on handleEdit')
-    console.log(document.getElementById(elementId).hasAttribute("hidden"), '<--getElementById')
-    if (document.getElementById(elementId).hasAttribute("hidden")) {
-      document.getElementById(elementId).removeAttribute("hidden");
+  handleEdit = (id) => {
+    if (document.getElementById(id).hasAttribute("hidden")) {
+      document.getElementById(id).removeAttribute("hidden");
     } else {
-      document.getElementById(elementId).setAttribute("hidden", true);
+      document.getElementById(id).setAttribute("hidden", true);
     }
   };
 

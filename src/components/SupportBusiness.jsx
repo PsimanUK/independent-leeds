@@ -14,7 +14,6 @@ class SupportBusiness extends Component {
           onClick={() => this.handlesVoteChange(1)}
           disabled={this.state.voteChange === 1}
           variant="contained"
-          className="businessPageButton"
         >
           Support Business
         </Button>
@@ -23,6 +22,9 @@ class SupportBusiness extends Component {
   }
   handlesVoteChange = (vote) => {
     const { username } = this.props;
+    alert(
+      `Thank you for supporting ${username}'s business during this difficult time.`
+    );
     api.supportBusinessVoter(username, vote);
 
     this.setState((currentState) => {

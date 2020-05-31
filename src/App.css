@@ -150,7 +150,7 @@ p {
 }
 
 .largePic {
-  max-height: 400px;
+  max-height: 300px;
 }
 
 .businessList {
@@ -174,6 +174,7 @@ p {
 .businessPageDescription {
   max-width: 600px;
   margin: auto;
+  font-size: 15pt;
 }
 
 .menu_image {
@@ -219,12 +220,13 @@ p {
 
 .contactInformation {
   margin: auto;
+  justify-content: space-around;
   text-align: center;
-  display: flex;
+  display: center;
   flex-wrap: wrap;
+  margin-left: 10px;
 }
 
-.contactInfoBlock {
-  margin: auto;
-  justify-content: space-between;
+.tablesAvailable {
+  font-size: 1.5em;
 }
