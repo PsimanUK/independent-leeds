@@ -5,7 +5,7 @@
 
 html {
   height: 100%;
-  background-image: url("./images/background-opaque.jpg");
+  background-image: url("./images/background.jpg");
   background-size: cover;
   height: 100%;
   background-attachment: fixed;
@@ -166,6 +166,19 @@ p {
   padding-left: 5em;
   padding-right: 5em;
   color: #2d080a;
+}
+
+.Map__card {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 580px;
+  background-color: rgba(219, 219, 219, 0.808);
+  border-radius: 10px;
+  border: solid #7b190a 2px;
+  box-shadow: 5px 10px 18px black;
 }
 
 .leaflet-container {
