@@ -11,12 +11,11 @@ class PostComment extends Component {
     const { body } = this.state;
     return (
       <div>
-        <form onSubmit={this.handlesCommentSubmission} className={"textInput"}>
+        <form onSubmit={this.handlesCommentSubmission}>
           <TextField
             id="outlined-basic"
             label="Add new comment"
             onChange={this.handlesInput}
-            className="input"
             name="body"
             type="text"
             value={body}

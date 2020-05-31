@@ -151,7 +151,7 @@ class BusinessRegistration extends Component {
             </FormGroup>
             <Button variant="contained" >Submit</Button>
           </FormControl>
-        </div >
+        </div>
     )
   }
         {

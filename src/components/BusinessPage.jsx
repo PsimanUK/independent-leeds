@@ -88,13 +88,13 @@ class BusinessPage extends Component {
           <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
         )}
         <form
-          className={"textInput"}
+          className="businessPageElement"
           noValidate
           autoComplete="off"
           id="businessName"
           name="businessName"
           onSubmit={this.submitUpdate}
-        // hidden
+          hidden
         >
           <TextField
             label="Business Name"
@@ -114,10 +114,11 @@ class BusinessPage extends Component {
             className="largePic"
           />
           <form
+            className="businessPageElement"
             id="logoUrl"
-            className={"textInput"}
             name="logoUrl"
-            onSubmit={this.submitUpdate} /*hidden*/
+            onSubmit={this.submitUpdate}
+            hidden
           >
             <TextField
               label="Logo URL"
@@ -135,14 +136,27 @@ class BusinessPage extends Component {
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
         )}
-        <form name="businessType" onSubmit={this.submitUpdate}>
-          <Select id="businessType" label="Business Type" select variant="filled" name="businessType" onChange={this.handleInput}>
+        <form
+          name="businessType"
+          onSubmit={this.submitUpdate}
+          className="businessPageElement"
+        >
+          <Select
+            id="businessType"
+            label="Business Type"
+            select
+            variant="filled"
+            name="businessType"
+            onChange={this.handleInput}
+          >
             <MenuItem value="Restaurant">Restaurant</MenuItem>
             <MenuItem value="Pub">Pub</MenuItem>
             <MenuItem value="Cafe">Cafe</MenuItem>
             <MenuItem value="Takeaway">Takeaway</MenuItem>
           </Select>
-          <Button type="Submit" id="businessType">Update</Button>
+          <Button type="Submit" id="businessType">
+            Update
+          </Button>
         </form>
 
         <h3>Cuisine: {cuisine}</h3>
@@ -151,9 +165,18 @@ class BusinessPage extends Component {
         )}
         <form
           name="cuisine"
-          onSubmit={this.submitUpdate} /*hidden*/
+          onSubmit={this.submitUpdate}
+          className="businessPageElement"
+          hidden
         >
-          <Select id="cuisine" label="Cuisine" select variant="filled" name="cuisine" onChange={this.handleInput}>
+          <Select
+            id="cuisine"
+            label="Cuisine"
+            select
+            variant="filled"
+            name="cuisine"
+            onChange={this.handleInput}
+          >
             <MenuItem value="Chinese">Chinese</MenuItem>
             <MenuItem value="Thai">Thai</MenuItem>
             <MenuItem value="Indian">Indian</MenuItem>
@@ -167,7 +190,9 @@ class BusinessPage extends Component {
             <MenuItem value="Mexican">Mexican</MenuItem>
             <MenuItem value="Other">Other</MenuItem>
           </Select>
-          <Button type="Submit" id="cuisine">Update</Button>
+          <Button type="Submit" id="cuisine">
+            Update
+          </Button>
         </form>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
@@ -180,10 +205,10 @@ class BusinessPage extends Component {
         )}
         <form
           id="about"
-          className={"textInput"}
           name="about"
           onSubmit={this.submitUpdate}
           hidden
+          className="businessPageElement"
         >
           <TextField
             label="About"
@@ -203,10 +228,11 @@ class BusinessPage extends Component {
           <Button onClick={() => this.handleEdit("updates")}>EDIT</Button>
         )}
         <form
+          className="businessPageElement"
           id="updates"
-          className={"textInput"}
           name="updates"
-          onSubmit={this.submitUpdate} /*hidden*/
+          onSubmit={this.submitUpdate}
+          hidden
         >
           <TextField
             label="Updates"
@@ -228,9 +254,10 @@ class BusinessPage extends Component {
         )}
         <form
           id="tables"
-          className={"textInput"}
           name="tables"
-          onSubmit={this.submitUpdate} /*hidden*/
+          onSubmit={this.submitUpdate}
+          className="businessPageElement"
+          hidden
         >
           <TextField
             label="Tables"
@@ -251,9 +278,10 @@ class BusinessPage extends Component {
         <br></br>
         <form
           id="menu"
-          className={"textInput"}
           name="menu"
-          onSubmit={this.submitUpdate} /*hidden*/
+          onSubmit={this.submitUpdate}
+          className="businessPageElement"
+          hidden
         >
           <TextField
             label="Menu URL"
@@ -277,11 +305,11 @@ class BusinessPage extends Component {
             </Button>
           )}
           <form
+            className="businessPageElement"
             id="businessEmail"
-            className={"textInput"}
             name="businessEmail"
             onSubmit={this.submitUpdate}
-          // hidden
+            hidden
           >
             <TextField
               label="Business Email"
@@ -300,11 +328,11 @@ class BusinessPage extends Component {
             <Button onClick={() => this.handleEdit("phoneNumber")}>EDIT</Button>
           )}
           <form
+            className="businessPageElement"
             id="phoneNumber"
-            className={"textInput"}
             name="phoneNumber"
             onSubmit={this.submitUpdate}
-          // hidden
+            hidden
           >
             <TextField
               label="Phone Number"
@@ -324,11 +352,11 @@ class BusinessPage extends Component {
             <Button onClick={() => this.handleEdit("postCode")}>EDIT</Button>
           )}
           <form
+            className="businessPageElement"
             id="postCode"
-            className={"textInput"}
             name="postCode"
             onSubmit={this.submitUpdate}
-          // hidden
+            hidden
           >
             <TextField
               label="Post Code"
@@ -353,8 +381,8 @@ class BusinessPage extends Component {
             <Button onClick={this.handlesReadComments}>Show comments</Button>
           </div>
         ) : (
-            <Button onClick={this.handlesReadComments}>Hide comments</Button>
-          )}
+          <Button onClick={this.handlesReadComments}>Hide comments</Button>
+        )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>

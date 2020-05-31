@@ -82,7 +82,7 @@ textarea {
 }
 
 select {
-  width: 10em;
+  h: 10em;
   border: 1.2px solid #2d080a;
   color: #2d080a;
   border-radius: 6px;
@@ -192,4 +192,13 @@ p {
   border-radius: 50px;
   background-color: rgba(230, 230, 230, 0.8);
   box-shadow: 2px 2px 5px black;
+}
+
+.businessPageElement {
+  max-width: 250px;
+  margin: auto;
+  border-bottom: 50px;
+  background-color: rgba(158, 17, 17, 0.3);
+  box-shadow: 2px 2px 5px black;
+  margin-bottom: 10px;
 }
