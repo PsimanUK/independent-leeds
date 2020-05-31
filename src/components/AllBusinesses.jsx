@@ -119,144 +119,145 @@ class AllBusinesses extends Component {
     return (
       <main>
         {this.state.error && <p>An error has occurred - please try again</p>}
-        <Map
-          id="map"
-          center={[53.796, -1.55]}
-          zoom={11}
-          minZoom={11}
-          ref="map"
-          onzoomend={() => this.changeBoundaries()}
-          onmoveend={() => this.changeBoundaries()}
-          className="Map"
-        >
-          {viableBusinesses.map((business) => {
-            return (
-              <div key={business.businessName}>
-                <Marker
-                  position={[business.latitude, business.longitude]}
-                  className="marker"
-                  onClick={() => this.setActiveSite(business)}
-                />
-                {activeSite.businessName === business.businessName && (
-                  <Popup
-                    position={[business.latitude + 0.003, business.longitude]}
-                  >
-                    <h2>
-                      <Link to={`/${business.username}`}>
-                        {business.businessName}
-                      </Link>
-                    </h2>
-                  </Popup>
-                )}
-              </div>
-            );
-          })}
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-        </Map>
-        <form>
-          <select
-            name="select"
-            onChange={this.handleInput}
-            ref={"cuisine"}
-            className="cuisine"
+        <section className="Map__card" >
+          <Map
+            id="map"
+            center={[53.796, -1.55]}
+            zoom={11}
+            minZoom={11}
+            ref="map"
+            onzoomend={() => this.changeBoundaries()}
+            onmoveend={() => this.changeBoundaries()}
+            className="Map"
           >
-            <option value="">Cuisine</option>
-            <option value="american" name="american">
-              American
+            {viableBusinesses.map((business) => {
+              return (
+                <div key={business.businessName}>
+                  <Marker
+                    position={[business.latitude, business.longitude]}
+                    className="marker"
+                    onClick={() => this.setActiveSite(business)}
+                  />
+                  {activeSite.businessName === business.businessName && (
+                    <Popup
+                      position={[business.latitude + 0.003, business.longitude]}
+                    >
+                      <h2>
+                        <Link to={`/${business.username}`}>
+                          {business.businessName}
+                        </Link>
+                      </h2>
+                    </Popup>
+                  )}
+                </div>
+              );
+            })}
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+          </Map>
+          <form className="form__filter" >
+            <select
+              name="select"
+              onChange={this.handleInput}
+              ref={"cuisine"}
+              className="cuisine"
+            >
+              <option value="">Cuisine</option>
+              <option value="american" name="american">
+                American
             </option>
-            <option value="british" name="british">
-              British
+              <option value="british" name="british">
+                British
             </option>
-            <option value="chinese" name="chinese">
-              Chinese
+              <option value="chinese" name="chinese">
+                Chinese
             </option>
-            <option value="french" name="french">
-              French
+              <option value="french" name="french">
+                French
             </option>
-            <option value="greek" name="greek">
-              Greek
+              <option value="greek" name="greek">
+                Greek
             </option>
-            <option value="indian" name="indian">
-              Indian
+              <option value="indian" name="indian">
+                Indian
             </option>
-            <option value="italian" name="italian">
-              Italian
+              <option value="italian" name="italian">
+                Italian
             </option>
-            <option value="japanese" name="japanese">
-              Japanese
+              <option value="japanese" name="japanese">
+                Japanese
             </option>
-            <option value="mexican" name="mexican">
-              Mexican
+              <option value="mexican" name="mexican">
+                Mexican
             </option>
-            <option value="other" name="other">
-              Other
+              <option value="other" name="other">
+                Other
             </option>
-            <option value="spanish" name="spanish">
-              Spanish
+              <option value="spanish" name="spanish">
+                Spanish
             </option>
-            <option value="thai" name="thai">
-              Thai
+              <option value="thai" name="thai">
+                Thai
             </option>
-          </select>
-          <section className="checkboxes">
-            <div className="checkbox">
-              <label htmlFor="vegetarian">Vegetarian</label>
-              <input
-                type="checkbox"
-                id="vegetarian"
-                name="vegetarian"
-                value="yes"
-                onChange={this.handleInput}
-                ref={"vegetarian"}
-              />
-            </div>
-            <div className="checkbox">
-              <label htmlFor="vegan">Vegan</label>
-              <input
-                type="checkbox"
-                id="vegan"
-                name="vegan"
-                value="yes"
-                onChange={this.handleInput}
-                ref={"vegan"}
-              />
-            </div>
-            <div className="checkbox">
-              <label htmlFor="glutenFree">Gluten-free</label>
-              <input
-                type="checkbox"
-                id="glutenFree"
-                name="glutenFree"
-                value="yes"
-                onChange={this.handleInput}
-                ref={"glutenFree"}
-              />
-            </div>
-            <div className="checkbox">
-              <label htmlFor="halal">Halal</label>
-              <input
-                type="checkbox"
-                id="halal"
-                name="halal"
-                value="yes"
-                onChange={this.handleInput}
-                ref={"halal"}
-              />
-            </div>
-          </section>
-          <div className="submitButtons">
-            <button className="submitButton" onClick={this.handleFilter}>
-              Filter
+            </select>
+            <section className="checkboxes">
+              <div className="checkbox">
+                <label htmlFor="vegetarian">Vegetarian</label>
+                <input
+                  type="checkbox"
+                  id="vegetarian"
+                  name="vegetarian"
+                  value="yes"
+                  onChange={this.handleInput}
+                  ref={"vegetarian"}
+                />
+              </div>
+              <div className="checkbox">
+                <label htmlFor="vegan">Vegan</label>
+                <input
+                  type="checkbox"
+                  id="vegan"
+                  name="vegan"
+                  value="yes"
+                  onChange={this.handleInput}
+                  ref={"vegan"}
+                />
+              </div>
+              <div className="checkbox">
+                <label htmlFor="glutenFree">Gluten-free</label>
+                <input
+                  type="checkbox"
+                  id="glutenFree"
+                  name="glutenFree"
+                  value="yes"
+                  onChange={this.handleInput}
+                  ref={"glutenFree"}
+                />
+              </div>
+              <div className="checkbox">
+                <label htmlFor="halal">Halal</label>
+                <input
+                  type="checkbox"
+                  id="halal"
+                  name="halal"
+                  value="yes"
+                  onChange={this.handleInput}
+                  ref={"halal"}
+                />
+              </div>
+            </section>
+            <div className="submitButtons">
+              <button className="submitButton" onClick={this.handleFilter}>
+                Filter
             </button>
-            <button className="submitButton" onClick={this.handleUnFilter}>
-              Show all
+              <button className="submitButton" onClick={this.handleUnFilter}>
+                Show all
             </button>
-          </div>
-        </form>
-
+            </div>
+          </form>
+        </section>
         <BusinessList
           businesses={viableBusinesses}
           mapBoundaries={mapBoundaries}

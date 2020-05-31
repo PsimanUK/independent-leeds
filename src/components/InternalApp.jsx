@@ -12,13 +12,13 @@ class InternalApp extends Component {
     if (this.props.authState === "signedIn") {
       return (
         <main>
+
           <Router primary={false}>
             <AllBusinesses path="/" />
             <BusinessRegistration
               path="/register-business"
               username={username}
             />
-            {/* <BusinessRegCard path="/register-business" /> */}
             <BusinessPage path="/:username" loggedInUser={username} />
             <VerifyBusinesses path="/verify" username={username} />
           </Router>

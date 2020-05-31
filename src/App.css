@@ -5,7 +5,7 @@
 
 html {
   height: 100%;
-  background-image: url("./images/background-opaque.jpg");
+  background-image: url("./images/background.jpg");
   background-size: cover;
   height: 100%;
   background-attachment: fixed;
@@ -63,14 +63,27 @@ html {
 }
 
 .NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-block-start: 0.5em;
+  background: linear-gradient(45deg, #963411 30%, #E0A956 90%);
+}
+
+.NavBar__title {
+  margin-left: 2em;
+  color: white;
 }
 
 .NavBar__item {
   padding-right: 1em;
-  padding-left: 1em;
-  color: #2d080a;
+  color: white;
   text-decoration: none;
+}
+
+.menu {
+  display: none;
+  color: white;
 }
 
 .textInput,
@@ -168,16 +181,32 @@ p {
   color: #2d080a;
 }
 
-.leaflet-container {
-  width: 600px;
-  height: 450px;
+.Map__card {
+  padding-top: 20px;
+  margin: auto;
+  max-width: 780px;
+  max-height: 620px;
+  background-color: rgba(219, 219, 219, 0.808);
+  border-radius: 10px;
+  border: solid #7b190a 2px;
+  box-shadow: 5px 10px 18px black;
 }
 
+/* .leaflet-container {
+  max-width: 700px;
+  height: 500px;
+  margin-left: 20px;
+  margin-right: 20px;
+} */
+
 .Map {
+  height: 500px;
+  margin-left: 20px;
+  margin-right: 20px;
   border: 2px solid #7b190a;
   border-width: 1px;
   border-radius: 6px;
-  margin: auto;
+  /* margin: auto; */
   box-shadow: 1px 1px 2px #2d080a;
 }
 
@@ -221,4 +250,60 @@ p {
   border-radius: 6px;
   margin: 2px;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 700px) {
+  .Map {
+    max-width: 600px;
+    height: 300px;
+  }
+
+  .Map__card {
+    max-width: 650px;
+    height: auto;
+  }
+
+  .form__filter {
+    font-size: smaller;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .Map {
+    max-width: 380px;
+    height: 250px;
+  }
+
+  .Map__card {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 2px;
+    max-width: 380px;
+    height: auto;
+  }
+
+  .form__filter {
+    font-size: smaller;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2em;
+  }
+
+  .NavBar__item {
+    display: none;
+  }
+
 }
