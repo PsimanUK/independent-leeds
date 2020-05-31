@@ -63,14 +63,27 @@ html {
 }
 
 .NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-block-start: 0.5em;
+  background: linear-gradient(45deg, #963411 30%, #E0A956 90%);
+}
+
+.NavBar__title {
+  margin-left: 2em;
+  color: white;
 }
 
 .NavBar__item {
   padding-right: 1em;
-  padding-left: 1em;
-  color: #2d080a;
+  color: white;
   text-decoration: none;
+}
+
+.menu {
+  display: none;
+  color: white;
 }
 
 .textInput,
@@ -281,6 +294,16 @@ p {
 
   .title {
     font-size: 1em;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2em;
+  }
+
+  .NavBar__item {
+    display: none;
   }
 
 }
