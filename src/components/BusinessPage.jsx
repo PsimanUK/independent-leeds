@@ -98,7 +98,6 @@ class BusinessPage extends Component {
         >
           <TextField
             label="Business Name"
-            id="businessName"
             name="businessName"
             type="text"
             placeholder="update your business name..."
@@ -131,15 +130,22 @@ class BusinessPage extends Component {
             />
             <Button type="Submit">Update</Button>
           </form>
+
         </>
+        <br></br>
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("logoUrl")}>EDIT URL</Button>
+        )}
         <h3>Type: {businessType}</h3>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
         )}
         <form
+          id="businessType"
           name="businessType"
           onSubmit={this.submitUpdate}
           className="businessPageElement"
+          hidden
         >
           <Select
             id="businessType"
@@ -194,9 +200,7 @@ class BusinessPage extends Component {
             Update
           </Button>
         </form>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
-        )}
+
 
         <h3> About {businessName}</h3>
         <p className="businessPageDescription">{about}</p>
@@ -391,8 +395,8 @@ class BusinessPage extends Component {
             <Button onClick={this.handlesReadComments}>Show comments</Button>
           </div>
         ) : (
-          <Button onClick={this.handlesReadComments}>Hide comments</Button>
-        )}
+            <Button onClick={this.handlesReadComments}>Hide comments</Button>
+          )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
@@ -490,11 +494,13 @@ class BusinessPage extends Component {
       });
   };
 
-  handleEdit = (id) => {
-    if (document.getElementById(id).hasAttribute("hidden")) {
-      document.getElementById(id).removeAttribute("hidden");
+  handleEdit = (elementId) => {
+    console.log(elementId, '<-- event on handleEdit')
+    console.log(document.getElementById(elementId).hasAttribute("hidden"), '<--getElementById')
+    if (document.getElementById(elementId).hasAttribute("hidden")) {
+      document.getElementById(elementId).removeAttribute("hidden");
     } else {
-      document.getElementById(id).setAttribute("hidden", true);
+      document.getElementById(elementId).setAttribute("hidden", true);
     }
   };
 
