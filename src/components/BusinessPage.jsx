@@ -295,82 +295,92 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <SupportBusiness votes={votes} username={this.state.username} />
-        <div>
-          <h3>Contact Information:</h3>
-          <h4>Email</h4>
-          <p>{businessEmail}</p>
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("businessEmail")}>
-              EDIT
-            </Button>
-          )}
-          <form
-            className="businessPageElement"
-            id="businessEmail"
-            name="businessEmail"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              label="Business Email"
+        <h3>Contact Information:</h3>
+        <section className="contactInformation">
+          <section className="businessEmail__card">
+            <h4>
+              Email:
+              <br />
+              {businessEmail}
+            </h4>
+
+            <form
+              className="businessPageElement"
+              id="businessEmail"
               name="businessEmail"
-              id="outlined-basic"
-              type="email"
-              placeholder="update your business email..."
-              value={this.state.keyToUpdate.businessEmail}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
-          <h3>Phone Number</h3>
-          <p>{phoneNumber}</p>
+              onSubmit={this.submitUpdate}
+              hidden
+            >
+              <TextField
+                label="Business Email"
+                name="businessEmail"
+                id="outlined-basic"
+                type="email"
+                placeholder="update your business email..."
+                value={this.state.keyToUpdate.businessEmail}
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("businessEmail")}>
+                EDIT
+              </Button>
+            )}
+          </section>
+          <h3 className="contactInfoBlock">
+            Phone Number: <p>{phoneNumber}</p>
+            <form
+              className="businessPageElement"
+              id="phoneNumber"
+              name="phoneNumber"
+              onSubmit={this.submitUpdate}
+              hidden
+            >
+              <TextField
+                label="Phone Number"
+                type="text"
+                id="outlined-basic"
+                name="phoneNumber"
+                pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
+                placeholder="update your business phone number..."
+                value={this.state.keyToUpdate.phoneNumber}
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+          </h3>
+
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("phoneNumber")}>EDIT</Button>
           )}
-          <form
-            className="businessPageElement"
-            id="phoneNumber"
-            name="phoneNumber"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              label="Phone Number"
-              type="text"
-              id="outlined-basic"
-              name="phoneNumber"
-              pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
-              placeholder="update your business phone number..."
-              value={this.state.keyToUpdate.phoneNumber}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
-          <h3>Post Code</h3>
-          <p>{postCode}</p>
+
+          <h3 className="contactInfoBlock">
+            Post Code: <p>{postCode}</p>
+            <form
+              className="businessPageElement"
+              id="postCode"
+              name="postCode"
+              onSubmit={this.submitUpdate}
+              hidden
+            >
+              <TextField
+                label="Post Code"
+                name="postCode"
+                id="outlined-basic"
+                type="text"
+                pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
+                placeholder="update your post code..."
+                value={this.state.keyToUpdate.postCode}
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+          </h3>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("postCode")}>EDIT</Button>
           )}
-          <form
-            className="businessPageElement"
-            id="postCode"
-            name="postCode"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              label="Post Code"
-              name="postCode"
-              id="outlined-basic"
-              type="text"
-              pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
-              placeholder="update your post code..."
-              value={this.state.keyToUpdate.postCode}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
-        </div>
+        </section>
         <br></br>
         <PostComment
           username={this.props.username}

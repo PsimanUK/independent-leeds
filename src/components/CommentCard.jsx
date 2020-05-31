@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
-  console.log(commentId)
+  console.log(commentId);
 
   const { deleteComment } = props;
 
@@ -14,8 +14,10 @@ const CommentCard = (props) => {
 
   // console.log(props.username);
   return (
-    <section>
-      <h3>{username} posted this at {createdAt}</h3>
+    <section className="commentElements">
+      <h3>
+        {username} posted this at {createdAt}
+      </h3>
       <p>{body}</p>
       <div>
         <CommentVoter commentId={commentId} username={username} votes={votes} />

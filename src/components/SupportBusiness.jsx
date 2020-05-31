@@ -9,14 +9,15 @@ class SupportBusiness extends Component {
   render() {
     return (
       <div>
+        <h3>Votes: {this.props.votes + this.state.voteChange}</h3>
         <Button
           onClick={() => this.handlesVoteChange(1)}
           disabled={this.state.voteChange === 1}
           variant="contained"
+          className="businessPageButton"
         >
           Support Business
         </Button>
-        <p>Votes: {this.props.votes + this.state.voteChange}</p>
       </div>
     );
   }

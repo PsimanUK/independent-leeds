@@ -22,7 +22,9 @@ class PostComment extends Component {
             variant="filled"
             required
           />
-          <Button type="Submit">Submit a new comment</Button>
+          <Button type="Submit" variant="contained">
+            Submit a new comment
+          </Button>
         </form>
       </div>
     );
