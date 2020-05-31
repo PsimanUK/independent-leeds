@@ -4,27 +4,26 @@ import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
+  console.log(commentId)
 
   const { deleteComment } = props;
 
   const handleClick = (event) => {
-    console.log(event.target.value);
-    deleteComment(event.target.value);
+    deleteComment(event.currentTarget.value);
   };
 
   // console.log(props.username);
   return (
     <section>
-      <h3>User: {username}</h3>
-      <h4>Date: {createdAt}</h4>
-      <p>Body: {body}</p>
+      <h3>{username} posted this at {createdAt}</h3>
+      <p>{body}</p>
       <div>
         <CommentVoter commentId={commentId} username={username} votes={votes} />
       </div>
       {username === props.username ? (
-        <button onClick={handleClick} value={commentId} variant="contained">
+        <Button onClick={handleClick} value={commentId} variant="contained">
           Delete comment
-        </button>
+        </Button>
       ) : null}
     </section>
   );

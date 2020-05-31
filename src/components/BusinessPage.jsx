@@ -94,12 +94,11 @@ class BusinessPage extends Component {
           id="businessName"
           name="businessName"
           onSubmit={this.submitUpdate}
-          // hidden
+        // hidden
         >
           <TextField
             label="Business Name"
             id="businessName"
-            variant="outlined"
             name="businessName"
             type="text"
             placeholder="update your business name..."
@@ -120,7 +119,7 @@ class BusinessPage extends Component {
             name="logoUrl"
             onSubmit={this.submitUpdate} /*hidden*/
           >
-            <input
+            <TextField
               label="Logo URL"
               name="logoUrl"
               id="outlined-basic"
@@ -136,20 +135,14 @@ class BusinessPage extends Component {
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
         )}
-        <form
-          id="businessType"
-          className={"textInput"}
-          name="businessType"
-          onSubmit={this.submitUpdate}
-          // hidden
-        >
-          <select id="businessType" name="businessType">
-            <option value="restaurant">Restaurant</option>
-            <option value="pub">Pub</option>
-            <option value="cafe">Cafe</option>
-            <option value="takeaway">Takeaway</option>
-          </select>
-          <Button type="Submit">Update</Button>
+        <form name="businessType" onSubmit={this.submitUpdate}>
+          <Select id="businessType" label="Business Type" select variant="filled" name="businessType" onChange={this.handleInput}>
+            <MenuItem value="Restaurant">Restaurant</MenuItem>
+            <MenuItem value="Pub">Pub</MenuItem>
+            <MenuItem value="Cafe">Cafe</MenuItem>
+            <MenuItem value="Takeaway">Takeaway</MenuItem>
+          </Select>
+          <Button type="Submit" id="businessType">Update</Button>
         </form>
 
         <h3>Cuisine: {cuisine}</h3>
@@ -157,26 +150,24 @@ class BusinessPage extends Component {
           <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
         )}
         <form
-          id="cuisine"
-          className={"textInput"}
           name="cuisine"
           onSubmit={this.submitUpdate} /*hidden*/
         >
-          <select id="cuisine" name="cuisine">
-            <option value="Chinese">Chinese</option>
-            <option value="Thai">Thai</option>
-            <option value="Indian">Indian</option>
-            <option value="British">British</option>
-            <option value="Italian">Italian</option>
-            <option value="Spanish">Spanish</option>
-            <option value="American">American</option>
-            <option value="Greek">Greek</option>
-            <option value="French">French</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Other">Other</option>
-          </select>
-          <Button type="Submit">Update</Button>
+          <Select id="cuisine" label="Cuisine" select variant="filled" name="cuisine" onChange={this.handleInput}>
+            <MenuItem value="Chinese">Chinese</MenuItem>
+            <MenuItem value="Thai">Thai</MenuItem>
+            <MenuItem value="Indian">Indian</MenuItem>
+            <MenuItem value="British">British</MenuItem>
+            <MenuItem value="Italian">Italian</MenuItem>
+            <MenuItem value="Spanish">Spanish</MenuItem>
+            <MenuItem value="American">American</MenuItem>
+            <MenuItem value="Greek">Greek</MenuItem>
+            <MenuItem value="French">French</MenuItem>
+            <MenuItem value="Japanese">Japanese</MenuItem>
+            <MenuItem value="Mexican">Mexican</MenuItem>
+            <MenuItem value="Other">Other</MenuItem>
+          </Select>
+          <Button type="Submit" id="cuisine">Update</Button>
         </form>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
@@ -194,7 +185,8 @@ class BusinessPage extends Component {
           onSubmit={this.submitUpdate}
           hidden
         >
-          <input
+          <TextField
+            label="About"
             multiline
             rows={2}
             rowsMax={20}
@@ -202,7 +194,7 @@ class BusinessPage extends Component {
             placeholder="update your business information..."
             value={this.state.keyToUpdate.about}
             onChange={this.handleInput}
-          ></input>
+          ></TextField>
           <Button type="Submit">Update</Button>
         </form>
         <h3>Latest News</h3>
@@ -216,7 +208,8 @@ class BusinessPage extends Component {
           name="updates"
           onSubmit={this.submitUpdate} /*hidden*/
         >
-          <input
+          <TextField
+            label="Updates"
             multiline
             rows={2}
             rowsMax={20}
@@ -239,7 +232,8 @@ class BusinessPage extends Component {
           name="tables"
           onSubmit={this.submitUpdate} /*hidden*/
         >
-          <input
+          <TextField
+            label="Tables"
             name="tables"
             id="outlined-basic"
             type="text"
@@ -261,7 +255,8 @@ class BusinessPage extends Component {
           name="menu"
           onSubmit={this.submitUpdate} /*hidden*/
         >
-          <input
+          <TextField
+            label="Menu URL"
             name="menu"
             id="outlined-basic"
             type="url"
@@ -286,9 +281,10 @@ class BusinessPage extends Component {
             className={"textInput"}
             name="businessEmail"
             onSubmit={this.submitUpdate}
-            // hidden
+          // hidden
           >
-            <input
+            <TextField
+              label="Business Email"
               name="businessEmail"
               id="outlined-basic"
               type="email"
@@ -308,9 +304,10 @@ class BusinessPage extends Component {
             className={"textInput"}
             name="phoneNumber"
             onSubmit={this.submitUpdate}
-            // hidden
+          // hidden
           >
-            <input
+            <TextField
+              label="Phone Number"
               type="text"
               id="outlined-basic"
               name="phoneNumber"
@@ -331,9 +328,10 @@ class BusinessPage extends Component {
             className={"textInput"}
             name="postCode"
             onSubmit={this.submitUpdate}
-            // hidden
+          // hidden
           >
-            <input
+            <TextField
+              label="Post Code"
               name="postCode"
               id="outlined-basic"
               type="text"
@@ -355,8 +353,8 @@ class BusinessPage extends Component {
             <Button onClick={this.handlesReadComments}>Show comments</Button>
           </div>
         ) : (
-          <Button onClick={this.handlesReadComments}>Hide comments</Button>
-        )}
+            <Button onClick={this.handlesReadComments}>Hide comments</Button>
+          )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
@@ -438,15 +436,14 @@ class BusinessPage extends Component {
   };
 
   submitUpdate = (event) => {
-    console.log(event);
     event.preventDefault();
     const { name } = event.target;
     const { loggedInUser } = this.props;
     let value = event.target.children[0].value;
     let newValue = this.state.keyToUpdate[name];
-    this.setState({ [name]: value });
+    this.setState({ [name]: value || newValue });
     api
-      .updateBusiness(loggedInUser, { key: name, value: newValue })
+      .updateBusiness(loggedInUser, { key: name, value: value || newValue })
       .then(() => {
         this.setState({ keyToUpdate: { [name]: "" } });
       })
@@ -464,7 +461,9 @@ class BusinessPage extends Component {
   };
 
   handleInput = (event) => {
-    console.log(event);
+    console.log(event.target.value);
+    console.log(event.target.name);
+
     const { value, name } = event.target;
     this.setState({ keyToUpdate: { [name]: value } });
   };
