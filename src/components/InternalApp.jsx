@@ -18,7 +18,6 @@ class InternalApp extends Component {
               path="/register-business"
               username={username}
             />
-            {/* <BusinessRegCard path="/register-business" /> */}
             <BusinessPage path="/:username" loggedInUser={username} />
             <VerifyBusinesses path="/verify" username={username} />
           </Router>
