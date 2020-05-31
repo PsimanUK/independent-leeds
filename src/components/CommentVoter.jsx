@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import { Button } from "@material-ui/core";
 
 class CommentVoter extends Component {
   state = {
@@ -8,19 +9,23 @@ class CommentVoter extends Component {
   render() {
     return (
       <div>
-        <p>Votes: {this.props.votes + this.state.voteChange}</p>
-        <button
-          onClick={() => this.handlesVoteChange(1)}
-          disabled={this.state.voteChange === 1}
-        >
-          Increase vote
-        </button>
-        <button
-          onClick={() => this.handlesVoteChange(-1)}
-          disabled={this.state.voteChange === -1}
-        >
-          Decrease vote
-        </button>
+        <h3>
+          <Button
+            onClick={() => this.handlesVoteChange(1)}
+            disabled={this.state.voteChange === 1}
+            variant="contained"
+          >
+            Vote up
+          </Button>
+          {this.props.votes + this.state.voteChange}
+          <Button
+            onClick={() => this.handlesVoteChange(-1)}
+            disabled={this.state.voteChange === -1}
+            variant="contained"
+          >
+            Vote down
+          </Button>
+        </h3>
       </div>
     );
   }

@@ -6,6 +6,15 @@ import PostComment from "./PostComment";
 import axios from "axios";
 import SupportBusiness from "./SupportBusiness";
 
+import {
+  TextField,
+  FormControl,
+  MenuItem,
+  Button,
+  Select,
+  Input,
+} from "@material-ui/core";
+
 class BusinessPage extends Component {
   state = {
     username: "",
@@ -73,35 +82,66 @@ class BusinessPage extends Component {
     } = this.state;
     const { loggedInUser } = this.props;
     return (
-      <section>
-        <h2>{businessName}</h2>
+      <section className="singleBusiness">
+        <h1>Business Name: {businessName}</h1>
         {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("businessName")}>EDIT</button>
+          <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
         )}
         <form
+          className={"textInput"}
+          noValidate
+          autoComplete="off"
           id="businessName"
           name="businessName"
           onSubmit={this.submitUpdate}
-          hidden
+          // hidden
         >
-          <input
+          <TextField
+            label="Business Name"
+            id="businessName"
+            variant="outlined"
             name="businessName"
             type="text"
             placeholder="update your business name..."
             value={this.state.keyToUpdate.businessName}
             onChange={this.handleInput}
           />
-          <button>Update</button>
+          <Button type="Submit">Update</Button>
         </form>
-        <p>{businessType}</p>
+        <>
+          <img
+            src={logoUrl}
+            alt={`Logo for ${businessName}`}
+            className="largePic"
+          />
+          <form
+            id="logoUrl"
+            className={"textInput"}
+            name="logoUrl"
+            onSubmit={this.submitUpdate} /*hidden*/
+          >
+            <input
+              label="Logo URL"
+              name="logoUrl"
+              id="outlined-basic"
+              type="url"
+              placeholder="input your new logo URL..."
+              value={this.state.keyToUpdate.logoUrl}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+        </>
+        <h3>Type: {businessType}</h3>
         {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("businessType")}>EDIT</button>
+          <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
         )}
         <form
           id="businessType"
+          className={"textInput"}
           name="businessType"
           onSubmit={this.submitUpdate}
-          hidden
+          // hidden
         >
           <select id="businessType" name="businessType">
             <option value="restaurant">Restaurant</option>
@@ -109,139 +149,19 @@ class BusinessPage extends Component {
             <option value="cafe">Cafe</option>
             <option value="takeaway">Takeaway</option>
           </select>
-          <button>Update</button>
+          <Button type="Submit">Update</Button>
         </form>
-        <img
-          src={logoUrl}
-          alt={`Logo for ${businessName}`}
-          className="largePic"
-        />
+
+        <h3>Cuisine: {cuisine}</h3>
         {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("logoUrl")}>EDIT</button>
-        )}
-        <form id="logoUrl" name="logoUrl" onSubmit={this.submitUpdate} hidden>
-          <input
-            name="logoUrl"
-            type="url"
-            placeholder="input your new logo URL..."
-            value={this.state.keyToUpdate.logoUrl}
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>{about}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("about")}>EDIT</button>
-        )}
-        <form id="about" name="about" onSubmit={this.submitUpdate} hidden>
-          <textarea
-            name="about"
-            placeholder="update your business information..."
-            value={this.state.keyToUpdate.about}
-            onChange={this.handleInput}
-          ></textarea>
-          <button>Update</button>
-        </form>
-        <p>Latest News: {updates}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("updates")}>EDIT</button>
-        )}
-        <form id="updates" name="updates" onSubmit={this.submitUpdate} hidden>
-          <textarea
-            name="updates"
-            placeholder="update the latest news for your business..."
-            value={this.state.keyToUpdate.updates}
-            onChange={this.handleInput}
-          ></textarea>
-          <button>Update</button>
-        </form>
-        <img src={menu} alt="cafe menu" className="menu_image" />
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("menu")}>EDIT</button>
-        )}
-        <form id="menu" name="menu" onSubmit={this.submitUpdate} hidden>
-          <input
-            name="menu"
-            type="url"
-            placeholder="input your the URL for your new menu..."
-            value={this.state.keyToUpdate.menu}
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>Email: {businessEmail}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("businessEmail")}>EDIT</button>
+          <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
         )}
         <form
-          id="businessEmail"
-          name="businessEmail"
-          onSubmit={this.submitUpdate}
-          hidden
+          id="cuisine"
+          className={"textInput"}
+          name="cuisine"
+          onSubmit={this.submitUpdate} /*hidden*/
         >
-          <input
-            name="businessEmail"
-            type="email"
-            placeholder="update your business email..."
-            value={this.state.keyToUpdate.businessEmail}
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>Phone Number: {phoneNumber}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("phoneNumber")}>EDIT</button>
-        )}
-        <form
-          id="phoneNumber"
-          name="phoneNumber"
-          onSubmit={this.submitUpdate}
-          hidden
-        >
-          <input
-            type="text"
-            name="phoneNumber"
-            pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
-            placeholder="update your business phone number..."
-            value={this.state.keyToUpdate.phoneNumber}
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>Post Code: {postCode}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("postCode")}>EDIT</button>
-        )}
-        <form id="postCode" name="postCode" onSubmit={this.submitUpdate} hidden>
-          <input
-            name="postCode"
-            type="text"
-            pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
-            placeholder="update your post code..."
-            value={this.state.keyToUpdate.postCode}
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>Tables Currently Available: {tables}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("tables")}>EDIT</button>
-        )}
-        <form id="tables" name="tables" onSubmit={this.submitUpdate} hidden>
-          <input
-            name="tables"
-            type="text"
-            value={this.state.keyToUpdate.tables}
-            placeholder="update the number or tables currently available..."
-            onChange={this.handleInput}
-          />
-          <button>Update</button>
-        </form>
-        <p>Cuisine: {cuisine}</p>
-        {loggedInUser === this.state.username && (
-          <button onClick={() => this.handleEdit("cuisine")}>EDIT</button>
-        )}
-        <form id="cuisine" name="cuisine" onSubmit={this.submitUpdate} hidden>
           <select id="cuisine" name="cuisine">
             <option value="Chinese">Chinese</option>
             <option value="Thai">Thai</option>
@@ -256,20 +176,187 @@ class BusinessPage extends Component {
             <option value="Mexican">Mexican</option>
             <option value="Other">Other</option>
           </select>
-          <button>Update</button>
+          <Button type="Submit">Update</Button>
+        </form>
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
+        )}
+
+        <h3> About {businessName}</h3>
+        <p className="businessPageDescription">{about}</p>
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("about")}>EDIT</Button>
+        )}
+        <form
+          id="about"
+          className={"textInput"}
+          name="about"
+          onSubmit={this.submitUpdate}
+          hidden
+        >
+          <input
+            multiline
+            rows={2}
+            rowsMax={20}
+            name="about"
+            placeholder="update your business information..."
+            value={this.state.keyToUpdate.about}
+            onChange={this.handleInput}
+          ></input>
+          <Button type="Submit">Update</Button>
+        </form>
+        <h3>Latest News</h3>
+        <p className="businessPageDescription">{updates}</p>
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("updates")}>EDIT</Button>
+        )}
+        <form
+          id="updates"
+          className={"textInput"}
+          name="updates"
+          onSubmit={this.submitUpdate} /*hidden*/
+        >
+          <input
+            multiline
+            rows={2}
+            rowsMax={20}
+            name="updates"
+            placeholder="update the latest news for your
+            business..."
+            value={this.state.keyToUpdate.updates}
+            onChange={this.handleInput}
+          />
+          <Button type="Submit">Update</Button>
+        </form>
+        <h3>Tables Currently Available</h3>
+        <p>{tables}</p>
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("tables")}>EDIT</Button>
+        )}
+        <form
+          id="tables"
+          className={"textInput"}
+          name="tables"
+          onSubmit={this.submitUpdate} /*hidden*/
+        >
+          <input
+            name="tables"
+            id="outlined-basic"
+            type="text"
+            value={this.state.keyToUpdate.tables}
+            placeholder="update tables available..."
+            onChange={this.handleInput}
+          />
+          <Button type="Submit">Update</Button>
+        </form>
+        <h3 className>Menu</h3>
+        <img src={menu} alt="cafe menu" className="menu_image" />
+        {loggedInUser === this.state.username && (
+          <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
+        )}
+        <br></br>
+        <form
+          id="menu"
+          className={"textInput"}
+          name="menu"
+          onSubmit={this.submitUpdate} /*hidden*/
+        >
+          <input
+            name="menu"
+            id="outlined-basic"
+            type="url"
+            placeholder="new Menu URL..."
+            value={this.state.keyToUpdate.menu}
+            onChange={this.handleInput}
+          />
+          <Button type="Submit">Update</Button>
         </form>
         <SupportBusiness votes={votes} username={this.state.username} />
+        <div>
+          <h3>Contact Information:</h3>
+          <h4>Email</h4>
+          <p>{businessEmail}</p>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("businessEmail")}>
+              EDIT
+            </Button>
+          )}
+          <form
+            id="businessEmail"
+            className={"textInput"}
+            name="businessEmail"
+            onSubmit={this.submitUpdate}
+            // hidden
+          >
+            <input
+              name="businessEmail"
+              id="outlined-basic"
+              type="email"
+              placeholder="update your business email..."
+              value={this.state.keyToUpdate.businessEmail}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+          <h3>Phone Number</h3>
+          <p>{phoneNumber}</p>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("phoneNumber")}>EDIT</Button>
+          )}
+          <form
+            id="phoneNumber"
+            className={"textInput"}
+            name="phoneNumber"
+            onSubmit={this.submitUpdate}
+            // hidden
+          >
+            <input
+              type="text"
+              id="outlined-basic"
+              name="phoneNumber"
+              pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
+              placeholder="update your business phone number..."
+              value={this.state.keyToUpdate.phoneNumber}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+          <h3>Post Code</h3>
+          <p>{postCode}</p>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("postCode")}>EDIT</Button>
+          )}
+          <form
+            id="postCode"
+            className={"textInput"}
+            name="postCode"
+            onSubmit={this.submitUpdate}
+            // hidden
+          >
+            <input
+              name="postCode"
+              id="outlined-basic"
+              type="text"
+              pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
+              placeholder="update your post code..."
+              value={this.state.keyToUpdate.postCode}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+        </div>
+        <br></br>
         <PostComment
           username={this.props.username}
           addComment={this.addComment}
         />
         {this.state.changeNameOfButton === false ? (
           <div>
-            <button onClick={this.handlesReadComments}>Show comments</button>
+            <Button onClick={this.handlesReadComments}>Show comments</Button>
           </div>
         ) : (
-            <button onClick={this.handlesReadComments}>Hide comments</button>
-          )}
+          <Button onClick={this.handlesReadComments}>Hide comments</Button>
+        )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
@@ -351,6 +438,7 @@ class BusinessPage extends Component {
   };
 
   submitUpdate = (event) => {
+    console.log(event);
     event.preventDefault();
     const { name } = event.target;
     const { loggedInUser } = this.props;
@@ -376,6 +464,7 @@ class BusinessPage extends Component {
   };
 
   handleInput = (event) => {
+    console.log(event);
     const { value, name } = event.target;
     this.setState({ keyToUpdate: { [name]: value } });
   };

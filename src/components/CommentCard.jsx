@@ -1,5 +1,6 @@
 import React from "react";
 import CommentVoter from "./CommentVoter";
+import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
@@ -7,6 +8,7 @@ const CommentCard = (props) => {
   const { deleteComment } = props;
 
   const handleClick = (event) => {
+    console.log(event.target.value);
     deleteComment(event.target.value);
   };
 
@@ -20,7 +22,7 @@ const CommentCard = (props) => {
         <CommentVoter commentId={commentId} username={username} votes={votes} />
       </div>
       {username === props.username ? (
-        <button onClick={handleClick} value={commentId}>
+        <button onClick={handleClick} value={commentId} variant="contained">
           Delete comment
         </button>
       ) : null}
