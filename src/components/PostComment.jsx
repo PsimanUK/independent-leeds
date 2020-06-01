@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import { TextField, FormControl, Button } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 
 class PostComment extends Component {
   state = {

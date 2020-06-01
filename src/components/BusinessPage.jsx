@@ -8,11 +8,9 @@ import SupportBusiness from "./SupportBusiness";
 
 import {
   TextField,
-  FormControl,
   MenuItem,
   Button,
   Select,
-  Input,
 } from "@material-ui/core";
 
 class BusinessPage extends Component {
@@ -417,10 +415,10 @@ class BusinessPage extends Component {
             </Button>
           </div>
         ) : (
-          <Button onClick={this.handlesReadComments} variant="contained">
-            Hide comments
-          </Button>
-        )}
+            <Button onClick={this.handlesReadComments} variant="contained">
+              Hide comments
+            </Button>
+          )}
         {/*insert form field to add comment to single business - business username is this.state.username*/}
         {comments !== undefined && (
           <>
