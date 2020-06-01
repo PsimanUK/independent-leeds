@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import CustomSignIn from "./CustomSignIn";
 import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
-import CustomConfirmSignUp from "./CustomConfirmSignUp";
+import Title from "./Title";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import { Router } from "@reach/router";
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -12,28 +15,36 @@ class AuthWrapper extends Component {
   };
 
   render() {
-    console.log(this.props, "<-- this.props");
+    console.log(this.props.authState, '<-- authState in AuthWrapper')
     return (
       <div>
-        <CustomSignIn
-          authState={this.props.authState}
-          updateUsername={this.updateUsername}
-          onStateChange={this.props.onStateChange}
-        />
-        <CustomSignUp
-          authState={this.props.authState}
-          onStateChange={this.props.onStateChange}
-        />
+        {this.props.authState !== "signedIn" ?
+          <Title /> : <NavBar loggedInUser={this.state.username} />
+        }
+        <Router>
+          <CustomSignIn
+            path="/"
+            authState={this.props.authState}
+            updateUsername={this.updateUsername}
+            onStateChange={this.props.onStateChange}
+            className="landingPage"
+          />
+          <CustomSignUp
+            path="/register"
+            authState={this.props.authState}
+            onStateChange={this.props.onStateChange}
+            className="landingPage"
+          />
+        </Router>
         <InternalApp
           authState={this.props.authState}
           onStateChange={this.props.onStateChange}
+          username={this.state.username}
         />
+        <Footer />
       </div>
     );
   }
 }
 
 export default AuthWrapper;
-
-{/* <CustomConfirmSignUp authState={this.props.authState}
-          onStateChange={this.props.onStateChange} /> */}

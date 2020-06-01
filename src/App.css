@@ -1,38 +1,404 @@
 .App {
+  font-family: "Varela Round", sans-serif;
   text-align: center;
+  margin-bottom: 200px;
+  display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  height: 100%;
+  background-image: url("./images/background.jpg");
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loginCard {
+  width: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login__card,
+.sign-up__card {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: auto;
+  background-color: rgba(219, 219, 219, 0.808);
+  border-radius: 10px;
+  border: solid #7b190a 2px;
+  box-shadow: 5px 10px 18px black;
+}
+
+.submitButton {
+  margin-top: 30px;
+}
+
+.registration__card {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  max-width: 600px;
+  height: auto;
+  background-color: rgba(219, 219, 219, 0.9);
+  border-radius: 10px;
+  border: solid #7b190a 2px;
+  box-shadow: 5px 10px 18px black;
+}
+
+.registration__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.registration__input {
+  width: 90%;
+}
+
+.submitButton {
+  margin-top: 30px;
+}
+
+.title {
+  font-size: 1.5em;
+  color: #7b190a;
+}
+
+.textInput,
+textarea {
+  width: 15em;
+  border: 1.2px solid #2d080a;
+  color: #2d080a;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.business {
+  width: 23em;
+}
+
+textarea {
+  width: 28em;
+}
+
+::placeholder {
+  color: #2d080a;
+  opacity: 1;
+}
+
+select {
+  border: 1.2px solid #2d080a;
+  width: 10em;
+  color: #2d080a;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-bottom: 1em;
+  background-color: #fcf9ed;
+}
+
+.cuisine {
+  margin-top: 1em;
+  box-shadow: 1px 1px 2px #2d080a;
+  background-color: #c1f0c1;
+  margin-bottom: 0;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.checkbox {
+  border-radius: 6px;
+  background-color: #c1f0c1;
+  padding-right: 1em;
+  margin: 1em;
+  box-shadow: 1px 1px 2px #2d080a;
+}
+
+label {
+  color: #2d080a;
+  padding-left: 1em;
+  font-size: 0.8em;
+}
+
+.submitButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.submitButton {
+  border: none;
+  width: 7em;
+  border-radius: 6px;
+  font-family: "Varela Round", sans-serif;
+  color: #2d080a;
+  background-color: #32cd32;
+  margin: 0.5em;
+  box-shadow: 1px 1px 2px #2d080a;
+}
+
+.verify {
+  width: 12em;
+  margin-bottom: 2.5em;
+}
+
+.redirect {
+  color: #a50104;
+}
+
+p {
+  font-style: italic;
+  padding-left: 5em;
+  padding-right: 5em;
+  color: #2d080a;
+}
+
+.Map__card {
+  padding-top: 20px;
+  margin: auto;
+  max-width: 740px;
+  max-height: 580px;
+  background-color: rgba(219, 219, 219, 0.9);
+  border-radius: 10px;
+  border: solid #7b190a 2px;
+  box-shadow: 5px 10px 18px black;
+}
+
+.Map {
+  height: 500px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 2px solid #7b190a;
+  border-width: 1px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #2d080a;
+}
+
+.largePic {
+  max-height: 300px;
+}
+
+.businessList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.businessCard {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff5cc;
+  width: 350px;
+  border-radius: 6px;
+  margin: 2.5em;
+  box-shadow: 1px 1px 2px #2d080a;
+}
+
+.businessCard__title {
+  color: #7b190a;
+  font-size: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.singlebusinessCard__title {
+  color: #7b190a;
+  font-size: 1.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: underline;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnailPic {
+  max-height: 150px;
+  max-width: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 2px;
+  object-fit: cover;
+}
+
+.businessPageDescription {
+  max-width: 600px;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+.menu_image {
+  height: auto;
+  width: 600px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.singleBusiness {
+  padding-top: 20px;
+  max-width: 780px;
+  margin: auto;
+  border: solid #7b190a 2px;
+  border-radius: 10px;
+  background-color: rgba(219, 219, 219, 0.9);
+  box-shadow: 5px 10px 18px black;
+  margin-top: 50px;
+}
+
+.businessPageElement {
+  max-width: 250px;
+  margin: auto;
+  border-bottom: 50px;
+  background-color: rgba(158, 17, 17, 0.3);
+  box-shadow: 2px 2px 5px black;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.commentElements {
+  margin: auto;
+  margin-bottom: 10px;
+  border-bottom: 50px;
+  box-shadow: 2px 2px 5px black;
+  padding-bottom: 10px;
+}
+
+.businessPageButton {
+  max-width: 300px;
+}
+
+.contactInformation {
+  margin: auto;
+  justify-content: space-around;
+  text-align: center;
+  display: center;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.tablesAvailable {
+  font-size: 1.5em;
+}
+
+.icon {
+  color: rgba(158, 17, 17, 0.9);
+}
+
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 0.5em;
+  background: linear-gradient(45deg, #7b190a 30%, #ffcc00 90%);
+}
+
+.NavBar__title {
+  margin-left: 0.7em;
   color: white;
+  font-size: 2.5em;
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.NavBar__item {
+  padding-right: 1em;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#NavBar__mobile {
+  display: none;
 }
+
+.footer {
+  font-size: 0.8em;
+  color: #DCDCDC;
+  font-style: italic;
+  justify-self: flex-end;
+  font-weight: bold;
+}
+
+
+@media only screen and (max-width: 766px) {
+  .Map {
+    height: 250px;
+  }
+
+  .Map__card {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 2px;
+    max-width: 380px;
+    height: auto;
+  }
+
+  .form__filter {
+    font-size: smaller;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+
+  .NavMenu {
+    display: none;
+  } 
+
+  .NavBar__title {
+    font-size: 1.75em;
+  }
+
+  #NavBar__mobile {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0.5em;
+  }
+
+  .NavBar__mobile__item {
+    color: #7b190a;
+    text-decoration: none;
+  }
+
+  #NavBar__icon {
+    color: white;
+    font-size: 1.8em;
+  }
+
+  .singleBusiness {
+    display: inline-block;
+    /* flex-direction: column; */
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    /* text-align: center; */
+    align-items: center;
+  }
+  .singleBusiness .showMenu {
+    display: none;
+  }
+  .singleBusiness .logo_img {
+    max-height: 300px;
+  }
+
+}
+
+

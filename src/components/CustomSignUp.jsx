@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
+import { Link } from "@reach/router";
+import * as api from "../utils/api";
+import { Button, TextField, Container } from '@material-ui/core';
 
 class CustomSignUp extends Component {
   _validAuthStates = ["signIn", "signedOut", "signedUp"];
@@ -13,6 +16,7 @@ class CustomSignUp extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     this.signUp();
+    this.setState({ username: "", email: "", password: "" });
   };
 
   signUp = () => {
@@ -21,18 +25,17 @@ class CustomSignUp extends Component {
       .then(() => {
         this.props.onStateChange("signedUp", {});
       })
+      .then(() => {
+        api.sendUser({ username, emailAddress: email });
+      })
       .catch((err) => {
-        console.log(err);
-        if (err.code === "UserNotConfirmedException") {
-          this.setState({ error: "Account not verified yet" });
-        } else if (err.code === "PasswordResetRequiredException") {
+        if (
+          err.code === "UsernameExistsException" ||
+          err.code === "InvalidPasswordException"
+        ) {
           this.setState({
-            error: "Existing user found. Please reset your password",
+            error: err.code,
           });
-        } else if (err.code === "NotAuthorizedException") {
-          this.setState({ error: "Forgot Password?" });
-        } else if (err.code === "UserNotFoundException") {
-          this.setState({ error: "User does not exist!" });
         } else {
           this.setState({ error: err.code });
         }
@@ -46,40 +49,77 @@ class CustomSignUp extends Component {
 
   render() {
     return (
-      <section>
+      <Container>
+        {this.state.error === "UsernameExistsException" ? (
+          <p>Username already exists - please try another</p>
+        ) : this.state.error === "InvalidPasswordException" ? (
+          <p className="message">
+            Passwords must contain 8 characters including special characters,
+            numbers and upper and lower case letters
+          </p>
+        ) : this.state.error === "An error has occurred" ? (
+          <p>An error has occurred - please try again</p>
+        ) : null}
         {this._validAuthStates.includes(this.props.authState) && (
-          <form>
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              key="username"
-              name="username"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="username"
-            />
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              key="email"
-              name="email"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="email"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              key="password"
-              name="password"
-              onChange={this.handleInputChange}
-              type="text"
-              placeholder="********"
-            />
-            <button onClick={this.handleFormSubmission}>Login</button>
-          </form>
+          <div className="sign-up__card" >
+            <form>
+              <TextField
+                variant="outlined"
+                id="username"
+                key="username"
+                name="username"
+                label="Username"
+                onChange={this.handleInputChange}
+                type="text"
+                value={this.state.username}
+                className="textInput"
+              />
+              <TextField
+                variant="outlined"
+                id="email"
+                key="email"
+                name="email"
+                label="Email"
+                onChange={this.handleInputChange}
+                type="email"
+                value={this.state.email}
+                className="textInput"
+              />
+              <TextField
+                variant="outlined"
+                id="password"
+                key="password"
+                name="password"
+                label="Password"
+                onChange={this.handleInputChange}
+                type="password"
+                value={this.state.password}
+                className="textInput"
+              />
+              <Button
+                onClick={this.handleFormSubmission}
+                className="submitButton"
+                variant="contained"
+              >
+                Register
+            </Button>
+              <p>
+                Already registered? Please{" "}
+                <Link to="/" className="redirect">
+                  log in
+              </Link>
+              .
+            </p>
+              {this.props.authState === "signedUp" && (
+                <p>
+                  Thank you for registering - please check your email for a
+                  confirmation link.
+                </p>
+              )}
+            </form>
+          </div>
         )}
-      </section>
+      </Container>
     );
   }
 }
