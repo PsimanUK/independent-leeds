@@ -24,15 +24,39 @@ html {
   width: 300px;
   height: 320px;
   background-color: rgba(219, 219, 219, 0.808);
+  border-radius: 10px;
+  border: solid grey 3px;
 }
 
 .submitButton {
   margin-top: 30px;
 }
 
-div {
+.registration__card {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  width: 600px;
+  height: auto;
+  background-color: rgba(219, 219, 219, 0.808);
+  border-radius: 10px;
+  border: solid grey 3px;
+}
+
+.registration__form {
   display: flex;
   flex-direction: column;
+}
+
+.registration__input {
+  width: 90%;
+}
+
+.submitButton {
+  margin-top: 30px;
 }
 
 .title {
@@ -50,12 +74,6 @@ div {
   color: #2d080a;
   text-decoration: none;
 }
-
-/* form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 
 .textInput,
 textarea {
@@ -83,8 +101,9 @@ textarea {
 }
 
 select {
-  h: 10em;
+  /* h: 10em; */
   border: 1.2px solid #2d080a;
+  width: 10em;
   color: #2d080a;
   border-radius: 6px;
   font-family: "Varela Round", sans-serif;
@@ -93,12 +112,25 @@ select {
   background-color: #fcf9ed;
 }
 
+.cuisine {
+  margin-top: 1em;
+  box-shadow: 1px 1px 2px #2d080a;
+  background-color: #c1f0c1;
+  margin-bottom: 0;
+}
+
 .checkboxes {
-  border: 1.2px solid #2d080a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.checkbox {
   border-radius: 6px;
-  background-color: #fcf9ed;
+  background-color: #c1f0c1;
   padding-right: 1em;
-  margin-bottom: 1em;
+  margin: 1em;
+  box-shadow: 1px 1px 2px #2d080a;
 }
 
 label {
@@ -107,14 +139,21 @@ label {
   font-size: 0.8em;
 }
 
+.submitButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .submitButton {
+  border: none;
   width: 7em;
-  border: 1px solid #2d080a;
   border-radius: 6px;
   font-family: "Varela Round", sans-serif;
   color: #2d080a;
-  background-color: #9bbb42;
-  margin-bottom: 1em;
+  background-color: #32cd32;
+  margin: 0.5em;
+  box-shadow: 1px 1px 2px #2d080a;
 }
 
 .verify {
@@ -143,10 +182,7 @@ p {
   border-width: 1px;
   border-radius: 6px;
   margin: auto;
-}
-
-.thumbnailPic {
-  max-height: 200px;
+  box-shadow: 1px 1px 2px #2d080a;
 }
 
 .largePic {
@@ -155,20 +191,40 @@ p {
 
 .businessList {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .businessCard {
-  border: 1.2px solid #2d080a;
-  background-color: #fcf9ed;
-  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fffff0;
+  width: 350px;
   border-radius: 6px;
-  margin-block-end: 1em;
+  margin: 2.5em;
+  box-shadow: 1px 1px 2px #2d080a;
 }
 
 .businessCard__title {
   color: #7b190a;
+  font-size: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnailPic {
+  max-height: 150px;
+  max-width: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 2px;
+  object-fit: cover;
 }
 
 .businessPageDescription {

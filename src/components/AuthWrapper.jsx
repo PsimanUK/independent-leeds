@@ -24,7 +24,6 @@ class AuthWrapper extends Component {
         )}
         <Title />
         <Router>
-          {/* <LoginCard path="/" className="loginCard" /> */}
           <CustomSignIn
             path="/"
             authState={this.props.authState}
