@@ -1,11 +1,11 @@
 import React from "react";
-import { CircularProgress } from "@material-ui/core";
+import Loader from "../images/Loader.svg";
+
 
 const LoadingIndicator = () => {
   return (
     <div>
-      {/* <p>Loading</p> */}
-      <CircularProgress color="secondary" />
+      <img src={Loader} alt="loading..."></img>
     </div>
   );
 };

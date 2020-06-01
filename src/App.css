@@ -2,6 +2,7 @@
   font-family: "Varela Round", sans-serif;
   text-align: center;
   margin-bottom: 200px;
+  display: flex;
 }
 
 html {
@@ -41,7 +42,7 @@ html {
   margin-right: auto;
   margin-bottom: 20px;
   padding-bottom: 30px;
-  width: 600px;
+  max-width: 600px;
   height: auto;
   background-color: rgba(219, 219, 219, 0.9);
   border-radius: 10px;
@@ -166,20 +167,13 @@ p {
 .Map__card {
   padding-top: 20px;
   margin: auto;
-  max-width: 780px;
-  max-height: 620px;
+  max-width: 740px;
+  max-height: 580px;
   background-color: rgba(219, 219, 219, 0.9);
   border-radius: 10px;
   border: solid #7b190a 2px;
   box-shadow: 5px 10px 18px black;
 }
-
-/* .leaflet-container {
-  max-width: 700px;
-  height: 500px;
-  margin-left: 20px;
-  margin-right: 20px;
-} */
 
 .Map {
   height: 500px;
@@ -188,7 +182,6 @@ p {
   border: 2px solid #7b190a;
   border-width: 1px;
   border-radius: 6px;
-  /* margin: auto; */
   box-shadow: 1px 1px 2px #2d080a;
 }
 
@@ -205,7 +198,7 @@ p {
 .businessCard {
   display: flex;
   justify-content: space-between;
-  background-color: #fffff0;
+  background-color: #fff5cc;
   width: 350px;
   border-radius: 6px;
   margin: 2.5em;
@@ -317,7 +310,7 @@ p {
 }
 
 .NavBar__title {
-  margin-left: 1em;
+  margin-left: 0.7em;
   color: white;
   font-size: 2.5em;
   text-decoration: none;
@@ -330,39 +323,21 @@ p {
   font-size: 1em;
 }
 
-.NavBar__icon {
+#NavBar__mobile {
   display: none;
-  color: white;
 }
 
-.navMenu {
-  display: none;
-  position: relative;
+.footer {
+  font-size: 0.8em;
+  color: #DCDCDC;
+  font-style: italic;
+  justify-self: flex-end;
+  font-weight: bold;
 }
 
-@media only screen and (max-width: 700px) {
+
+@media only screen and (max-width: 766px) {
   .Map {
-    max-width: 600px;
-    height: 300px;
-  }
-
-  .Map__card {
-    max-width: 650px;
-    height: auto;
-  }
-
-  .form__filter {
-    font-size: smaller;
-  }
-
-  .title {
-    font-size: 1em;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .Map {
-    max-width: 380px;
     height: 250px;
   }
 
@@ -383,21 +358,30 @@ p {
     font-size: 1em;
   }
 
-  .NavBar__icon {
+  .NavMenu {
+    display: none;
+  } 
+
+  .NavBar__title {
+    font-size: 1.75em;
+  }
+
+  #NavBar__mobile {
     display: flex;
     justify-content: flex-end;
-    margin-right: 2em;
+    margin-right: 0.5em;
   }
 
-  .NavBar__item {
-    display: none;
+  .NavBar__mobile__item {
+    color: #7b190a;
+    text-decoration: none;
   }
 
-  .NavMenu.responsive {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  #NavBar__icon {
+    color: white;
+    font-size: 1.8em;
   }
+
   .singleBusiness {
     display: inline-block;
     /* flex-direction: column; */
@@ -414,4 +398,7 @@ p {
   .singleBusiness .logo_img {
     max-height: 300px;
   }
+
 }
+
+

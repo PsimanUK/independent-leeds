@@ -32,7 +32,6 @@ class BusinessRegistration extends Component {
   handleInput = (event) => {
     const { name } = event.target;
     let value = event.target.value;
-    console.log(`updating state with ${name} and ${value} via handleInput...`);
     if (event.target.checked === true) {
       value = "yes";
     }
@@ -40,7 +39,6 @@ class BusinessRegistration extends Component {
   };
 
   handleSubmit = (event) => {
-    console.log("Submitting Business Registration...");
     event.preventDefault();
     const { username } = this.props;
     const {
@@ -63,7 +61,6 @@ class BusinessRegistration extends Component {
       cuisine,
       menu,
     } = this.state;
-    console.log(this.state, "<-- state just before api.SendBusiness");
     api
       .sendBusiness(username, {
         businessEmail,
@@ -87,10 +84,6 @@ class BusinessRegistration extends Component {
       })
       .then(() => {
         this.setState({ hasRegistered: true });
-        console.log(
-          this.state.hasRegistered,
-          "<-- has registered after api request"
-        );
       })
       .catch((err) => {
         this.setState({ error: err.code });
@@ -121,7 +114,6 @@ class BusinessRegistration extends Component {
     ];
 
     if (this.state.isLoading) return <LoadingIndicator />;
-    console.log(this.state.hasRegistered, "<-- has registered in state");
     return (
       <Container>
         {this.state.error && <p>An error has occurred, please try again.</p>}

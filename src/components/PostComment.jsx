@@ -38,6 +38,7 @@ class PostComment extends Component {
   handlesCommentSubmission = (event) => {
     event.preventDefault();
     const { username, loggedInUser } = this.props;
+
     const { body } = this.state;
     api
       .commentPoster(username, {
@@ -45,7 +46,6 @@ class PostComment extends Component {
         body: body,
       })
       .then((response) => {
-        console.log(response, "-----> this is the new comment");
         this.props.addComment(response);
         this.setState({
           body: "",
