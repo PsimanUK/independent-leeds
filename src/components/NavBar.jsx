@@ -14,24 +14,46 @@ class NavBar extends Component {
     });
   };
 
+  handleDisplayMenu = (event) => {
+    event.preventDefault();
+    console.log("menu click");
+    const hamburger = document.getElementById('hamburgerList')
+  }
+
+  // toggleNavClass = () => {
+  //   const element = document.getElementById("nav");
+  //   if (element.className === "nav") {
+  //     element.className += " responsive";
+  //   } else {
+  //     element.className = "nav";
+  //   }
+  // };
+
   render() {
     const { loggedInUser } = this.props;
     return (
       <nav className="NavBar">
-        <Link className="NavBar__item" to="/">
-          Home
+        <Link className="NavBar__title" to="/">
+          Independent Leeds
         </Link>
-        <Link className="NavBar__item" to="/register-business">
-          Register business
-        </Link>
-        {loggedInUser === "Admin" && (
-          <Link to="/verify" className="NavBar__item">
-            Verify businesses
+        <section>
+          <Link className="NavBar__item" to="/register-business">
+            Register business
           </Link>
-        )}
-        <button onClick={this.handleSignOut}>
-          <Link to="/">Sign out</Link>
-        </button>
+          {loggedInUser === "Admin" && (
+            <Link to="/verify" className="NavBar__item">
+              Verify businesses
+            </Link>
+          )}
+          <Link to="/" onClick={this.handleSignOut} className="NavBar__item">Sign out</Link>
+        </section>
+        <Link
+          to=""
+          className="menu"
+          onClick={this.handleDisplayMenu}
+        >
+          <i class="fas fa-hamburger"></i>
+        </Link>
       </nav>
     );
   }

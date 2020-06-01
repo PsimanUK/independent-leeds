@@ -16,13 +16,13 @@ class AuthWrapper extends Component {
   };
 
   render() {
+    console.log(this.props.authState, '<-- authState in AuthWrapper')
     if (this.state.isLoading) return <LoadingIndicator />;
     return (
       <div>
-        {this.props.authState === "signedIn" && (
-          <NavBar loggedInUser={this.state.username} />
-        )}
-        <Title />
+        {this.props.authState !== "signedIn" ?
+          <Title /> : <NavBar loggedInUser={this.state.username} />
+        }
         <Router>
           <CustomSignIn
             path="/"

@@ -3,13 +3,9 @@ import { Auth } from "aws-amplify";
 import { Link } from "@reach/router";
 import {
   Button,
-  FormControl,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Box,
-  Typography,
   Container,
 } from "@material-ui/core/";
 
@@ -102,7 +98,6 @@ class CustomSignIn extends Component {
                 onClick={this.handleFormSubmission}
                 className="submitButton"
                 variant="contained"
-                color="primary"
               >
                 Login
               </Button>
