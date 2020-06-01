@@ -38,6 +38,7 @@ class PostComment extends Component {
   handlesCommentSubmission = (event) => {
     event.preventDefault();
     const { username } = this.props;
+    console.log(username, "username being sent to DB");
     const { body } = this.state;
     api
       .commentPoster({
