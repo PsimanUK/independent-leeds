@@ -67,33 +67,6 @@ html {
   color: #7b190a;
 }
 
-.NavBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-block-start: 0.5em;
-  background: linear-gradient(45deg, #963411 30%, #e0a956 90%);
-}
-
-.NavBar__title {
-  margin-left: 1em;
-  color: white;
-  font-size: 2.5em;
-  text-decoration: none;
-}
-
-.NavBar__item {
-  padding-right: 1em;
-  color: white;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-.menu {
-  display: none;
-  color: white;
-}
-
 .textInput,
 textarea {
   width: 15em;
@@ -322,6 +295,38 @@ p {
   font-size: 1.5em;
 }
 
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 0.5em;
+  background: linear-gradient(45deg, #7b190a 30%, #ffcc00 90%);
+}
+
+.NavBar__title {
+  margin-left: 1em;
+  color: white;
+  font-size: 2.5em;
+  text-decoration: none;
+}
+
+.NavBar__item {
+  padding-right: 1em;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.NavBar__icon {
+  display: none;
+  color: white;
+}
+
+.navMenu {
+  display: none;
+  position: relative;
+}
+
 @media only screen and (max-width: 700px) {
   .Map {
     max-width: 600px;
@@ -365,7 +370,7 @@ p {
     font-size: 1em;
   }
 
-  .menu {
+  .NavBar__icon {
     display: flex;
     justify-content: flex-end;
     margin-right: 2em;
@@ -373,5 +378,11 @@ p {
 
   .NavBar__item {
     display: none;
+  }
+
+  .NavMenu.responsive {
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 }

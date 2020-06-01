@@ -19,15 +19,25 @@ class NavBar extends Component {
   handleDisplayMenu = (event) => {
     event.preventDefault();
     console.log("menu click");
-    const hamburger = document.getElementById('hamburgerList')
   }
 
-  // toggleNavClass = () => {
-  //   const element = document.getElementById("nav");
-  //   if (element.className === "nav") {
-  //     element.className += " responsive";
+  displayNavMenu = () => {
+    const element = document.getElementById("navMenu");
+    if (element.className === "navMenu") {
+      element.className += " responsive";
+    } else {
+      element.className = "navMenu";
+    }
+  };
+
+  // displayNavMenu = (event) => {
+  //   event.preventDefault();
+  //   const navMenu = document.getElementById('navMenu');
+  //   console.log(navMenu.style.display, '<-- navMenus display style')
+  //   if (navMenu.style.display === 'block') {
+  //     navMenu.style.display = 'none';
   //   } else {
-  //     element.className = "nav";
+  //     navMenu.style.display = 'block';
   //   }
   // };
 
@@ -41,7 +51,7 @@ class NavBar extends Component {
         <Link className="NavBar__title" to="/">
           Independent Leeds
         </Link>
-        <section>
+        <section >
           <Link className="NavBar__item" to="/register-business">
             Register Business
           </Link>
@@ -54,11 +64,17 @@ class NavBar extends Component {
         </section>
         <Link
           to=""
-          className="menu"
-          onClick={this.handleDisplayMenu}
+          className="NavBar__icon"
+          onClick={this.displayNavMenu}
         >
-          <i class="fas fa-hamburger"></i>
+          <i class="fas fa-hamburger" ></i>
         </Link>
+        <section id="navMenu" className="navMenu">
+          <p>Home</p>
+          <p>Register Business</p>
+          <p>Verify Business</p>
+          <p>Sign Out</p>
+        </section>
       </nav>
     );
   }

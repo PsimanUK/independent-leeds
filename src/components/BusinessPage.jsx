@@ -309,10 +309,10 @@ class BusinessPage extends Component {
         <h2 className="businessCard__title">Contact Information:</h2>
         <section className="contactInformation">
           <section className="contactInfo__card">
-            <a className="businessCard__title">Phone Number:</a>
+            {/* <a className="businessCard__title">Phone Number:</a> */}
             <br></br>
             <u>
-              <a href="">{phoneNumber}</a>
+              {/* <a href="">{phoneNumber}</a> */}
             </u>
 
             <br></br>
@@ -341,10 +341,10 @@ class BusinessPage extends Component {
               <Button type="Submit">Update</Button>
             </form>
           </section>
-          <a className="businessCard__title">Post Code:</a>
+          {/* <a className="businessCard__title">Post Code:</a> */}
           <br></br>
           <u>
-            <a href="">{postCode}</a>
+            {/* <a href="">{postCode}</a> */}
           </u>
           <br></br>
           {loggedInUser === this.state.username && (
@@ -371,11 +371,11 @@ class BusinessPage extends Component {
           </form>
         </section>
         <section className="contactInfo__card">
-          <a className="businessCard__title">Email: </a>
+          {/* <a className="businessCard__title">Email: </a> */}
           <br />
           <u>
             {" "}
-            <a href="">{businessEmail}</a>
+            {/* <a href="">{businessEmail}</a> */}
           </u>
           <br></br>
           {loggedInUser === this.state.username && (
