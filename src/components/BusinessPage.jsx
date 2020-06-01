@@ -282,7 +282,7 @@ class BusinessPage extends Component {
         </form>
         <div className="showMenu">
           <h2 className="singlebusinessCard__title">Menu:</h2>
-          <img src={menu} alt="cafe menu" className="" />
+          <img src={menu} alt="No Menu image provided" />
           <br></br>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
