@@ -304,7 +304,7 @@ p {
 .NavBar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   margin-block-start: 0.5em;
   background: linear-gradient(45deg, #7b190a 30%, #ffcc00 90%);
 }
@@ -329,12 +329,11 @@ p {
 
 .footer {
   font-size: 0.8em;
-  color: #DCDCDC;
+  color: #dcdcdc;
   font-style: italic;
   justify-self: flex-end;
   font-weight: bold;
 }
-
 
 @media only screen and (max-width: 766px) {
   .Map {
@@ -360,7 +359,7 @@ p {
 
   .NavMenu {
     display: none;
-  } 
+  }
 
   .NavBar__title {
     font-size: 1.75em;
@@ -398,7 +397,4 @@ p {
   .singleBusiness .logo_img {
     max-height: 300px;
   }
-
 }
-
-

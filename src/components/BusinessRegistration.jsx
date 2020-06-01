@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import LoadingIndicator from "./LoadingIndicator";
-import { Container, TextField, MenuItem, Checkbox, FormGroup, FormLabel, FormControlLabel, Button } from '@material-ui/core';
+import {
+  Container,
+  TextField,
+  MenuItem,
+  Checkbox,
+  FormGroup,
+  FormLabel,
+  FormControlLabel,
+  Button,
+} from "@material-ui/core";
 
 class BusinessRegistration extends Component {
   state = {
@@ -115,12 +124,12 @@ class BusinessRegistration extends Component {
 
     if (this.state.isLoading) return <LoadingIndicator />;
     return (
-      <Container>
+      <div>
         {this.state.error && <p>An error has occurred, please try again.</p>}
         {this.state.hasRegistered === false && (
           <div className="registration__card">
             <p>Please enter your details to register a business:</p>
-            <form classname="registration__form">
+            <form className="registration__form">
               <TextField
                 id="outlined-basic"
                 label="Business name"
@@ -304,7 +313,7 @@ class BusinessRegistration extends Component {
             once they have verified your business.
           </p>
         )}
-      </Container>
+      </div>
     );
   }
 }

@@ -4,8 +4,10 @@ import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
+  console.log(props.loggedInUser, "<---- username");
+  console.log(username, "<--- username");
 
-  const { deleteComment } = props;
+  const { deleteComment, loggedInUser } = props;
 
   const handleClick = (event) => {
     deleteComment(event.currentTarget.value);
@@ -18,9 +20,13 @@ const CommentCard = (props) => {
       </h3>
       <p>{body}</p>
       <div>
-        <CommentVoter commentId={commentId} username={username} votes={votes} />
+        <CommentVoter
+          commentId={commentId}
+          businessUsername={props.businessUsername}
+          votes={votes}
+        />
       </div>
-      {username === props.username ? (
+      {username === loggedInUser ? (
         <Button onClick={handleClick} value={commentId} variant="contained">
           Delete comment
         </Button>

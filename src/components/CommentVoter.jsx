@@ -32,20 +32,20 @@ class CommentVoter extends Component {
           >
             <FontAwesomeIcon className="icon" size="3x" icon={faThumbsDown} />
           </Button>
-          <Button
+          {/* <Button
             onClick={() => this.handlesVoteChange(-1)}
             disabled={this.state.voteChange === -1}
             variant="contained"
           >
             Vote down
-          </Button>
+          </Button> */}
         </h3>
       </div>
     );
   }
   handlesVoteChange = (vote) => {
-    const { commentId, username } = this.props;
-    api.updateVotes(commentId, username, vote);
+    const { commentId, businessUsername } = this.props;
+    api.updateVotes(commentId, businessUsername, vote);
 
     this.setState((currentState) => {
       return {

@@ -17,8 +17,7 @@ export const sendUser = (user) => {
       "https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents",
       user
     )
-    .then((response) => {
-    });
+    .then((response) => {});
 };
 
 export const fetchBusinessesToVerify = () => {
@@ -32,11 +31,10 @@ export const fetchBusinessesToVerify = () => {
 };
 
 export const sendBusiness = (username, requestBody) => {
-  return axios
-    .patch(
-      `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}/register_business`,
-      requestBody
-    )
+  return axios.patch(
+    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}/register_business`,
+    requestBody
+  );
 };
 
 export const fetchBusinessByUsername = (username) => {
@@ -50,15 +48,13 @@ export const fetchBusinessByUsername = (username) => {
 };
 
 export const updateBusiness = (username, requestBody) => {
-  return axios
-    .patch(
-      `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}`,
-      requestBody
-    )
+  return axios.patch(
+    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}`,
+    requestBody
+  );
 };
 
 export const commentPoster = (username, newComment) => {
-
   return axios.post(
     `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}/comments`,
     // {
@@ -73,9 +69,9 @@ export const deleteCommentByCommentId = (commentId, username) => {
   );
 };
 
-export const updateVotes = (commentId, username, vote) => {
+export const updateVotes = (commentId, businessUsername, vote) => {
   return axios.patch(
-    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}/comments/${commentId}/inc_vote`,
+    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${businessUsername}/comments/${commentId}/inc_vote`,
     {
       value: vote,
     }
