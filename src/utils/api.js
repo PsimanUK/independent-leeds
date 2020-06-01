@@ -78,11 +78,10 @@ export const updateBusiness = (username, requestBody) => {
     });
 };
 
-export const commentPoster = (newComment) => {
-  // const { username, body } = newComment;
-  console.log(newComment, "-------> comment in api");
+export const commentPoster = (username, newComment) => {
+  console.log(newComment);
   return axios.post(
-    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${newComment.username}/comments`,
+    `https://bzi4e9gcci.execute-api.eu-west-2.amazonaws.com/beta/independents/${username}/comments`,
     // {
     newComment
     // }

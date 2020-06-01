@@ -217,6 +217,7 @@ p {
   font-size: 1.7em;
   margin-left: 0.5em;
   margin-right: 0.5em;
+  text-decoration: underline;
 }
 
 .thumbnail {
@@ -258,6 +259,7 @@ p {
   border-radius: 10px;
   background-color: rgba(219, 219, 219, 0.9);
   box-shadow: 5px 10px 18px black;
+  margin-top: 50px;
 }
 
 .businessPageElement {

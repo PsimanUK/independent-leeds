@@ -74,6 +74,7 @@ class BusinessPage extends Component {
       votes,
     } = this.state;
     const { loggedInUser } = this.props;
+    console.log(loggedInUser);
     return (
       <section className="singleBusiness">
         <h1 className="businessCard__title">{businessName}</h1>
@@ -399,6 +400,7 @@ class BusinessPage extends Component {
         </section>
         <br></br>
         <PostComment
+          loggedInUser={loggedInUser}
           username={this.props.username}
           addComment={this.addComment}
         />
