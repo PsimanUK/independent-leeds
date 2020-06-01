@@ -1,6 +1,7 @@
 .App {
   font-family: "Varela Round", sans-serif;
   text-align: center;
+  justify-content: center;
   margin-bottom: 200px;
   display: flex;
 }
@@ -304,9 +305,10 @@ p {
 .NavBar {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   margin-block-start: 0.5em;
   background: linear-gradient(45deg, #7b190a 30%, #ffcc00 90%);
+  max-width: 100%;
 }
 
 .NavBar__title {

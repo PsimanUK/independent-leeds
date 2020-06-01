@@ -4,8 +4,6 @@ import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
-  console.log(props.loggedInUser, "<---- username");
-  console.log(username, "<--- username");
 
   const { deleteComment, loggedInUser } = props;
 
