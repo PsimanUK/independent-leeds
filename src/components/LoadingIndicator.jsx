@@ -1,6 +1,7 @@
 import React from "react";
 import Loader from "../images/Loader.svg";
 
+
 const LoadingIndicator = () => {
   return (
     <div>

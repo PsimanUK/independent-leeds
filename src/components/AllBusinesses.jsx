@@ -113,7 +113,7 @@ class AllBusinesses extends Component {
     return (
       <main>
         {this.state.error && <p>An error has occurred - please try again</p>}
-        <section className="Map__card" >
+        <section className="Map__card">
           <Map
             id="map"
             center={[53.796, -1.55]}
@@ -151,7 +151,7 @@ class AllBusinesses extends Component {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
           </Map>
-          <form className="form__filter" >
+          <form className="form__filter">
             <select
               name="select"
               onChange={this.handleInput}
@@ -161,40 +161,40 @@ class AllBusinesses extends Component {
               <option value="">Cuisine</option>
               <option value="american" name="american">
                 American
-            </option>
+              </option>
               <option value="british" name="british">
                 British
-            </option>
+              </option>
               <option value="chinese" name="chinese">
                 Chinese
-            </option>
+              </option>
               <option value="french" name="french">
                 French
-            </option>
+              </option>
               <option value="greek" name="greek">
                 Greek
-            </option>
+              </option>
               <option value="indian" name="indian">
                 Indian
-            </option>
+              </option>
               <option value="italian" name="italian">
                 Italian
-            </option>
+              </option>
               <option value="japanese" name="japanese">
                 Japanese
-            </option>
+              </option>
               <option value="mexican" name="mexican">
                 Mexican
-            </option>
+              </option>
               <option value="other" name="other">
                 Other
-            </option>
+              </option>
               <option value="spanish" name="spanish">
                 Spanish
-            </option>
+              </option>
               <option value="thai" name="thai">
                 Thai
-            </option>
+              </option>
             </select>
             <section className="checkboxes">
               <div className="checkbox">
@@ -245,10 +245,10 @@ class AllBusinesses extends Component {
             <div className="submitButtons">
               <button className="submitButton" onClick={this.handleFilter}>
                 Filter
-            </button>
+              </button>
               <button className="submitButton" onClick={this.handleUnFilter}>
                 Show all
-            </button>
+              </button>
             </div>
           </form>
         </section>

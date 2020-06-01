@@ -9,7 +9,12 @@ class SupportBusiness extends Component {
   render() {
     return (
       <div>
-        <h3>Votes: {this.props.votes + this.state.voteChange}</h3>
+        <h3 className="singlebusinessCard__title">Votes:</h3>
+        <strong>
+          <p className="tablesAvailable">
+            {this.props.votes + this.state.voteChange}
+          </p>
+        </strong>
         <Button
           onClick={() => this.handlesVoteChange(1)}
           disabled={this.state.voteChange === 1}
