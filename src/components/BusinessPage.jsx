@@ -6,12 +6,7 @@ import PostComment from "./PostComment";
 import axios from "axios";
 import SupportBusiness from "./SupportBusiness";
 
-import {
-  TextField,
-  MenuItem,
-  Button,
-  Select,
-} from "@material-ui/core";
+import { TextField, MenuItem, Button, Select } from "@material-ui/core";
 
 class BusinessPage extends Component {
   state = {
@@ -280,7 +275,7 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h2 className="businessCard__title">Menu</h2>
+        <h2 className="businessCard__title">Menu:</h2>
         <img src={menu} alt="cafe menu" className="menu_image" />
         <br></br>
         {loggedInUser === this.state.username && (
@@ -309,10 +304,10 @@ class BusinessPage extends Component {
         <h2 className="businessCard__title">Contact Information:</h2>
         <section className="contactInformation">
           <section className="contactInfo__card">
-            {/* <a className="businessCard__title">Phone Number:</a> */}
+            <a className="businessCard__title">Phone Number:</a>
             <br></br>
             <u>
-              {/* <a href="">{phoneNumber}</a> */}
+              <a href="">{phoneNumber}</a>
             </u>
 
             <br></br>
@@ -341,10 +336,10 @@ class BusinessPage extends Component {
               <Button type="Submit">Update</Button>
             </form>
           </section>
-          {/* <a className="businessCard__title">Post Code:</a> */}
+          <a className="businessCard__title">Post Code:</a>
           <br></br>
           <u>
-            {/* <a href="">{postCode}</a> */}
+            <a href="">{postCode}</a>
           </u>
           <br></br>
           {loggedInUser === this.state.username && (
@@ -371,11 +366,11 @@ class BusinessPage extends Component {
           </form>
         </section>
         <section className="contactInfo__card">
-          {/* <a className="businessCard__title">Email: </a> */}
+          <a className="businessCard__title">Email: </a>
           <br />
           <u>
             {" "}
-            {/* <a href="">{businessEmail}</a> */}
+            <a href="">{businessEmail}</a>
           </u>
           <br></br>
           {loggedInUser === this.state.username && (
@@ -415,30 +410,27 @@ class BusinessPage extends Component {
             </Button>
           </div>
         ) : (
-            <Button onClick={this.handlesReadComments} variant="contained">
-              Hide comments
-            </Button>
-          )}
-        {/*insert form field to add comment to single business - business username is this.state.username*/}
-        {comments !== undefined && (
-          <>
-            {comments.map((comment) => {
-              // console.log(comment.commentId);
-              return (
-                <>
-                  {this.state.isShown ? (
-                    <CommentCard
-                      key={comment.commentId}
-                      comment={comment}
-                      username={this.props.username}
-                      deleteComment={this.handlesDelete}
-                    />
-                  ) : null}
-                </>
-              );
-            })}
-          </>
+          <Button onClick={this.handlesReadComments} variant="contained">
+            Hide comments
+          </Button>
         )}
+        {comments.map((comment) => {
+          // console.log(comment.commentId);
+          return (
+            <>
+              {this.state.isShown ? (
+                <CommentCard
+                  key={comment.commentId}
+                  comment={comment}
+                  username={this.props.username}
+                  deleteComment={this.handlesDelete}
+                />
+              ) : null}
+            </>
+          );
+        })}
+        {/* </> */}
+        {/* )} */}
       </section>
     );
   }
