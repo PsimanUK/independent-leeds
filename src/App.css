@@ -76,14 +76,17 @@ html {
 }
 
 .NavBar__title {
-  margin-left: 2em;
+  margin-left: 1em;
   color: white;
+  font-size: 2.5em;
+  text-decoration: none;
 }
 
 .NavBar__item {
   padding-right: 1em;
   color: white;
   text-decoration: none;
+  font-size: 1em;
 }
 
 .menu {

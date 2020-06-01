@@ -36,6 +36,7 @@ class VerifyBusinesses extends Component {
     return (
       <main>
         {this.state.error && <p>An error has occured - please try again.</p>}
+        {businesses.length === 0 && <p>No businesses to verify</p>}
         {businesses.map((business) => {
           const { username } = business;
           return (

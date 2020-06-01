@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { Link } from "@reach/router";
+import { Button } from '@material-ui/core';
+import { styled } from "@material-ui/styles";
 
 class NavBar extends Component {
   state = {
@@ -31,6 +33,9 @@ class NavBar extends Component {
 
   render() {
     const { loggedInUser } = this.props;
+
+    const SignOutButton = styled(Button)({ textTransform: 'none', textDecoration: 'none', color: 'white', fontSize: '1em' })
+
     return (
       <nav className="NavBar">
         <Link className="NavBar__title" to="/">
@@ -38,14 +43,14 @@ class NavBar extends Component {
         </Link>
         <section>
           <Link className="NavBar__item" to="/register-business">
-            Register business
+            Register Business
           </Link>
           {loggedInUser === "Admin" && (
             <Link to="/verify" className="NavBar__item">
-              Verify businesses
+              Verify Businesses
             </Link>
           )}
-          <Link to="/" onClick={this.handleSignOut} className="NavBar__item">Sign out</Link>
+          <SignOutButton onClick={this.handleSignOut} className="signOutButton"><Link to="/" className="NavBar__item" >Sign Out</Link></SignOutButton>
         </section>
         <Link
           to=""
