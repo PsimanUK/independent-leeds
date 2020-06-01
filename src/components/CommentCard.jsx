@@ -4,7 +4,6 @@ import { Button } from "@material-ui/core";
 
 const CommentCard = (props) => {
   const { username, body, createdAt, commentId, votes } = props.comment;
-  console.log(commentId);
 
   const { deleteComment } = props;
 
@@ -12,7 +11,6 @@ const CommentCard = (props) => {
     deleteComment(event.currentTarget.value);
   };
 
-  // console.log(props.username);
   return (
     <section className="commentElements">
       <h3>

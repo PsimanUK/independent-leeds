@@ -29,7 +29,6 @@ class CustomSignUp extends Component {
         api.sendUser({ username, emailAddress: email });
       })
       .catch((err) => {
-        console.log(err);
         if (
           err.code === "UsernameExistsException" ||
           err.code === "InvalidPasswordException"

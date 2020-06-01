@@ -1,9 +1,10 @@
 import React from "react";
+import Loader from "../images/Loader.svg";
 
 const LoadingIndicator = () => {
   return (
     <div>
-      <p>Loading...</p>
+      <img src={Loader} alt="loading..."></img>
     </div>
   );
 };

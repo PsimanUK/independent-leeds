@@ -12,7 +12,6 @@ class InternalApp extends Component {
     if (this.props.authState === "signedIn") {
       return (
         <main>
-
           <Router primary={false}>
             <AllBusinesses path="/" />
             <BusinessRegistration

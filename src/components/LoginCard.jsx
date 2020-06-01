@@ -3,19 +3,6 @@ import { Button, FormControl, TextField, FormControlLabel, Checkbox, Link, Grid,
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 
-// function Copyright() {
-//     return (
-//         <Typography variant="body2" color="textSecondary" align="center">
-//             {'Copyright © '}
-//             <Link color="inherit" href="https://material-ui.com/">
-//                 Your Website
-//       </Link>{' '}
-//             {new Date().getFullYear()}
-//             {'.'}
-//         </Typography>
-//     );
-// }
-
 const useStyles = makeStyles((theme) => ({
     body: {
         backgroundColor: 'rgba(250,250,250,0.8)',
@@ -46,10 +33,6 @@ export default function SignIn() {
     return (
         <Container component="main" maxWidth="xs" className={classes.body} >
             <div className={classes.paper} >
-                {/* <Avatar className={classes.avatar} variant="rounded">
-                    <img src="../images/background.jpg" alt="login logo" />
-                    {/* <LockOutlinedIcon /> 
-                </Avatar> */}
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
@@ -89,11 +72,6 @@ export default function SignIn() {
                         Sign In
           </Button>
                     <Grid container>
-                        {/* <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password?
-              </Link>
-                        </Grid> */}
                         <Grid item>
                             <Link href="#" variant="body2">
                                 {"Don't have an account? Sign Up"}

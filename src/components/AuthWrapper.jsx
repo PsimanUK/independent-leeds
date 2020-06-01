@@ -4,6 +4,7 @@ import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
 import Title from "./Title";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 import { Router } from "@reach/router";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -43,6 +44,7 @@ class AuthWrapper extends Component {
           onStateChange={this.props.onStateChange}
           username={this.state.username}
         />
+        <Footer />
       </div>
     );
   }

@@ -11,7 +11,7 @@ class AllBusinesses extends Component {
     activeSite: {},
     mapBoundaries: {},
     params: {},
-    isLoading: false,
+    isLoading: true,
   };
 
   handleInput = (event) => {
@@ -36,7 +36,7 @@ class AllBusinesses extends Component {
     api
       .fetchBusinesses(params)
       .then(({ Items }) => {
-        this.setState({ businesses: Items, isLoading: false });
+        this.setState({ businesses: Items });
       })
       .catch((err) => {
         this.setState({ error: err.code });
@@ -63,7 +63,6 @@ class AllBusinesses extends Component {
   };
 
   componentDidMount = () => {
-    console.log("mounting");
     api
       .fetchBusinesses()
       .then(({ Items }) => {
@@ -98,8 +97,7 @@ class AllBusinesses extends Component {
         north: newBoundaries.getNorth(),
         south: newBoundaries.getSouth(),
         east: newBoundaries.getEast(),
-      },
-      isLoading: false,
+      }
     });
   };
 
@@ -115,7 +113,7 @@ class AllBusinesses extends Component {
         business.latitude > mapBoundaries.south &&
         business.latitude < mapBoundaries.north
     );
-    console.log(viableBusinesses, "<-- viableBusinesses");
+
     return (
       <main>
         {this.state.error && <p>An error has occurred - please try again</p>}
