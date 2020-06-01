@@ -215,10 +215,10 @@ p {
 
 .singlebusinessCard__title {
   color: #7b190a;
-  font-size: 1.7em;
+  font-size: 1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .thumbnail {
@@ -252,15 +252,37 @@ p {
   flex-wrap: wrap;
 }
 
-.singleBusiness {
+.BusinessPage__card {
+  align-self: center;
   padding-top: 20px;
   max-width: 780px;
+  margin-left: 2em;
+  margin-right: 2em;
   margin: auto;
   border: solid #7b190a 2px;
   border-radius: 10px;
   background-color: rgba(219, 219, 219, 0.9);
   box-shadow: 5px 10px 18px black;
   margin-top: 50px;
+}
+
+.BusinessPage__business_title {
+  font-size: 3em;
+}
+
+.BusinessPage__top_section {
+  display: flex;
+  flex-direction: row;
+}
+
+.BusinessPage__logo_img {
+  width: 8em;
+}
+
+.BusinessPage__type_cuisine_tables_group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10em;
 }
 
 .businessPageElement {
@@ -271,6 +293,10 @@ p {
   box-shadow: 2px 2px 5px black;
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.BusinessPage__update_field {
+  background-color: rgb(156, 25, 156);
 }
 
 .commentElements {
@@ -400,21 +426,42 @@ p {
     max-width: 4em;
   }
 
-  .singleBusiness {
+  .BusinessPage__card {
     display: inline-block;
     /* flex-direction: column; */
     position: relative;
-    max-width: 800px;
+    max-width: 700px;
     margin: auto;
     margin-top: 20px;
     /* text-align: center; */
     align-items: center;
   }
+
+  .BusinessPage__business_title {
+    font-size: 2em;
+  }
+
+  .BusinessPage__top_section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .BusinessPage__logo_img {
+    width: 4em;
+    margin: auto;
+  }
+
   .singleBusiness .showMenu {
     display: none;
   }
   .singleBusiness .logo_img {
     max-height: 300px;
+  }
+
+  .BusinessPage__type_cuisine_tables_group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5em;
   }
 
 }

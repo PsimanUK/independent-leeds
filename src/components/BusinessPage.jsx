@@ -76,8 +76,8 @@ class BusinessPage extends Component {
     const { loggedInUser } = this.props;
     console.log(loggedInUser);
     return (
-      <section className="singleBusiness">
-        <h1 className="singlebusinessCard__title">{businessName}</h1>
+      <section className="BusinessPage__card">
+        <h1 className="BusinessPage__business_title">{businessName}</h1>
         <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
@@ -102,105 +102,137 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <>
-          <div className="logo_img">
-            <img
-              src={logoUrl}
-              alt={`Logo for ${businessName}`}
-              className="largePic"
-            />
-          </div>
-          <br></br>
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
-          )}
-          <form
-            className="businessPageElement"
-            id="logoUrl"
-            name="logoUrl"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              label="Logo URL"
+        <section className="BusinessPage__top_section" >
+          <>
+            <div className="BusinessPage__logo_img">
+              <img
+                src={logoUrl}
+                alt={`Logo for ${businessName}`}
+                className="largePic"
+              />
+            </div>
+            <br></br>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
+            )}
+            <form
+              className="businessPageElement"
+              id="logoUrl"
               name="logoUrl"
-              id="outlined-basic"
-              type="url"
-              placeholder="input your new logo URL..."
-              value={this.state.keyToUpdate.logoUrl}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
-        </>
-        <h2 className="singlebusinessCard__title">Type:</h2>
-        <h2>{businessType}</h2>
-        <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
-        )}
-        <form
-          name="businessType"
-          id="businessType"
-          onSubmit={this.submitUpdate}
-          className="businessPageElement"
-          hidden
-        >
-          <Select
-            id="businessType"
-            label="Business Type"
-            select
-            variant="filled"
-            name="businessType"
-            onChange={this.handleInput}
-          >
-            <MenuItem value="Restaurant">Restaurant</MenuItem>
-            <MenuItem value="Pub">Pub</MenuItem>
-            <MenuItem value="Cafe">Cafe</MenuItem>
-            <MenuItem value="Takeaway">Takeaway</MenuItem>
-          </Select>
-          <Button type="Submit" id="businessType">
-            Update
+              onSubmit={this.submitUpdate}
+              hidden
+            >
+              <TextField
+                label="Logo URL"
+                name="logoUrl"
+                id="outlined-basic"
+                type="url"
+                placeholder="input your new logo URL..."
+                value={this.state.keyToUpdate.logoUrl}
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+          </>
+          <section className="BusinessPage__type_cuisine_tables_group" >
+            <h2 className="singlebusinessCard__title">Type:</h2>
+            <h2>{businessType}</h2>
+            <br></br>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
+            )}
+            <form
+              name="businessType"
+              id="businessType"
+              onSubmit={this.submitUpdate}
+              className="businessPageElement"
+              hidden
+            >
+              <Select
+                id="businessType"
+                label="Business Type"
+                select
+                variant="filled"
+                name="businessType"
+                onChange={this.handleInput}
+              >
+                <MenuItem value="Restaurant">Restaurant</MenuItem>
+                <MenuItem value="Pub">Pub</MenuItem>
+                <MenuItem value="Cafe">Cafe</MenuItem>
+                <MenuItem value="Takeaway">Takeaway</MenuItem>
+              </Select>
+              <Button type="Submit" id="businessType">
+                Update
           </Button>
-        </form>
-        <h2 className="singlebusinessCard__title">Cuisine: </h2>
-        <h2>{cuisine}</h2>
-        <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
-        )}
-        <form
-          name="cuisine"
-          id="cuisine"
-          onSubmit={this.submitUpdate}
-          className="businessPageElement"
-          hidden
-        >
-          <Select
-            id="cuisine"
-            label="Cuisine"
-            select
-            variant="filled"
-            name="cuisine"
-            onChange={this.handleInput}
-          >
-            <MenuItem value="Chinese">Chinese</MenuItem>
-            <MenuItem value="Thai">Thai</MenuItem>
-            <MenuItem value="Indian">Indian</MenuItem>
-            <MenuItem value="British">British</MenuItem>
-            <MenuItem value="Italian">Italian</MenuItem>
-            <MenuItem value="Spanish">Spanish</MenuItem>
-            <MenuItem value="American">American</MenuItem>
-            <MenuItem value="Greek">Greek</MenuItem>
-            <MenuItem value="French">French</MenuItem>
-            <MenuItem value="Japanese">Japanese</MenuItem>
-            <MenuItem value="Mexican">Mexican</MenuItem>
-            <MenuItem value="Other">Other</MenuItem>
-          </Select>
-          <Button type="Submit" id="cuisine">
-            Update
+            </form>
+            <h2 className="singlebusinessCard__title">Cuisine: </h2>
+            <h2>{cuisine}</h2>
+            <br></br>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
+            )}
+            <form
+              name="cuisine"
+              id="cuisine"
+              onSubmit={this.submitUpdate}
+              className="businessPageElement"
+              hidden
+            >
+              <Select
+                id="cuisine"
+                label="Cuisine"
+                select
+                variant="filled"
+                name="cuisine"
+                onChange={this.handleInput}
+              >
+                <MenuItem value="Chinese">Chinese</MenuItem>
+                <MenuItem value="Thai">Thai</MenuItem>
+                <MenuItem value="Indian">Indian</MenuItem>
+                <MenuItem value="British">British</MenuItem>
+                <MenuItem value="Italian">Italian</MenuItem>
+                <MenuItem value="Spanish">Spanish</MenuItem>
+                <MenuItem value="American">American</MenuItem>
+                <MenuItem value="Greek">Greek</MenuItem>
+                <MenuItem value="French">French</MenuItem>
+                <MenuItem value="Japanese">Japanese</MenuItem>
+                <MenuItem value="Mexican">Mexican</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
+              </Select>
+              <Button type="Submit" id="cuisine">
+                Update
           </Button>
-        </form>
+            </form>
+            <h2 className="singlebusinessCard__title">
+              Tables Currently Available:
+        </h2>
+            <strong>
+              <p className="tablesAvailable">{tables}</p>
+            </strong>
+            <br></br>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("tables")}>EDIT</Button>
+            )}
+            <form
+              id="tables"
+              name="tables"
+              onSubmit={this.submitUpdate}
+              className="businessPageElement"
+              hidden
+            >
+              <TextField
+                label="Tables"
+                name="tables"
+                id="outlined-basic"
+                type="text"
+                value={this.state.keyToUpdate.tables}
+                placeholder="update tables available..."
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+          </section>
+        </section>
         <h2 className="singlebusinessCard__title">About:</h2>
         <br></br>
         <p className="businessPageDescription">{about}</p>
@@ -252,34 +284,7 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h2 className="singlebusinessCard__title">
-          Tables Currently Available:
-        </h2>
-        <strong>
-          <p className="tablesAvailable">{tables}</p>
-        </strong>
-        <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("tables")}>EDIT</Button>
-        )}
-        <form
-          id="tables"
-          name="tables"
-          onSubmit={this.submitUpdate}
-          className="businessPageElement"
-          hidden
-        >
-          <TextField
-            label="Tables"
-            name="tables"
-            id="outlined-basic"
-            type="text"
-            value={this.state.keyToUpdate.tables}
-            placeholder="update tables available..."
-            onChange={this.handleInput}
-          />
-          <Button type="Submit">Update</Button>
-        </form>
+
         <div className="showMenu">
           <h2 className="singlebusinessCard__title">Menu:</h2>
           <img src={menu} alt="No Menu image provided" />
@@ -308,9 +313,10 @@ class BusinessPage extends Component {
           </form>
         </div>
         <SupportBusiness votes={votes} username={this.state.username} />
-        <h2 className="singlebusinessCard__title">Contact Information:</h2>
-        <section className="contactInformation">
-          <section className="contactInfo__card">
+
+        <section className="BusinessPage__contactInfo_card">
+          <h2 className="singlebusinessCard__title">Contact Information:</h2>
+          <section className="BusinessPage__contactInformation_group">
             <a className="singlebusinessCard__title">Phone Number:</a>
             <br></br>
             <u>
@@ -331,6 +337,7 @@ class BusinessPage extends Component {
               hidden
             >
               <TextField
+                className="BusinessPage__update_field"
                 label="Phone Number"
                 type="text"
                 id="outlined-basic"
@@ -418,10 +425,10 @@ class BusinessPage extends Component {
             </Button>
           </div>
         ) : (
-          <Button onClick={this.handlesReadComments} variant="contained">
-            Hide comments
-          </Button>
-        )}
+            <Button onClick={this.handlesReadComments} variant="contained">
+              Hide comments
+            </Button>
+          )}
         {comments.map((comment) => {
           // console.log(comment.commentId);
           return (
@@ -506,6 +513,7 @@ class BusinessPage extends Component {
     let value = event.target.children[0].value;
     let newValue = this.state.keyToUpdate[name];
     this.setState({ [name]: value || newValue });
+    this.handleEdit(name);
     api
       .updateBusiness(loggedInUser, { key: name, value: value || newValue })
       .then(() => {
