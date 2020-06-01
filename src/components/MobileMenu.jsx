@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from '@reach/router';
-import { styled } from "@material-ui/styles"
 
 export default function MobileMenu({ loggedInUser, handleSignOut }) {
     const [anchorEl, setAnchorEl] = React.useState(null);

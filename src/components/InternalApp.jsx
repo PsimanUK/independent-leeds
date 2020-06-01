@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import BusinessRegistration from "./BusinessRegistration";
-// import BusinessRegCard from "./BusinessRegCard";
 import { Router } from "@reach/router";
 import BusinessPage from "./BusinessPage";
 import AllBusinesses from "./AllBusinesses";

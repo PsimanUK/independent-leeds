@@ -32,7 +32,6 @@ class AllBusinesses extends Component {
   handleFilter = (event) => {
     event.preventDefault();
     const { params } = this.state;
-    console.log(params, this.state.params, "<--- params, this.state.params");
     api
       .fetchBusinesses(params)
       .then(({ Items }) => {
@@ -77,9 +76,6 @@ class AllBusinesses extends Component {
           },
         });
       })
-      .then(() => {
-        this.setState();
-      })
       .catch((err) => {
         this.setState({ error: err.code });
       });
@@ -97,13 +93,12 @@ class AllBusinesses extends Component {
         north: newBoundaries.getNorth(),
         south: newBoundaries.getSouth(),
         east: newBoundaries.getEast(),
-      }
+      }, isLoading: false,
     });
   };
 
   render() {
-    if (this.state.isLoading) return <LoadingIndicator />;
-    const { businesses, activeSite, mapBoundaries } = this.state;
+    const { businesses, activeSite, mapBoundaries, isLoading } = this.state;
     const viableBusinesses = businesses.filter(
       (business) =>
         business.businessName &&
@@ -113,7 +108,8 @@ class AllBusinesses extends Component {
         business.latitude > mapBoundaries.south &&
         business.latitude < mapBoundaries.north
     );
-
+    console.log(isLoading, "<---- isLoading");
+    // if (isLoading === true) return <LoadingIndicator />;
     return (
       <main>
         {this.state.error && <p>An error has occurred - please try again</p>}

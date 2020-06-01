@@ -6,8 +6,6 @@ import Title from "./Title";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { Router } from "@reach/router";
-import LoadingIndicator from "./LoadingIndicator";
-
 
 class AuthWrapper extends Component {
   state = { username: "" };
@@ -18,7 +16,6 @@ class AuthWrapper extends Component {
 
   render() {
     console.log(this.props.authState, '<-- authState in AuthWrapper')
-    if (this.state.isLoading) return <LoadingIndicator />;
     return (
       <div>
         {this.props.authState !== "signedIn" ?
