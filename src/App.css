@@ -214,6 +214,13 @@ p {
 
 .businessCard__title {
   color: #7b190a;
+  font-size: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.singlebusinessCard__title {
+  color: #7b190a;
   font-size: 1.7em;
   margin-left: 0.5em;
   margin-right: 0.5em;
@@ -390,5 +397,21 @@ p {
     display: flex;
     flex-direction: column;
     position: relative;
+  }
+  .singleBusiness {
+    display: inline-block;
+    /* flex-direction: column; */
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    /* text-align: center; */
+    align-items: center;
+  }
+  .singleBusiness .showMenu {
+    display: none;
+  }
+  .singleBusiness .logo_img {
+    max-height: 300px;
   }
 }

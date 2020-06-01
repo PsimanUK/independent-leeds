@@ -9,7 +9,7 @@ class SupportBusiness extends Component {
   render() {
     return (
       <div>
-        <h3 className="businessCard__title">Votes:</h3>
+        <h3 className="singlebusinessCard__title">Votes:</h3>
         <strong>
           <p className="tablesAvailable">
             {this.props.votes + this.state.voteChange}

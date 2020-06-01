@@ -77,7 +77,7 @@ class BusinessPage extends Component {
     console.log(loggedInUser);
     return (
       <section className="singleBusiness">
-        <h1 className="businessCard__title">{businessName}</h1>
+        <h1 className="singlebusinessCard__title">{businessName}</h1>
         <br></br>
         {loggedInUser === this.state.username && (
           <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
@@ -103,11 +103,13 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <>
-          <img
-            src={logoUrl}
-            alt={`Logo for ${businessName}`}
-            className="largePic"
-          />
+          <div className="logo_img">
+            <img
+              src={logoUrl}
+              alt={`Logo for ${businessName}`}
+              className="largePic"
+            />
+          </div>
           <br></br>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
@@ -131,7 +133,7 @@ class BusinessPage extends Component {
             <Button type="Submit">Update</Button>
           </form>
         </>
-        <h2 className="businessCard__title">Type: </h2>
+        <h2 className="singlebusinessCard__title">Type:</h2>
         <h2>{businessType}</h2>
         <br></br>
         {loggedInUser === this.state.username && (
@@ -161,7 +163,7 @@ class BusinessPage extends Component {
             Update
           </Button>
         </form>
-        <h2 className="businessCard__title">Cuisine: </h2>
+        <h2 className="singlebusinessCard__title">Cuisine: </h2>
         <h2>{cuisine}</h2>
         <br></br>
         {loggedInUser === this.state.username && (
@@ -199,7 +201,7 @@ class BusinessPage extends Component {
             Update
           </Button>
         </form>
-        <h2 className="businessCard__title">About:</h2>
+        <h2 className="singlebusinessCard__title">About:</h2>
         <br></br>
         <p className="businessPageDescription">{about}</p>
         {loggedInUser === this.state.username && (
@@ -224,7 +226,7 @@ class BusinessPage extends Component {
           ></TextField>
           <Button type="Submit">Update</Button>
         </form>
-        <h2 className="businessCard__title">Latest News:</h2>
+        <h2 className="singlebusinessCard__title">Latest News:</h2>
         <p className="businessPageDescription">{updates}</p>
         <br></br>
         {loggedInUser === this.state.username && (
@@ -250,7 +252,9 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h2 className="businessCard__title">Tables Currently Available:</h2>
+        <h2 className="singlebusinessCard__title">
+          Tables Currently Available:
+        </h2>
         <strong>
           <p className="tablesAvailable">{tables}</p>
         </strong>
@@ -276,36 +280,38 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <h2 className="businessCard__title">Menu:</h2>
-        <img src={menu} alt="cafe menu" className="menu_image" />
-        <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
-        )}
-        <br></br>
-        <form
-          id="menu"
-          name="menu"
-          onSubmit={this.submitUpdate}
-          className="businessPageElement"
-          hidden
-        >
-          <TextField
-            label="Menu URL"
+        <div className="showMenu">
+          <h2 className="singlebusinessCard__title">Menu:</h2>
+          <img src={menu} alt="cafe menu" className="" />
+          <br></br>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
+          )}
+          <br></br>
+          <form
+            id="menu"
             name="menu"
-            id="outlined-basic"
-            type="url"
-            placeholder="new Menu URL..."
-            value={this.state.keyToUpdate.menu}
-            onChange={this.handleInput}
-          />
-          <Button type="Submit">Update</Button>
-        </form>
+            onSubmit={this.submitUpdate}
+            className="businessPageElement"
+            hidden
+          >
+            <TextField
+              label="Menu URL"
+              name="menu"
+              id="outlined-basic"
+              type="url"
+              placeholder="new Menu URL..."
+              value={this.state.keyToUpdate.menu}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+        </div>
         <SupportBusiness votes={votes} username={this.state.username} />
-        <h2 className="businessCard__title">Contact Information:</h2>
+        <h2 className="singlebusinessCard__title">Contact Information:</h2>
         <section className="contactInformation">
           <section className="contactInfo__card">
-            <a className="businessCard__title">Phone Number:</a>
+            <a className="singlebusinessCard__title">Phone Number:</a>
             <br></br>
             <u>
               <a href="">{phoneNumber}</a>
@@ -337,7 +343,7 @@ class BusinessPage extends Component {
               <Button type="Submit">Update</Button>
             </form>
           </section>
-          <a className="businessCard__title">Post Code:</a>
+          <a className="singlebusinessCard__title">Post Code:</a>
           <br></br>
           <u>
             <a href="">{postCode}</a>
@@ -367,7 +373,7 @@ class BusinessPage extends Component {
           </form>
         </section>
         <section className="contactInfo__card">
-          <a className="businessCard__title">Email: </a>
+          <a className="singlebusinessCard__title">Email: </a>
           <br />
           <u>
             {" "}
