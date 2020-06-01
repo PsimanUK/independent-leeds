@@ -3,7 +3,7 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import * as api from "../utils/api";
 import BusinessList from "./BusinessList";
 import { Link } from "@reach/router";
-import LoadingIndicator from "./LoadingIndicator";
+//import LoadingIndicator from "./LoadingIndicator";
 
 class AllBusinesses extends Component {
   state = {

@@ -32,13 +32,13 @@ class CommentVoter extends Component {
           >
             <FontAwesomeIcon className="icon" size="3x" icon={faThumbsDown} />
           </Button>
-          {/* <Button
+          <Button
             onClick={() => this.handlesVoteChange(-1)}
             disabled={this.state.voteChange === -1}
             variant="contained"
           >
             Vote down
-          </Button> */}
+          </Button>
         </h3>
       </div>
     );
