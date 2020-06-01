@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import { Button } from "@material-ui/core";
 
 class SupportBusiness extends Component {
   state = {
@@ -8,18 +9,22 @@ class SupportBusiness extends Component {
   render() {
     return (
       <div>
-        <p>Votes: {this.props.votes + this.state.voteChange}</p>
-        <button
+        <h3>Votes: {this.props.votes + this.state.voteChange}</h3>
+        <Button
           onClick={() => this.handlesVoteChange(1)}
           disabled={this.state.voteChange === 1}
+          variant="contained"
         >
           Support Business
-        </button>
+        </Button>
       </div>
     );
   }
   handlesVoteChange = (vote) => {
     const { username } = this.props;
+    alert(
+      `Thank you for supporting ${username}'s business during this difficult time.`
+    );
     api.supportBusinessVoter(username, vote);
 
     this.setState((currentState) => {

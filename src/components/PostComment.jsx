@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import { TextField, FormControl, Button } from "@material-ui/core";
 
 class PostComment extends Component {
   state = {
@@ -11,19 +12,20 @@ class PostComment extends Component {
     return (
       <div>
         <form onSubmit={this.handlesCommentSubmission}>
-          <label>
-            {" "}
-            Add a new comment:
-            <input
-              onChange={this.handlesInput}
-              className="input"
-              name="body"
-              type="text"
-              value={body}
-              required
-            />
-          </label>
-          <button>Submit a new comment</button>
+          <TextField
+            id="outlined-basic"
+            label="Add new comment"
+            onChange={this.handlesInput}
+            name="body"
+            type="text"
+            value={body}
+            variant="filled"
+            required
+          />
+          <br></br>
+          <Button type="Submit" variant="contained">
+            Submit a new comment
+          </Button>
         </form>
       </div>
     );
