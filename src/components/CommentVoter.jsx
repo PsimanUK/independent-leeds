@@ -9,6 +9,7 @@ class CommentVoter extends Component {
   render() {
     return (
       <div>
+        <h1>Hello</h1>
         <h3>
           <Button
             onClick={() => this.handlesVoteChange(1)}
