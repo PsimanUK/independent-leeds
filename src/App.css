@@ -451,11 +451,11 @@ p {
     margin: auto;
   }
 
-  .singleBusiness .showMenu {
+  .BusinessPage__card .showMenu {
     display: none;
   }
 
-  .singleBusiness .logo_img {
+  .BusinessPage__card .logo_img {
     max-height: 300px;
   }
 
