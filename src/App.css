@@ -188,9 +188,9 @@ p {
   box-shadow: 3px 3px 6px #2d080a;
 }
 
-.largePic {
+/* .largePic {
   max-height: 300px;
-}
+} */
 
 .businessList {
   display: flex;
@@ -258,7 +258,7 @@ p {
 .BusinessPage__card {
   align-self: center;
   padding-top: 20px;
-  max-width: 780px;
+  max-width: 94%;
   margin-left: 2em;
   margin-right: 2em;
   margin: auto;
@@ -279,7 +279,7 @@ p {
 }
 
 .BusinessPage__logo_img {
-  width: 8em;
+  width: 20em;
 }
 
 .BusinessPage__type_cuisine_tables_group {
@@ -422,10 +422,9 @@ p {
   }
 
   .BusinessPage__card {
-    display: inline-block;
-    /* flex-direction: column; */
-    position: relative;
-    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
     margin: auto;
     margin-top: 20px;
     /* text-align: center; */
@@ -439,16 +438,21 @@ p {
   .BusinessPage__top_section {
     display: flex;
     flex-direction: column;
+    padding: 0.5em;
+    align-self: center;
   }
 
   .BusinessPage__logo_img {
-    width: 4em;
+    padding: 0.5em;
+    align-self: center;
+    width: 14em;
     margin: auto;
   }
 
   .singleBusiness .showMenu {
     display: none;
   }
+
   .singleBusiness .logo_img {
     max-height: 300px;
   }
@@ -456,7 +460,9 @@ p {
   .BusinessPage__type_cuisine_tables_group {
     display: flex;
     flex-direction: column;
-    padding-left: 5em;
+    align-items: center;
+    margin: auto;
+    padding-left: 0;
   }
 }
 
@@ -473,7 +479,5 @@ p {
     max-width: 380px;
     height: auto;
   }
-
-
 }
 

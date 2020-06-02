@@ -103,37 +103,35 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <section className="BusinessPage__top_section" >
-          <>
-            <div className="BusinessPage__logo_img">
-              <img
-                src={logoUrl}
-                alt={`Logo for ${businessName}`}
-                className="largePic"
-              />
-            </div>
-            <br></br>
-            {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
-            )}
-            <form
-              className="businessPageElement"
-              id="logoUrl"
+          <div >
+            <img
+              src={logoUrl}
+              alt={`Logo for ${businessName}`}
+              className="BusinessPage__logo_img"
+            />
+          </div>
+          <br></br>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
+          )}
+          <form
+            className="businessPageElement"
+            id="logoUrl"
+            name="logoUrl"
+            onSubmit={this.submitUpdate}
+            hidden
+          >
+            <TextField
+              label="Logo URL"
               name="logoUrl"
-              onSubmit={this.submitUpdate}
-              hidden
-            >
-              <TextField
-                label="Logo URL"
-                name="logoUrl"
-                id="outlined-basic"
-                type="url"
-                placeholder="input your new logo URL..."
-                value={this.state.keyToUpdate.logoUrl}
-                onChange={this.handleInput}
-              />
-              <Button type="Submit">Update</Button>
-            </form>
-          </>
+              id="outlined-basic"
+              type="url"
+              placeholder="input your new logo URL..."
+              value={this.state.keyToUpdate.logoUrl}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
           <section className="BusinessPage__type_cuisine_tables_group" >
             <h2 className="singlebusinessCard__title">Type:</h2>
             <h2>{businessType}</h2>
