@@ -54,6 +54,7 @@ html {
 .registration__form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .registration__input {
@@ -424,10 +425,8 @@ p {
   .BusinessPage__card {
     display: flex;
     flex-direction: column;
-    /* position: relative; */
     margin: auto;
     margin-top: 20px;
-    /* text-align: center; */
     align-items: center;
   }
 
