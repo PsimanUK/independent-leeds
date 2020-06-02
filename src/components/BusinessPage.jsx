@@ -74,7 +74,7 @@ class BusinessPage extends Component {
       votes,
     } = this.state;
     const { loggedInUser } = this.props;
-    console.log(loggedInUser);
+    console.log(this.state.username, "<---username in business page");
     return (
       <section className="BusinessPage__card">
         <h1 className="BusinessPage__business_title">{businessName}</h1>
@@ -437,8 +437,9 @@ class BusinessPage extends Component {
                 <CommentCard
                   key={comment.commentId}
                   comment={comment}
-                  username={this.props.username}
+                  businessUsername={this.state.username}
                   deleteComment={this.handlesDelete}
+                  loggedInUser={loggedInUser}
                 />
               ) : null}
             </>

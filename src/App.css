@@ -5,8 +5,13 @@
 .App {
   font-family: "Varela Round", sans-serif;
   text-align: center;
+  justify-content: center;
   margin-bottom: 200px;
   display: flex;
+}
+
+.Section__container___3YYTG {
+  width: 100%;
 }
 
 html {
@@ -35,10 +40,6 @@ html {
   box-shadow: 5px 10px 18px black;
 }
 
-.submitButton {
-  margin-top: 30px;
-}
-
 .registration__card {
   padding-top: 60px;
   margin-top: 20px;
@@ -61,10 +62,6 @@ html {
 
 .registration__input {
   width: 90%;
-}
-
-.submitButton {
-  margin-top: 30px;
 }
 
 .title {
@@ -338,6 +335,7 @@ p {
   align-items: center;
   margin-block-start: 0.5em;
   background: linear-gradient(45deg, #7b190a 30%, #ffcc00 90%);
+  max-width: 100%;
 }
 
 .NavBar__title {
@@ -360,12 +358,11 @@ p {
 
 .footer {
   font-size: 0.8em;
-  color: #DCDCDC;
+  color: #dcdcdc;
   font-style: italic;
   justify-self: flex-end;
   font-weight: bold;
 }
-
 
 @media only screen and (max-width: 766px) {
   .Map {
@@ -391,7 +388,7 @@ p {
 
   .NavMenu {
     display: none;
-  } 
+  }
 
   .NavBar__title {
     font-size: 1.75em;
@@ -467,7 +464,6 @@ p {
     flex-direction: column;
     padding-left: 5em;
   }
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -486,7 +482,4 @@ p {
 
 
 }
-
-
-
-
+}
