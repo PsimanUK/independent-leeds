@@ -358,14 +358,6 @@ p {
   display: none;
 }
 
-.footer {
-  font-size: 0.8em;
-  color: #dcdcdc;
-  font-style: italic;
-  justify-self: flex-end;
-  font-weight: bold;
-}
-
 @media only screen and (max-width: 766px) {
   .Map {
     height: 250px;

@@ -4,7 +4,6 @@ import InternalApp from "./InternalApp";
 import CustomSignUp from "./CustomSignUp";
 import Title from "./Title";
 import NavBar from "./NavBar";
-import Footer from "./Footer";
 import { Router } from "@reach/router";
 
 class AuthWrapper extends Component {
@@ -21,8 +20,8 @@ class AuthWrapper extends Component {
         {this.props.authState !== "signedIn" ? (
           <Title />
         ) : (
-          <NavBar loggedInUser={this.state.username} />
-        )}
+            <NavBar loggedInUser={this.state.username} />
+          )}
         <Router>
           <CustomSignIn
             path="/"
@@ -43,7 +42,6 @@ class AuthWrapper extends Component {
           onStateChange={this.props.onStateChange}
           username={this.state.username}
         />
-        <Footer />
       </div>
     );
   }
