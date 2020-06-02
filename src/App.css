@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.Section__container___3YYTG {
+  width: 100%;
+}
+
 html {
   height: 100%;
   background-image: url("./images/background.jpg");
@@ -32,10 +36,6 @@ html {
   box-shadow: 5px 10px 18px black;
 }
 
-.submitButton {
-  margin-top: 30px;
-}
-
 .registration__card {
   padding-top: 60px;
   margin-top: 20px;
@@ -58,10 +58,6 @@ html {
 
 .registration__input {
   width: 90%;
-}
-
-.submitButton {
-  margin-top: 30px;
 }
 
 .title {
@@ -169,7 +165,7 @@ p {
   padding-top: 20px;
   margin: auto;
   max-width: 740px;
-  max-height: 580px;
+  height: auto;
   background-color: rgba(219, 219, 219, 0.9);
   border-radius: 10px;
   border: solid #7b190a 2px;

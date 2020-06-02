@@ -44,7 +44,7 @@ class VerifyBusinesses extends Component {
               <BusinessCard key={username} {...business} />
               <button
                 onClick={() => this.verifyBusiness(username)}
-                className="submitButton verify"
+                className="verify"
               >
                 Verify {business.businessName}
               </button>
