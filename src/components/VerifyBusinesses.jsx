@@ -40,11 +40,11 @@ class VerifyBusinesses extends Component {
         {businesses.map((business) => {
           const { username } = business;
           return (
-            <section className="businessList">
+            <section className="Verify__list">
               <BusinessCard key={username} {...business} />
               <button
                 onClick={() => this.verifyBusiness(username)}
-                className="verify"
+                className="submitButton verify"
               >
                 Verify {business.businessName}
               </button>
