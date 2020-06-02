@@ -1,3 +1,7 @@
+.Section__container___3YYTG {
+  width: 100%;
+}
+
 .App {
   font-family: "Varela Round", sans-serif;
   text-align: center;
@@ -179,7 +183,7 @@ p {
   border: 2px solid #7b190a;
   border-width: 1px;
   border-radius: 6px;
-  box-shadow: 1px 1px 2px #2d080a;
+  box-shadow: 3px 3px 6px #2d080a;
 }
 
 .largePic {
@@ -196,10 +200,10 @@ p {
   display: flex;
   justify-content: space-between;
   background-color: #fff5cc;
-  width: 350px;
+  width: 320px;
   border-radius: 6px;
-  margin: 2.5em;
-  box-shadow: 1px 1px 2px #2d080a;
+  margin: 1.5em;
+  box-shadow: 5px 10px 18px black;
 }
 
 .businessCard__title {
@@ -207,14 +211,15 @@ p {
   font-size: 0.7em;
   margin-left: 0.5em;
   margin-right: 0.5em;
+  text-decoration: none;
 }
 
 .singlebusinessCard__title {
   color: #7b190a;
-  font-size: 1.7em;
+  font-size: 1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .thumbnail {
@@ -224,8 +229,8 @@ p {
 }
 
 .thumbnailPic {
-  max-height: 150px;
-  max-width: 200px;
+  max-height: 8em;
+  max-width: 6em;
   overflow: hidden;
   border-radius: 6px;
   margin: 2px;
@@ -248,15 +253,37 @@ p {
   flex-wrap: wrap;
 }
 
-.singleBusiness {
+.BusinessPage__card {
+  align-self: center;
   padding-top: 20px;
   max-width: 780px;
+  margin-left: 2em;
+  margin-right: 2em;
   margin: auto;
   border: solid #7b190a 2px;
   border-radius: 10px;
   background-color: rgba(219, 219, 219, 0.9);
   box-shadow: 5px 10px 18px black;
   margin-top: 50px;
+}
+
+.BusinessPage__business_title {
+  font-size: 3em;
+}
+
+.BusinessPage__top_section {
+  display: flex;
+  flex-direction: row;
+}
+
+.BusinessPage__logo_img {
+  width: 8em;
+}
+
+.BusinessPage__type_cuisine_tables_group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10em;
 }
 
 .businessPageElement {
@@ -267,6 +294,10 @@ p {
   box-shadow: 2px 2px 5px black;
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.BusinessPage__update_field {
+  background-color: rgb(156, 25, 156);
 }
 
 .commentElements {
@@ -379,20 +410,76 @@ p {
     font-size: 1.8em;
   }
 
-  .singleBusiness {
+  .businessCard {
+    width: 250px;
+    border-radius: 6px;
+    margin: 1.5em;
+  }
+
+  .businessCard__title {
+    font-size: 0.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+  }
+
+  .thumbnailPic {
+    max-height: 6em;
+    max-width: 4em;
+  }
+
+  .BusinessPage__card {
     display: inline-block;
     /* flex-direction: column; */
     position: relative;
-    max-width: 800px;
+    max-width: 700px;
     margin: auto;
     margin-top: 20px;
     /* text-align: center; */
     align-items: center;
   }
+
+  .BusinessPage__business_title {
+    font-size: 2em;
+  }
+
+  .BusinessPage__top_section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .BusinessPage__logo_img {
+    width: 4em;
+    margin: auto;
+  }
+
   .singleBusiness .showMenu {
     display: none;
   }
   .singleBusiness .logo_img {
     max-height: 300px;
   }
+
+  .BusinessPage__type_cuisine_tables_group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Map {
+    height: 250px;
+  }
+
+  .Map__card {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 2px;
+    max-width: 380px;
+    height: auto;
+  }
+
+
+}
 }
