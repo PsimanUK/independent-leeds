@@ -103,7 +103,7 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <section className="BusinessPage__top_section_card" >
-          <section classname="BusinessPage__logo_and_support">
+          <section className="BusinessPage__logo_and_support">
             <img
               src={logoUrl}
               alt={`Logo for ${businessName}`}
@@ -235,59 +235,61 @@ class BusinessPage extends Component {
             </form>
           </section>
         </section>
-        <h2 className="singlebusinessCard__title">About:</h2>
-        <br></br>
-        <p className="businessPageDescription">{about}</p>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("about")}>EDIT INFO ABOUT YOUR BUSINESS</Button>
-        )}
-        <form
-          id="about"
-          name="about"
-          onSubmit={this.submitUpdate}
-          hidden
-          className="businessPageElement"
-        >
-          <TextField
-            className="BusinessPage__update_field"
-            label="About"
-            multiline
-            rows={2}
-            rowsMax={20}
+        <section className="BusinessPage__about_and_updates" >
+          <h2 className="singlebusinessCard__title">About:</h2>
+          <br></br>
+          <p className="businessPageDescription">{about}</p>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("about")}>EDIT INFO ABOUT YOUR BUSINESS</Button>
+          )}
+          <form
+            id="about"
             name="about"
-            placeholder="update your business information..."
-            value={this.state.keyToUpdate.about}
-            onChange={this.handleInput}
-          ></TextField>
-          <Button type="Submit">Update</Button>
-        </form>
-        <h2 className="singlebusinessCard__title">Latest News:</h2>
-        <p className="businessPageDescription">{updates}</p>
-        <br></br>
-        {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("updates")}>EDIT LATEST NEWS</Button>
-        )}
-        <form
-          className="businessPageElement"
-          id="updates"
-          name="updates"
-          onSubmit={this.submitUpdate}
-          hidden
-        >
-          <TextField
-            className="BusinessPage__update_field"
-            label="Updates"
-            multiline
-            rows={2}
-            rowsMax={20}
+            onSubmit={this.submitUpdate}
+            hidden
+            className="businessPageElement"
+          >
+            <TextField
+              className="BusinessPage__update_field"
+              label="About"
+              multiline
+              rows={2}
+              rowsMax={20}
+              name="about"
+              placeholder="update your business information..."
+              value={this.state.keyToUpdate.about}
+              onChange={this.handleInput}
+            ></TextField>
+            <Button type="Submit">Update</Button>
+          </form>
+          <h2 className="singlebusinessCard__title">Latest News:</h2>
+          <p className="businessPageDescription">{updates}</p>
+          <br></br>
+          {loggedInUser === this.state.username && (
+            <Button onClick={() => this.handleEdit("updates")}>EDIT LATEST NEWS</Button>
+          )}
+          <form
+            className="businessPageElement"
+            id="updates"
             name="updates"
-            placeholder="update the latest news for your
+            onSubmit={this.submitUpdate}
+            hidden
+          >
+            <TextField
+              className="BusinessPage__update_field"
+              label="Updates"
+              multiline
+              rows={2}
+              rowsMax={20}
+              name="updates"
+              placeholder="update the latest news for your
             business..."
-            value={this.state.keyToUpdate.updates}
-            onChange={this.handleInput}
-          />
-          <Button type="Submit">Update</Button>
-        </form>
+              value={this.state.keyToUpdate.updates}
+              onChange={this.handleInput}
+            />
+            <Button type="Submit">Update</Button>
+          </form>
+        </section>
         <div className="showMenu">
           <h2 className="singlebusinessCard__title">Menu:</h2>
           <img src={menu} alt={`No menu provided by ${businessName}`} className="BusinessPage__menu_image" />
