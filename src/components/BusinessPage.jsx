@@ -287,10 +287,9 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-
         <div className="showMenu">
           <h2 className="singlebusinessCard__title">Menu:</h2>
-          <img src={menu} alt="No Menu image provided" />
+          <img src={menu} alt={`No menu provided by ${businessName}`} className="BusinessPage__menu_image" />
           <br></br>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("menu")}>EDIT MENU IMAGE</Button>
@@ -317,7 +316,6 @@ class BusinessPage extends Component {
           </form>
         </div>
         <SupportBusiness votes={votes} username={this.state.username} />
-
         <section className="BusinessPage__contactInfo_card">
           <h2 className="singlebusinessCard__title">Contact Information:</h2>
           <section className="BusinessPage__contactInformation_group">

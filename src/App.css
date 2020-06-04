@@ -276,7 +276,7 @@ p {
   align-items: center;
   justify-content: space-evenly;
   background-color: rgba(219, 219, 219, 0.9);
-  border: solid tomato 2px;
+  border: solid #7b190a 2px;
   border-radius: 6px;
   width: 94%;
   margin: auto;
@@ -291,6 +291,12 @@ p {
 
 .BusinessPage__logo_img {
   width: 20em;
+}
+
+.BusinessPage__menu_image {
+  border: solid #7b190a 2px;
+  border-radius: 6px;
+  box-shadow: 5px 10px 18px black;
 }
 
 .BusinessPage__type_cuisine_tables_group {
@@ -327,12 +333,14 @@ p {
 .BusinessPage__contactInfo_card {
   margin-top: 10px;
   margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
   justify-content: space-around;
   text-align: center;
   display: center;
   flex-wrap: wrap;
   background-color: rgba(219, 219, 219, 0.9);
-  border: solid tomato 2px;
+  border: solid #7b190a 2px;
   border-radius: 6px;
   width: 50%;
   box-shadow: 5px 10px 18px black;
