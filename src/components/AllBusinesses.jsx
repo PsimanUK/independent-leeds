@@ -186,6 +186,9 @@ class AllBusinesses extends Component {
               <option value="mexican" name="mexican">
                 Mexican
               </option>
+              <option value="middle eastern" name="middle eastern">
+                Middle Eastern
+              </option>
               <option value="other" name="other">
                 Other
               </option>

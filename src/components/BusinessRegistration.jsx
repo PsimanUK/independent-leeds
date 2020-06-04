@@ -117,6 +117,7 @@ class BusinessRegistration extends Component {
       { value: "italian", label: "Italian" },
       { value: "japanese", label: "Japanese" },
       { value: "mexican", label: "Mexican" },
+      { value: "middle eastern", label: "Middle Eastern" },
       { value: "other", label: "Other" },
       { value: "spanish", label: "Spanish" },
       { value: "thai", label: "Thai" },
@@ -193,7 +194,7 @@ class BusinessRegistration extends Component {
                 onChange={this.handleInput}
                 className="registration__input"
               />
-              <TextField
+              {/* <TextField
                 id="outlined-basic"
                 label="Facebook URL"
                 type="url"
@@ -219,7 +220,7 @@ class BusinessRegistration extends Component {
                 name="instagram"
                 onChange={this.handleInput}
                 className="registration__input"
-              />
+              /> */}
               <TextField
                 id="outlined-basic"
                 label="Business type"

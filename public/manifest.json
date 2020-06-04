@@ -1,8 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
-  "start_url": ".",
+  "short_name": "Indie Leeds",
+  "name": "Independent Leeds",
+  "icons": [
+    {
+      "src": "src/images/icons8-taco-100.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

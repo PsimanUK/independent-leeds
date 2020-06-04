@@ -80,7 +80,7 @@ class BusinessPage extends Component {
         <h1 className="BusinessPage__business_title">{businessName}</h1>
         <br></br>
         {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("businessName")}>EDIT</Button>
+          <Button onClick={() => this.handleEdit("businessName")}>EDIT BUSINESS NAME</Button>
         )}
         <form
           className="businessPageElement"
@@ -92,6 +92,7 @@ class BusinessPage extends Component {
           hidden
         >
           <TextField
+            className="BusinessPage__update_field"
             label="Business Name"
             id="businessName"
             name="businessName"
@@ -112,7 +113,7 @@ class BusinessPage extends Component {
           </div>
           <br></br>
           {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT</Button>
+            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT LOGO</Button>
           )}
           <form
             className="businessPageElement"
@@ -122,6 +123,7 @@ class BusinessPage extends Component {
             hidden
           >
             <TextField
+              className="BusinessPage__update_field"
               label="Logo URL"
               name="logoUrl"
               id="outlined-basic"
@@ -137,7 +139,7 @@ class BusinessPage extends Component {
             <h2>{businessType}</h2>
             <br></br>
             {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("businessType")}>EDIT</Button>
+              <Button onClick={() => this.handleEdit("businessType")}>EDIT BUSINESS TYPE</Button>
             )}
             <form
               name="businessType"
@@ -167,7 +169,7 @@ class BusinessPage extends Component {
             <h2>{cuisine}</h2>
             <br></br>
             {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("cuisine")}>EDIT</Button>
+              <Button onClick={() => this.handleEdit("cuisine")}>EDIT CUISINE</Button>
             )}
             <form
               name="cuisine"
@@ -209,7 +211,7 @@ class BusinessPage extends Component {
             </strong>
             <br></br>
             {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("tables")}>EDIT</Button>
+              <Button onClick={() => this.handleEdit("tables")}>EDIT NO. OF TABLES</Button>
             )}
             <form
               id="tables"
@@ -219,6 +221,7 @@ class BusinessPage extends Component {
               hidden
             >
               <TextField
+                className="BusinessPage__update_field"
                 label="Tables"
                 name="tables"
                 id="outlined-basic"
@@ -235,7 +238,7 @@ class BusinessPage extends Component {
         <br></br>
         <p className="businessPageDescription">{about}</p>
         {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("about")}>EDIT</Button>
+          <Button onClick={() => this.handleEdit("about")}>EDIT INFO ABOUT YOUR BUSINESS</Button>
         )}
         <form
           id="about"
@@ -245,6 +248,7 @@ class BusinessPage extends Component {
           className="businessPageElement"
         >
           <TextField
+            className="BusinessPage__update_field"
             label="About"
             multiline
             rows={2}
@@ -260,7 +264,7 @@ class BusinessPage extends Component {
         <p className="businessPageDescription">{updates}</p>
         <br></br>
         {loggedInUser === this.state.username && (
-          <Button onClick={() => this.handleEdit("updates")}>EDIT</Button>
+          <Button onClick={() => this.handleEdit("updates")}>EDIT LATEST NEWS</Button>
         )}
         <form
           className="businessPageElement"
@@ -270,6 +274,7 @@ class BusinessPage extends Component {
           hidden
         >
           <TextField
+            className="BusinessPage__update_field"
             label="Updates"
             multiline
             rows={2}
@@ -288,7 +293,7 @@ class BusinessPage extends Component {
           <img src={menu} alt="No Menu image provided" />
           <br></br>
           {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("menu")}>EDIT</Button>
+            <Button onClick={() => this.handleEdit("menu")}>EDIT MENU IMAGE</Button>
           )}
           <br></br>
           <form
@@ -299,6 +304,7 @@ class BusinessPage extends Component {
             hidden
           >
             <TextField
+              className="BusinessPage__update_field"
               label="Menu URL"
               name="menu"
               id="outlined-basic"
@@ -324,7 +330,7 @@ class BusinessPage extends Component {
             <br></br>
             {loggedInUser === this.state.username && (
               <Button onClick={() => this.handleEdit("phoneNumber")}>
-                EDIT
+                EDIT PHONE NUMBER
               </Button>
             )}
             <form
@@ -355,7 +361,7 @@ class BusinessPage extends Component {
           </u>
           <br></br>
           {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("postCode")}>EDIT</Button>
+            <Button onClick={() => this.handleEdit("postCode")}>EDIT POSTCODE</Button>
           )}
           <form
             className="businessPageElement"
@@ -365,6 +371,7 @@ class BusinessPage extends Component {
             hidden
           >
             <TextField
+              className="BusinessPage__update_field"
               label="Post Code"
               name="postCode"
               id="outlined-basic"
@@ -387,7 +394,7 @@ class BusinessPage extends Component {
           <br></br>
           {loggedInUser === this.state.username && (
             <Button onClick={() => this.handleEdit("businessEmail")}>
-              EDIT
+              EDIT BUSINESS EMAIL
             </Button>
           )}
           <form
@@ -398,6 +405,7 @@ class BusinessPage extends Component {
             hidden
           >
             <TextField
+              className="BusinessPage__update_field"
               label="Business Email"
               name="businessEmail"
               id="outlined-basic"

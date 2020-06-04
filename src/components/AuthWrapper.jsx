@@ -15,6 +15,7 @@ class AuthWrapper extends Component {
 
   render() {
     console.log(this.props.authState, "<-- authState in AuthWrapper");
+    if (this.props.authData) console.log(this.props.authData.username, '<-- signed in username')
     return (
       <div className="authWrapper">
         {this.props.authState !== "signedIn" ? (
