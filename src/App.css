@@ -252,11 +252,6 @@ p {
   width: 600px;
 }
 
-.contactInfo {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .BusinessPage__card {
   max-width: 800px;
   align-self: center;
@@ -275,11 +270,17 @@ p {
   font-size: 3em;
 }
 
-.BusinessPage__top_section {
+.BusinessPage__top_section_card {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  background-color: rgba(219, 219, 219, 0.9);
+  border: solid tomato 2px;
+  border-radius: 6px;
+  width: 94%;
+  margin: auto;
+  box-shadow: 5px 10px 18px black;
 }
 
 .BusinessPage__logo_and_edit {
@@ -323,13 +324,28 @@ p {
   padding-bottom: 10px;
 }
 
-.contactInformation {
-  margin: auto;
+.BusinessPage__contactInfo_card {
+  margin-top: 10px;
+  margin-bottom: 20px;
   justify-content: space-around;
   text-align: center;
   display: center;
   flex-wrap: wrap;
-  margin-left: 10px;
+  background-color: rgba(219, 219, 219, 0.9);
+  border: solid tomato 2px;
+  border-radius: 6px;
+  width: 50%;
+  box-shadow: 5px 10px 18px black;
+}
+
+.BusinessPage__contactInfo_element {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.BusinessPage__PostComment, .BusinessPage__show_comments_button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .tablesAvailable {
@@ -443,7 +459,7 @@ p {
     font-size: 2em;
   }
 
-  .BusinessPage__top_section {
+  .BusinessPage__top_section_card {
     display: flex;
     flex-direction: column;
     padding: 0.5em;

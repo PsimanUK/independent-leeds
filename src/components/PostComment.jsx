@@ -10,7 +10,7 @@ class PostComment extends Component {
   render() {
     const { body } = this.state;
     return (
-      <div>
+      <div className="BusinessPage__PostComment">
         <form onSubmit={this.handlesCommentSubmission}>
           <TextField
             id="outlined-basic"

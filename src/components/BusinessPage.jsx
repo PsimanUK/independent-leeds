@@ -5,7 +5,6 @@ import LoadingIndicator from "./LoadingIndicator";
 import PostComment from "./PostComment";
 import axios from "axios";
 import SupportBusiness from "./SupportBusiness";
-
 import { TextField, MenuItem, Button, Select } from "@material-ui/core";
 
 class BusinessPage extends Component {
@@ -103,7 +102,7 @@ class BusinessPage extends Component {
           />
           <Button type="Submit">Update</Button>
         </form>
-        <section className="BusinessPage__top_section" >
+        <section className="BusinessPage__top_section_card" >
           <section classname="BusinessPage__logo_and_edit">
             <img
               src={logoUrl}
@@ -322,120 +321,122 @@ class BusinessPage extends Component {
         <section className="BusinessPage__contactInfo_card">
           <h2 className="singlebusinessCard__title">Contact Information:</h2>
           <section className="BusinessPage__contactInformation_group">
-            <a className="singlebusinessCard__title">Phone Number:</a>
-            <br></br>
-            <u>
-              <a href="">{phoneNumber}</a>
-            </u>
-
-            <br></br>
-            {loggedInUser === this.state.username && (
-              <Button onClick={() => this.handleEdit("phoneNumber")}>
-                EDIT PHONE NUMBER
-              </Button>
-            )}
-            <form
-              className="businessPageElement"
-              id="phoneNumber"
-              name="phoneNumber"
-              onSubmit={this.submitUpdate}
-              hidden
-            >
-              <TextField
-                className="BusinessPage__update_field"
-                label="Phone Number"
-                type="text"
-                id="outlined-basic"
+            <section className="BusinessPage__contactInfo_element">
+              <a className="singlebusinessCard__title">Phone Number:</a>
+              <br></br>
+              <u>
+                <a href="">{phoneNumber}</a>
+              </u>
+              <br></br>
+              {loggedInUser === this.state.username && (
+                <Button onClick={() => this.handleEdit("phoneNumber")}>
+                  EDIT PHONE NUMBER
+                </Button>
+              )}
+              <form
+                className="businessPageElement"
+                id="phoneNumber"
                 name="phoneNumber"
-                pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
-                placeholder="update your business phone number..."
-                value={this.state.keyToUpdate.phoneNumber}
-                onChange={this.handleInput}
-              />
-              <Button type="Submit">Update</Button>
-            </form>
+                onSubmit={this.submitUpdate}
+                hidden
+              >
+                <TextField
+                  className="BusinessPage__update_field"
+                  label="Phone Number"
+                  type="text"
+                  id="outlined-basic"
+                  name="phoneNumber"
+                  pattern="(0|(\+44))(044)?(7|1|2)(\d{9})"
+                  placeholder="update your business phone number..."
+                  value={this.state.keyToUpdate.phoneNumber}
+                  onChange={this.handleInput}
+                />
+                <Button type="Submit">Update</Button>
+              </form>
+            </section>
+            <section className="BusinessPage__contactInfo_element">
+              <a className="singlebusinessCard__title">Post Code:</a>
+              <br></br>
+              <u>
+                <a href="">{postCode}</a>
+              </u>
+              <br></br>
+              {loggedInUser === this.state.username && (
+                <Button onClick={() => this.handleEdit("postCode")}>EDIT POSTCODE</Button>
+              )}
+              <form
+                className="businessPageElement"
+                id="postCode"
+                name="postCode"
+                onSubmit={this.submitUpdate}
+                hidden
+              >
+                <TextField
+                  className="BusinessPage__update_field"
+                  label="Post Code"
+                  name="postCode"
+                  id="outlined-basic"
+                  type="text"
+                  pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
+                  placeholder="update your post code..."
+                  value={this.state.keyToUpdate.postCode}
+                  onChange={this.handleInput}
+                />
+                <Button type="Submit">Update</Button>
+              </form>
+            </section>
+            <section className="BusinessPage__contactInfo_element">
+              <a className="singlebusinessCard__title">Email: </a>
+              <br />
+              <u>
+                {" "}
+                <a href="">{businessEmail}</a>
+              </u>
+              <br></br>
+              {loggedInUser === this.state.username && (
+                <Button onClick={() => this.handleEdit("businessEmail")}>
+                  EDIT BUSINESS EMAIL
+                </Button>
+              )}
+              <form
+                className="businessPageElement"
+                id="businessEmail"
+                name="businessEmail"
+                onSubmit={this.submitUpdate}
+                hidden
+              >
+                <TextField
+                  className="BusinessPage__update_field"
+                  label="Business Email"
+                  name="businessEmail"
+                  id="outlined-basic"
+                  type="email"
+                  placeholder="update your business email..."
+                  value={this.state.keyToUpdate.businessEmail}
+                  onChange={this.handleInput}
+                />
+                <Button type="Submit">Update</Button>
+              </form>
+              <br></br>
+            </section>
           </section>
-          <a className="singlebusinessCard__title">Post Code:</a>
-          <br></br>
-          <u>
-            <a href="">{postCode}</a>
-          </u>
-          <br></br>
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("postCode")}>EDIT POSTCODE</Button>
-          )}
-          <form
-            className="businessPageElement"
-            id="postCode"
-            name="postCode"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              className="BusinessPage__update_field"
-              label="Post Code"
-              name="postCode"
-              id="outlined-basic"
-              type="text"
-              pattern="^[A-Z]{1,2}[0-9][A-Z0-9]?[0-9][A-Z]{2}$"
-              placeholder="update your post code..."
-              value={this.state.keyToUpdate.postCode}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
         </section>
-        <section className="contactInfo__card">
-          <a className="singlebusinessCard__title">Email: </a>
-          <br />
-          <u>
-            {" "}
-            <a href="">{businessEmail}</a>
-          </u>
-          <br></br>
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("businessEmail")}>
-              EDIT BUSINESS EMAIL
-            </Button>
-          )}
-          <form
-            className="businessPageElement"
-            id="businessEmail"
-            name="businessEmail"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              className="BusinessPage__update_field"
-              label="Business Email"
-              name="businessEmail"
-              id="outlined-basic"
-              type="email"
-              placeholder="update your business email..."
-              value={this.state.keyToUpdate.businessEmail}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
-        </section>
-        <br></br>
         <PostComment
           loggedInUser={loggedInUser}
           username={this.props.username}
           addComment={this.addComment}
         />
-        <br></br>
-        {this.state.changeNameOfButton === false ? (
-          <div>
+        <section className="BusinessPage__show_comments_button">
+          {this.state.changeNameOfButton === false ? (
             <Button onClick={this.handlesReadComments} variant="contained">
               Show comments
             </Button>
-          </div>
-        ) : (
-            <Button onClick={this.handlesReadComments} variant="contained">
-              Hide comments
-            </Button>
-          )}
+          ) : (
+              <Button onClick={this.handlesReadComments} variant="contained">
+                Hide comments
+              </Button>
+            )}
+        </section>
         {comments.map((comment) => {
           // console.log(comment.commentId);
           return (
