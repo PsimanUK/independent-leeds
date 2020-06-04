@@ -327,8 +327,11 @@ p {
 }
 
 .commentElements {
+  width: 90%;
   margin: auto;
   margin-bottom: 10px;
+  border: solid #7b190a 2px;
+  border-radius: 6px;
   border-bottom: 50px;
   box-shadow: 2px 2px 5px black;
   padding-bottom: 10px;
