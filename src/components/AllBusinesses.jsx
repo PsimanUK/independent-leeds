@@ -159,43 +159,43 @@ class AllBusinesses extends Component {
               className="cuisine"
             >
               <option value="">Cuisine</option>
-              <option value="american" name="american">
+              <option value="American" name="american">
                 American
               </option>
-              <option value="british" name="british">
+              <option value="British" name="british">
                 British
               </option>
-              <option value="chinese" name="chinese">
+              <option value="Chinese" name="chinese">
                 Chinese
               </option>
-              <option value="french" name="french">
+              <option value="French" name="french">
                 French
               </option>
-              <option value="greek" name="greek">
+              <option value="Greek" name="greek">
                 Greek
               </option>
-              <option value="indian" name="indian">
+              <option value="Indian" name="indian">
                 Indian
               </option>
-              <option value="italian" name="italian">
+              <option value="Italian" name="italian">
                 Italian
               </option>
-              <option value="japanese" name="japanese">
+              <option value="Japanese" name="japanese">
                 Japanese
               </option>
-              <option value="mexican" name="mexican">
+              <option value="Mexican" name="mexican">
                 Mexican
               </option>
-              <option value="middle eastern" name="middle eastern">
+              <option value="Middle Eastern" name="middle eastern">
                 Middle Eastern
               </option>
-              <option value="other" name="other">
+              <option value="Other" name="other">
                 Other
               </option>
-              <option value="spanish" name="spanish">
+              <option value="Spanish" name="spanish">
                 Spanish
               </option>
-              <option value="thai" name="thai">
+              <option value="Thai" name="thai">
                 Thai
               </option>
             </select>

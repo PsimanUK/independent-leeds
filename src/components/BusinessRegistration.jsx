@@ -101,26 +101,26 @@ class BusinessRegistration extends Component {
 
   render() {
     const businessTypes = [
-      { value: "restaurant", label: "Restaurant" },
-      { value: "cafe", label: "Cafe" },
-      { value: "pub", label: "Pub" },
-      { value: "takeaway", label: "Takeaway" },
+      { value: "Restaurant", label: "Restaurant" },
+      { value: "Cafe", label: "Cafe" },
+      { value: "Pub", label: "Pub" },
+      { value: "Takeaway", label: "Takeaway" },
     ];
 
     const cuisines = [
-      { value: "american", label: "American" },
-      { value: "british", label: "British" },
-      { value: "chinese", label: "Chinese" },
-      { value: "french", label: "French" },
-      { value: "greek", label: "Greek" },
-      { value: "indian", label: "Indian" },
-      { value: "italian", label: "Italian" },
-      { value: "japanese", label: "Japanese" },
-      { value: "mexican", label: "Mexican" },
-      { value: "middle eastern", label: "Middle Eastern" },
-      { value: "other", label: "Other" },
-      { value: "spanish", label: "Spanish" },
-      { value: "thai", label: "Thai" },
+      { value: "American", label: "American" },
+      { value: "British", label: "British" },
+      { value: "Chinese", label: "Chinese" },
+      { value: "French", label: "French" },
+      { value: "Greek", label: "Greek" },
+      { value: "Indian", label: "Indian" },
+      { value: "Italian", label: "Italian" },
+      { value: "Japanese", label: "Japanese" },
+      { value: "Mexican", label: "Mexican" },
+      { value: "Middle Eastern", label: "Middle Eastern" },
+      { value: "Other", label: "Other" },
+      { value: "Spanish", label: "Spanish" },
+      { value: "Thai", label: "Thai" },
     ];
 
     if (this.state.isLoading) return <LoadingIndicator />;

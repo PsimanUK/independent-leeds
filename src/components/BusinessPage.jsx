@@ -104,36 +104,36 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <section className="BusinessPage__top_section" >
-          <div >
+          <section classname="BusinessPage__logo_and_edit">
             <img
               src={logoUrl}
               alt={`Logo for ${businessName}`}
               className="BusinessPage__logo_img"
             />
-          </div>
-          <br></br>
-          {loggedInUser === this.state.username && (
-            <Button onClick={() => this.handleEdit("logoUrl")}>EDIT LOGO</Button>
-          )}
-          <form
-            className="businessPageElement"
-            id="logoUrl"
-            name="logoUrl"
-            onSubmit={this.submitUpdate}
-            hidden
-          >
-            <TextField
-              className="BusinessPage__update_field"
-              label="Logo URL"
+            <br></br>
+            {loggedInUser === this.state.username && (
+              <Button onClick={() => this.handleEdit("logoUrl")}>EDIT LOGO</Button>
+            )}
+            <form
+              className="businessPageElement"
+              id="logoUrl"
               name="logoUrl"
-              id="outlined-basic"
-              type="url"
-              placeholder="input your new logo URL..."
-              value={this.state.keyToUpdate.logoUrl}
-              onChange={this.handleInput}
-            />
-            <Button type="Submit">Update</Button>
-          </form>
+              onSubmit={this.submitUpdate}
+              hidden
+            >
+              <TextField
+                className="BusinessPage__update_field"
+                label="Logo URL"
+                name="logoUrl"
+                id="outlined-basic"
+                type="url"
+                placeholder="input your new logo URL..."
+                value={this.state.keyToUpdate.logoUrl}
+                onChange={this.handleInput}
+              />
+              <Button type="Submit">Update</Button>
+            </form>
+          </section>
           <section className="BusinessPage__type_cuisine_tables_group" >
             <h2 className="singlebusinessCard__title">Type:</h2>
             <h2>{businessType}</h2>
@@ -197,6 +197,7 @@ class BusinessPage extends Component {
                 <MenuItem value="French">French</MenuItem>
                 <MenuItem value="Japanese">Japanese</MenuItem>
                 <MenuItem value="Mexican">Mexican</MenuItem>
+                <MenuItem value="Middle Eastern">Middle Eastern</MenuItem>
                 <MenuItem value="Other">Other</MenuItem>
               </Select>
               <Button type="Submit" id="cuisine">
