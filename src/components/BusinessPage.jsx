@@ -103,7 +103,7 @@ class BusinessPage extends Component {
           <Button type="Submit">Update</Button>
         </form>
         <section className="BusinessPage__top_section_card" >
-          <section classname="BusinessPage__logo_and_edit">
+          <section classname="BusinessPage__logo_and_support">
             <img
               src={logoUrl}
               alt={`Logo for ${businessName}`}
@@ -132,6 +132,7 @@ class BusinessPage extends Component {
               />
               <Button type="Submit">Update</Button>
             </form>
+            <SupportBusiness votes={votes} username={this.state.username} />
           </section>
           <section className="BusinessPage__type_cuisine_tables_group" >
             <h2 className="singlebusinessCard__title">Type:</h2>
@@ -315,7 +316,6 @@ class BusinessPage extends Component {
             <Button type="Submit">Update</Button>
           </form>
         </div>
-        <SupportBusiness votes={votes} username={this.state.username} />
         <section className="BusinessPage__contactInfo_card">
           <h2 className="singlebusinessCard__title">Contact Information:</h2>
           <section className="BusinessPage__contactInformation_group">

@@ -8,7 +8,7 @@ class SupportBusiness extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="BusinessPage__SupportBusiness" >
         <h3 className="singlebusinessCard__title">Votes:</h3>
         <strong>
           <p className="tablesAvailable">
