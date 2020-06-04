@@ -62,7 +62,7 @@ class CustomSignUp extends Component {
         ) : null}
         {this._validAuthStates.includes(this.props.authState) && (
           <div className="sign-up__card" >
-            <form>
+            <form >
               <TextField
                 variant="outlined"
                 id="username"
@@ -73,6 +73,7 @@ class CustomSignUp extends Component {
                 type="text"
                 value={this.state.username}
                 className="textInput"
+                helperText="Case Sensitive"
               />
               <TextField
                 variant="outlined"
@@ -95,6 +96,7 @@ class CustomSignUp extends Component {
                 type="password"
                 value={this.state.password}
                 className="textInput"
+                helperText="1 of uppercase, lowercase, number, special"
               />
               <Button
                 onClick={this.handleFormSubmission}
