@@ -1,7 +1,4 @@
 import React, { Component, Suspense } from "react";
-//import CustomSignIn from "./CustomSignIn";
-import InternalApp from "./InternalApp";
-import CustomSignUp from "./CustomSignUp";
 import Title from "./Title";
 import NavBar from "./NavBar";
 import { Router } from "@reach/router";
@@ -17,6 +14,7 @@ class AuthWrapper extends Component {
 
     const CustomSignIn = React.lazy(() => import("./CustomSignIn"));
     const CustomSignUp = React.lazy(() => import("./CustomSignUp"));
+    const InternalApp = React.lazy(() => import("./InternalApp"));
     return (
       <div className="authWrapper">
         {this.props.authState !== "signedIn" ? (
@@ -41,12 +39,12 @@ class AuthWrapper extends Component {
               className="landingPage"
             />
           </Router>
+          <InternalApp
+            authState={this.props.authState}
+            onStateChange={this.props.onStateChange}
+            username={this.state.username}
+          />
         </Suspense>
-        <InternalApp
-          authState={this.props.authState}
-          onStateChange={this.props.onStateChange}
-          username={this.state.username}
-        />
       </div>
     );
   }

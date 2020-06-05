@@ -1,17 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import * as api from "../utils/api";
-import BusinessList from "./BusinessList";
 import { Link } from "@reach/router";
-//import LoadingIndicator from "./LoadingIndicator";
 
 class AllBusinesses extends Component {
   state = {
     businesses: [],
     activeSite: {},
     mapBoundaries: {},
-    params: {},
-    isLoading: true,
+    params: {}
   };
 
   handleInput = (event) => {
@@ -67,7 +64,6 @@ class AllBusinesses extends Component {
       .then(({ Items }) => {
         this.setState({
           businesses: Items,
-          isLoading: false,
           mapBoundaries: {
             west: this.refs.map.leafletElement.getBounds().getWest(),
             north: this.refs.map.leafletElement.getBounds().getNorth(),
@@ -93,7 +89,7 @@ class AllBusinesses extends Component {
         north: newBoundaries.getNorth(),
         south: newBoundaries.getSouth(),
         east: newBoundaries.getEast(),
-      }, isLoading: false,
+      }
     });
   };
 
@@ -108,8 +104,9 @@ class AllBusinesses extends Component {
         business.latitude > mapBoundaries.south &&
         business.latitude < mapBoundaries.north
     );
-    console.log(isLoading, "<---- isLoading");
-    // if (isLoading === true) return <LoadingIndicator />;
+
+    const BusinessList = React.lazy(() => import("./BusinessList"));
+
     return (
       <main>
         {this.state.error && <p>An error has occurred - please try again</p>}
@@ -252,10 +249,12 @@ class AllBusinesses extends Component {
             </div>
           </form>
         </section>
-        <BusinessList
-          businesses={viableBusinesses}
-          mapBoundaries={mapBoundaries}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <BusinessList
+            businesses={viableBusinesses}
+            mapBoundaries={mapBoundaries}
+          />
+        </Suspense>
       </main>
     );
   }

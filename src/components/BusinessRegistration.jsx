@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import LoadingIndicator from "./LoadingIndicator";
 import {
-  Container,
   TextField,
   MenuItem,
   Checkbox,

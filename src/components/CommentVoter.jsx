@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import { Button } from "@material-ui/core";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class CommentVoter extends Component {
   state = {
@@ -12,33 +12,33 @@ class CommentVoter extends Component {
     return (
       <div>
         <h3>
-          <Button
+          {/* <Button
             onClick={() => this.handlesVoteChange(1)}
             disabled={this.state.voteChange === 1}
           >
             <FontAwesomeIcon className="icon" size="3x" icon={faThumbsUp} />
-          </Button>
-          {/* <Button
+          </Button> */}
+          <Button
             onClick={() => this.handlesVoteChange(1)}
             disabled={this.state.voteChange === 1}
             variant="contained"
           >
             Vote up
-          </Button> */}
+          </Button>
           {this.props.votes + this.state.voteChange}
-          <Button
+          {/* <Button
             onClick={() => this.handlesVoteChange(-1)}
             disabled={this.state.voteChange === -1}
           >
             <FontAwesomeIcon className="icon" size="3x" icon={faThumbsDown} />
-          </Button>
-          {/* <Button
+          </Button> */}
+          <Button
             onClick={() => this.handlesVoteChange(-1)}
             disabled={this.state.voteChange === -1}
             variant="contained"
           >
             Vote down
-          </Button> */}
+          </Button>
         </h3>
       </div>
     );

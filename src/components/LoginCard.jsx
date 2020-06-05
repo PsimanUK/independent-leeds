@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, FormControl, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core/';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
