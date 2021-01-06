@@ -14,7 +14,7 @@
     "@testing-library/user-event": "^7.2.1",
     "aws-amplify": "^3.0.11",
     "aws-amplify-react": "^4.1.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "leaflet": "^1.6.0",
     "leaflet.awesome-markers": "^2.0.5",
     "netlify-cli": "^2.53.0",
